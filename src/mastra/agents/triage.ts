@@ -51,6 +51,7 @@ export const triageAgent = new Agent({
     - Agents - Ward Peeters
     - Agent Network - Tony Kovanen
     - Guardrails / Input Output Processing - Ward Peeters
+    - A2A Protocol - Ward Peeters
 
     ### Integrations
     - AGUI / CopilotKit - Abhiram Aiyer
@@ -77,6 +78,7 @@ export const triageAgent = new Agent({
     ### Documentation
     - Documentation - Paul Scanlon
     - Documentation Chatbot - Ifedayo
+    - Documentation Website - Kehinde Adeleke
     - Website - Kehinde Adeleke    
 
     In case there is no proper area of ownership, assign it to Abhiram Aiyer.
