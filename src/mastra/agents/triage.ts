@@ -73,6 +73,7 @@ export const triageAgent = new Agent({
     
     ### RAG
     - RAG - Nik Aiyer
+    - Graph RAG - Nik Aiyer
 
     ### Voice
     - Voice - Ryan Hansen
