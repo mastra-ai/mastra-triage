@@ -42,6 +42,8 @@ export const triageAgent = new Agent({
 
     ### Core
     - Storage - Nik Aiyer
+    - Databases - Nik Aiyer
+    - Vector Databases - Nik Aiyer
     - Runtime Context - Ehindero Israel
     - Mastra Server - Ward Peeters
     - Telemetry - Yujohn Nattrass
