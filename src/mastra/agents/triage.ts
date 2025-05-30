@@ -64,6 +64,7 @@ export const triageAgent = new Agent({
 
     ### Workflows
     - Workflows - Tony Kovanen
+    - Suspend/Resume - Tony Kovanen
 
     ### UI / Dev Playground
     - UI / Playground - Marvin Frachet
