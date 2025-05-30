@@ -74,6 +74,9 @@ export const triageAgent = new Agent({
 
     ### Voice
     - Voice - Ryan Hansen
+    - Speech to text - Ryan Hansen
+    - Text to speech - Ryan Hansen
+    - Speech to speech - Ryan Hansen
 
     ### Documentation
     - Documentation - Paul Scanlon
