@@ -3,7 +3,7 @@ import { Mastra } from '@mastra/core/mastra';
 import { PinoLogger } from '@mastra/loggers';
 import { LibSQLStore } from '@mastra/libsql';
 import { triageAgent } from './agents/triage';
-import { registerApiRoute } from '@mastra/core/server';
+import { discordToGithubWorkflow } from './workflows';
 
 export const mastra = new Mastra({
   agents: { triageAgent },
@@ -11,20 +11,11 @@ export const mastra = new Mastra({
     // stores telemetry, evals, ... into memory storage, if it needs to persist, change to file:../mastra.db
     url: ":memory:",
   }),
+  workflows: {
+    discordToGithubWorkflow,
+  },
   logger: new PinoLogger({
     name: 'Mastra',
     level: 'info',
   }),
-  server: {
-    apiRoutes: [
-      registerApiRoute('/discord-triage', {
-        method: 'POST',
-        handler: async (c) => {
-          const body = await c.req.json();
-          console.log(body, '###')
-          return c.json({});
-        },
-      }),
-    ]
-  },
 });

@@ -1,5 +1,6 @@
 import { openai } from '@ai-sdk/openai';
 import { Agent } from '@mastra/core/agent';
+import { Memory } from '@mastra/memory';
 
 export const triageAgent = new Agent({
    name: 'Triage Agent',
@@ -92,4 +93,5 @@ export const triageAgent = new Agent({
     In case there is no proper area of ownership, assign it to Abhiram Aiyer.
     `,
    model: openai('gpt-4o-mini'),
+   memory: new Memory()
 });
