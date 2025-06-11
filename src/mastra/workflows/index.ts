@@ -164,7 +164,7 @@ const processPostsStep = createStep({
     const repo = 'mastra';
 
     console.log(`Processing ${inputData.posts.length} posts`)
-    for (const post of [inputData.posts[1]]) {
+    for (const post of inputData.posts.slice(20)) {
       console.log(`Processing post ${post.name}`)
       console.log(post.url)
 
@@ -214,6 +214,8 @@ const processPostsStep = createStep({
           console.error('Failed to send message to Discord thread:', error);
         }
       }
+
+      await new Promise(resolve => setTimeout(resolve, 2000));
     }
     return { success: true }
   },
