@@ -90,6 +90,8 @@ export const triageAgent = new Agent({
     - Documentation Website - Kehinde Adeleke
     - Website - Kehinde Adeleke    
 
+    ### Mastra Cloud - Yujohn Nattrass
+
     In case there is no proper area of ownership, assign it to Abhiram Aiyer.
     `,
    model: openai('gpt-4o-mini'),
