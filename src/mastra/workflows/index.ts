@@ -90,16 +90,23 @@ export async function fetchForumPosts({
       ...Array.from(activeThreads.threads.values()),
     ];
 
-    // Map to the return type
-    return allThreads.map(thread => ({
-      id: thread.id,
-      name: thread.name,
-      createdAt: thread.createdAt || new Date(),
-      messageCount: thread.messageCount || 0,
-      archived: thread.archived || false,
-      locked: thread.locked || false,
-      url: thread.url,
-    })).reverse();
+    // Calculate the timestamp for 24 hours ago
+    const twentyFourHoursAgo = new Date();
+    twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 24);
+
+    // Map to the return type and filter threads from the last 24 hours
+    return allThreads
+      .map(thread => ({
+        id: thread.id,
+        name: thread.name,
+        createdAt: thread.createdAt || new Date(),
+        messageCount: thread.messageCount || 0,
+        archived: thread.archived || false,
+        locked: thread.locked || false,
+        url: thread.url,
+      }))
+      .filter(thread => thread.createdAt >= twentyFourHoursAgo)
+      .reverse();
   } catch (error) {
     console.error('Error fetching forum posts:', error);
     throw error;
@@ -231,5 +238,7 @@ export const discordToGithubWorkflow = createWorkflow({
   })
 })
 
-discordToGithubWorkflow.then(fetchPostsStep).then(processPostsStep).commit()
+discordToGithubWorkflow
+  .then(fetchPostsStep)
+  .then(processPostsStep).commit()
 

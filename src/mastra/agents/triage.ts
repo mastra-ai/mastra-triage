@@ -43,23 +43,41 @@ export const triageAgent = new Agent({
     primitives for building agents. Below are the areas of ownership for the framework and the
     Mastra teammates that should be assigned.
 
-    ### Core
-    - Storage - Nik Aiyer
-    - Databases - Nik Aiyer
-    - Vector Databases - Nik Aiyer
-    - Runtime Context - Ehindero Israel
-    - Mastra Server - Ward Peeters
-    - Telemetry - Yujohn Nattrass
-    - Logging - Yujohn Nattrass
+    These Areas of Ownership map to Github Labels:
+
+    Area: Storage
+    Owner: Nik Aiyer
+    Description: Mentions of Storage, Databases, Vector Databases
+
+    Area: Runtime Context
+    Owner: Ehindero Israel
+    Description: Mentions of Runtime Context
+
+    Area: Mastra Server
+    Owner: Ward Peeters
+    Description: Mentions of Mastra Server
+
+    Area: Telemetry
+    Owner: Yujohn Nattrass
+    Description: Mentions of Telemetry
+
+    Area: Logging
+    Owner: Yujohn Nattrass
+    Description: Mentions of Logging
+
+    Area: Cloudflare Deployment
+    Owner: Ward Peeters
+    Description: Mentions of Cloudflare, Cloudflare Workers, Cloudflare Deploys
+    
+    Area: AGUI / CopilotKit
+    Owner: Abhiram Aiyer
+    Description: Mentions of AGUI, CopilotKit
 
     ### Agents
     - Agents - Ward Peeters
     - Agent Network - Tony Kovanen
     - Guardrails / Input Output Processing - Ward Peeters
     - A2A Protocol - Ward Peeters
-
-    ### Integrations
-    - AGUI / CopilotKit - Abhiram Aiyer
 
     ### Tools
     - MCP - Daniel Lew
