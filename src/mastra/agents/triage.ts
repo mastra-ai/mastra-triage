@@ -73,45 +73,73 @@ export const triageAgent = new Agent({
     Owner: Abhiram Aiyer
     Description: Mentions of AGUI, CopilotKit
 
-    ### Agents
-    - Agents - Ward Peeters
-    - Agent Network - Tony Kovanen
-    - Guardrails / Input Output Processing - Ward Peeters
-    - A2A Protocol - Ward Peeters
+    Area: Agents
+    Owner: Ward Peeters
+    Description: Mention of Agents
 
-    ### Tools
-    - MCP - Daniel Lew
-    - Tools - Daniel Lew
+    Area: Agent Network
+    Owner: Tony Kovanen
+    Description: Mention of Agent Network
 
-    ### Workflows
-    - Workflows - Tony Kovanen
-    - Workflow Streaming - Ward Peeters
-    - Suspend/Resume - Tony Kovanen
+    Area: Guardrails / Input Output Processing
+    Owner: Ward Peeters
+    Description: Mention of Guardrails / Input Output Processing
 
-    ### UI / Dev Playground
-    - UI / Playground - Marvin Frachet
-    - Local Dev - Ehindero Israel
+    Area: A2A Protocol
+    Owner: Ward Peeters
+    Description: Mention of A2A Protocol
 
-    ### Memory
-    - Memory - Tyler Barnes
-    
-    ### RAG
-    - RAG - Nik Aiyer
-    - Graph RAG - Nik Aiyer
+    Area: Tools
+    Owner: Daniel Lew
+    Description: Mention of Tools
 
-    ### Voice
-    - Voice - Ryan Hansen
-    - Speech to text - Ryan Hansen
-    - Text to speech - Ryan Hansen
-    - Speech to speech - Ryan Hansen
+    Area: MCP
+    Owner: Daniel Lew
+    Description: Mention of MCP
 
-    ### Documentation
-    - Documentation - Paul Scanlon
-    - Documentation Chatbot - Ifedayo
-    - Documentation Website - Kehinde Adeleke
-    - Website - Kehinde Adeleke    
+    Area: Workflows
+    Owner: Tony Kovanen
+    Description: Anything with Workflows, steps, suspend, resume, workflow streaming
 
-    ### Mastra Cloud - Yujohn Nattrass
+    Area: UI / Dev Playground
+    Owner: Marvin Frachet
+    Description: Anything with UI / Dev Playground
+
+    Area: Local Dev
+    Owner: Ehindero Israel
+    Description: Anything with Local Dev
+
+    Area: Memory
+    Owner: Tyler Barnes
+    Description: Anything with Memory
+
+    Area: RAG
+    Owner: Nik Aiyer
+    Description: Anything with RAG
+
+    Area: Voice
+    Owner: Ryan Hansen
+    Description: Anything with Voice, Speech to Speech, Speech to Text, Text to Speech
+
+    Area: Documentation
+    Owner: Paul Scanlon
+    Description: Anything with Documentation
+
+    Area: Documentation Chatbot
+    Owner: Ifedayo
+    Description: Anything with Documentation Chatbot
+
+    Area: Documentation Website
+    Owner: Kehinde Adeleke
+    Description: Anything with Documentation Website
+
+    Area: Mastra Cloud
+    Owner: Yujohn Nattrass
+    Description: Anything with Mastra Cloud
+
+    Area: Website
+    Owner: Kehinde Adeleke
+    Description: Anything with Website
 
     In case there is no proper area of ownership, assign it to Abhiram Aiyer.
     `,
