@@ -206,7 +206,8 @@ const processPostsStep = createStep({
           owner,
           repo,
           title,
-          body: `This issue was created from Discord post: ${post.url}\n\n${message}`
+          body: `This issue was created from Discord post: ${post.url}\n\n${message}`,
+          labels: ['status: needs triage']
         });
 
         console.log(`Created new issue: ${newIssue.data.html_url}`);
