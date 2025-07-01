@@ -92,7 +92,7 @@ export async function fetchForumPosts({
 
     // Calculate the timestamp for 24 hours ago
     const twentyFourHoursAgo = new Date();
-    twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - (24 * 14));
+    twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - (24 * 8));
 
     // Map to the return type and filter threads from the last 24 hours
     return allThreads
