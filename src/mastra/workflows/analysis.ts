@@ -118,21 +118,6 @@ const analyzeMessages = createStep({
             });
         }
 
-        // For each post we want to categorize each message
-        // Group by category
-        // Summarize each category
-        // Count each category
-        // Return a markdown table 
-
-        // const jsonResult = await analysisAgent.generate(
-        //     `Analyze messages from ${inputData.start} to ${inputData.end} using `,
-        // );
-
-        // const result = await analysisAgent.generate(jsonResult.text, { output: AnalysisSchema });
-
-        // return result.object;
-
-        // Generate markdown table
         const markdownTable = `
 | Category | Count | Severity | Summary |
 |----------|-------|----------|---------|
