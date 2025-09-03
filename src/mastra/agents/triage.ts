@@ -1,9 +1,9 @@
-import { openai } from "@ai-sdk/openai";
-import { Agent } from "@mastra/core/agent";
-import { Memory } from "@mastra/memory";
+import { openai } from '@ai-sdk/openai';
+import { Agent } from '@mastra/core/agent';
+import { Memory } from '@mastra/memory';
 
 export const triageAgent = new Agent({
-  name: "Triage Agent",
+  name: 'Triage Agent',
   instructions: `
     You are a triage assistant that assigns GitHub issues to the appropriate team members based on the content and areas of ownership.
 
@@ -130,6 +130,6 @@ export const triageAgent = new Agent({
     - **Area**: [Area name]
     - **Reasoning**: [Brief explanation of why this assignment was made]
     `,
-  model: openai("gpt-4o-mini"),
+  model: openai('gpt-4o-mini'),
   memory: new Memory(),
 });
