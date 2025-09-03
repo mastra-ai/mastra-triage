@@ -3,6 +3,7 @@ import { PinoLogger } from '@mastra/loggers';
 import { LibSQLStore } from '@mastra/libsql';
 import { triageAgent } from './agents/triage';
 import { discordToGithubWorkflow } from './workflows/discordToGithub';
+// import { createGithubIssueWorkflow } from './workflows/discordToGithub/createGithubIssue';
 
 export const mastra = new Mastra({
   agents: { triageAgent },
@@ -12,6 +13,7 @@ export const mastra = new Mastra({
   }),
   workflows: {
     discordToGithubWorkflow,
+    // createGithubIssueWorkflow,
   },
   logger: new PinoLogger({
     name: 'Mastra',
