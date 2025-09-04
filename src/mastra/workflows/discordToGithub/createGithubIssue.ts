@@ -58,7 +58,7 @@ const createGithubIssueStep = createStep({
       logger,
     );
 
-    logger?.debug(JSON.stringify(message));
+    logger?.debug('discord message', JSON.stringify(message));
 
     // Create a new issue
     const newIssue = await octokit.rest.issues.create({
@@ -69,7 +69,7 @@ const createGithubIssueStep = createStep({
       labels: ['status: needs triage'],
     });
 
-    logger?.debug(`Created new issue: ${newIssue.data.html_url}`);
+    logger?.debug(`Created new issue: ${newIssue.data.html_url} for ${title}`);
 
     return newIssue.data;
   },

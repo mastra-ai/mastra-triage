@@ -55,12 +55,12 @@ const processPostWorkflow = createWorkflow({
     [
       async ({ inputData, getStepResult }) => {
         const { hasIssue } = getStepResult(getGithubIssueStep);
-        if (!hasIssue) {
+        if (hasIssue) {
           return false;
         }
 
         const { tags } = inputData;
-        return tags.includes('skip-github');
+        return !tags.includes('skip-github');
       },
       createStep(createGithubIssueWorkflow),
     ],
@@ -81,7 +81,10 @@ const processPostWorkflow = createWorkflow({
       }),
     ],
     [
-      async () => true,
+      async ({ inputData }) => {
+        const { tags } = inputData;
+        return !tags.includes('skip-github');
+      },
       createStep({
         id: 'skip-github',
         inputSchema: postSchema,

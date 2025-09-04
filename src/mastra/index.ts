@@ -19,6 +19,6 @@ export const mastra = new Mastra({
   },
   logger: new PinoLogger({
     name: 'Mastra',
-    level: 'info',
+    level: process.env.NODE_ENV === 'development' ? 'debug' : 'info',
   }),
 });
