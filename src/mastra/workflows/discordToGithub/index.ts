@@ -64,6 +64,35 @@ const processPostWorkflow = createWorkflow({
       },
       createStep(createGithubIssueWorkflow),
     ],
+    [
+      async ({ getStepResult }) => {
+        const { hasIssue } = getStepResult(getGithubIssueStep);
+        return hasIssue;
+      },
+      createStep({
+        id: 'has-issue',
+        inputSchema: postSchema,
+        outputSchema: z.object({
+          success: z.boolean(),
+        }),
+        execute: async () => {
+          return { success: true };
+        },
+      }),
+    ],
+    [
+      async () => true,
+      createStep({
+        id: 'skip-github',
+        inputSchema: postSchema,
+        outputSchema: z.object({
+          success: z.boolean(),
+        }),
+        execute: async () => {
+          return { success: true };
+        },
+      }),
+    ],
   ])
   .commit();
 
