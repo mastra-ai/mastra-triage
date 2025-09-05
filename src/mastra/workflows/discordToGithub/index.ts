@@ -69,16 +69,17 @@ const processPostWorkflow = createWorkflow({
         const { hasIssue } = getStepResult(getGithubIssueStep);
         const { tags } = inputData;
 
-        return hasIssue && !tags.includes('skip-github');
+        return hasIssue;
       },
       createStep({
         id: 'has-issue',
         inputSchema: postSchema,
         outputSchema: z.object({
           success: z.boolean(),
+          id: z.string(),
         }),
-        execute: async () => {
-          return { success: true };
+        execute: async ({ inputData }) => {
+          return { success: true, id: inputData.id };
         },
       }),
     ],
@@ -94,11 +95,13 @@ const processPostWorkflow = createWorkflow({
         inputSchema: postSchema,
         outputSchema: z.object({
           success: z.boolean(),
+          id: z.string(),
+          tags: z.array(z.string()),
         }),
         execute: async ({ inputData }) => {
-          const { tags } = inputData;
+          const { tags, id } = inputData;
 
-          return { success: true, tags };
+          return { success: true, id, tags };
         },
       }),
     ],
