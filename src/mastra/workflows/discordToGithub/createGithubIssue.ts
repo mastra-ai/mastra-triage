@@ -85,6 +85,8 @@ const createDiscordPostStep = createStep({
   }),
   outputSchema: z.object({
     success: z.boolean(),
+    thread: z.string(),
+    githubIssue: z.string(),
   }),
   execute: async ({ inputData: { post, issue }, mastra }) => {
     const logger = mastra?.getLogger();
@@ -95,7 +97,7 @@ const createDiscordPostStep = createStep({
       await thread.send(`📝 Created GitHub issue: ${issue.html_url}`);
     }
 
-    return { success: true };
+    return { success: true, thread: post.id, githubIssue: issue.html_url };
   },
 });
 
@@ -104,6 +106,8 @@ export const createGithubIssueWorkflow = createWorkflow({
   inputSchema: postSchema,
   outputSchema: z.object({
     success: z.boolean(),
+    thread: z.string(),
+    githubIssue: z.string(),
   }),
   steps: [createGithubIssueStep, createDiscordPostStep],
 })
