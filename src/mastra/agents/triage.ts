@@ -1,4 +1,3 @@
-import { openai } from '@ai-sdk/openai';
 import { Agent } from '@mastra/core/agent';
 import { Memory } from '@mastra/memory';
 import { categories } from '../constants';
@@ -35,6 +34,6 @@ export const triageAgent = new Agent({
     - **Area**: [Area name]
     - **Reasoning**: [Brief explanation of why this assignment was made]
     `,
-  model: openai('gpt-4o-mini'),
+  model: 'openai/gpt-4o-mini',
   memory: new Memory(),
 });
