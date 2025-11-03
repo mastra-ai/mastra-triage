@@ -17,13 +17,14 @@ const getGithubIssueStep = createStep({
   execute: async ({ inputData: post, mastra }) => {
     const octokit = getGithubClient();
 
-    // Search for existing issues with the post ID in the title
+    // Search for existing issues with the discord label and post ID in body
+    // OR the old format with post ID in title (backwards compatible)
     const { data: searchResults } = await octokit.request('GET /search/issues', {
       headers: {
         'X-GitHub-Api-Version': '2022-11-28',
       },
       advanced_search: 'true',
-      q: `is:issue in:title "[DISCORD:${post.id}]" repo:${owner}/${repo}`,
+      q: `is:issue (label:discord "${post.id}" OR in:title "[DISCORD:${post.id}]") repo:${owner}/${repo}`,
       per_page: 1,
       sort: 'updated',
       order: 'desc',
