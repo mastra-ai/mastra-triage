@@ -60,12 +60,15 @@ const createGithubIssueStep = createStep({
 
     logger?.debug('discord message', JSON.stringify(message));
 
+    // Create Discord deep link by replacing https:// with discord://
+    const discordDeepLink = post.url.replace('https://', 'discord://');
+
     // Create a new issue
     const newIssue = await octokit.rest.issues.create({
       owner,
       repo,
       title,
-      body: `This issue was created from Discord post: ${post.url}\n\n${message}`,
+      body: `This issue was created from Discord post ${post.id}:\n\n[![Open in Browser](https://img.shields.io/badge/Open_in_Browser-7289DA?style=for-the-badge&logo=googlechrome&logoColor=white)](${post.url}) [![Open in Discord](https://img.shields.io/badge/Open_in_Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](${discordDeepLink})\n\n${message}`,
       labels: ['status: needs triage'],
     });
 
