@@ -46,7 +46,7 @@ const createGithubIssueStep = createStep({
     const logger = mastra?.getLogger();
     const discordClient = await getDiscordClient(logger);
     const octokit = getGithubClient();
-    const title = `[DISCORD:${post.id}] ${post.name}`;
+    const title = post.name;
     const owner = 'mastra-ai';
     const repo = 'mastra';
 
@@ -69,7 +69,7 @@ const createGithubIssueStep = createStep({
       repo,
       title,
       body: `This issue was created from Discord post ${post.id}:\n\n[![Open in Browser](https://img.shields.io/badge/Open_in_Browser-7289DA?style=for-the-badge&logo=googlechrome&logoColor=white)](${post.url}) [![Open in Discord](https://img.shields.io/badge/Open_in_Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](${discordDeepLink})\n\n${message}`,
-      labels: ['status: needs triage'],
+      labels: ['status: needs triage', 'discord'],
     });
 
     logger?.debug(`Created new issue: ${newIssue.data.html_url} for ${title}`);
