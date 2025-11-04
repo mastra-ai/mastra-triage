@@ -91,7 +91,7 @@ const createGithubIssueStep = createStep({
       owner,
       repo,
       title,
-      body: `This issue was created from Discord post ${post.id}:\n\n[![Open in Browser](https://img.shields.io/badge/Open_in_Browser-7289DA?style=for-the-badge&logo=googlechrome&logoColor=white)](${post.url})\n\n${bodyContent}`,
+      body: `This issue was created from Discord post ${post.id}:\n\n[![Open in Discord](https://img.shields.io/badge/Open_in_Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](${post.url})\n\n${bodyContent}`,
       labels: ['status: needs triage', 'discord'],
     });
 
