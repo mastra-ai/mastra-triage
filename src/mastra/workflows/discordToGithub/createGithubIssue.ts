@@ -15,7 +15,7 @@ async function getFirstThreadMessage(
     threadId: string;
   },
   logger?: IMastraLogger,
-): Promise<{ content: string; attachments: string[] } | null> {
+): Promise<{ content: string; images: string[] } | null> {
   try {
     const thread = await client.channels.fetch(threadId);
     if (!thread?.isThread()) {
@@ -30,14 +30,14 @@ async function getFirstThreadMessage(
       return null;
     }
 
-    // Extract attachment URLs (images and other files)
-    const attachments = Array.from(starterMessage.attachments.values())
-      .map(attachment => attachment.url)
-      .filter(Boolean);
+    // Extract only image attachments
+    const images = Array.from(starterMessage.attachments.values())
+      .filter(attachment => attachment.contentType?.startsWith('image/'))
+      .map(attachment => attachment.url);
 
     return {
       content: starterMessage.content || '',
-      attachments,
+      images,
     };
   } catch (error) {
     logger?.error('Error fetching thread message:', error);
@@ -75,9 +75,9 @@ const createGithubIssueStep = createStep({
     // Format the message content
     let bodyContent = message?.content || '';
     
-    // Add images if any attachments exist
-    if (message?.attachments && message.attachments.length > 0) {
-      const imageMarkdown = message.attachments
+    // Add images if any exist
+    if (message?.images && message.images.length > 0) {
+      const imageMarkdown = message.images
         .map((url, index) => `![Screenshot ${index + 1}](${url})`)
         .join('\n\n');
       
