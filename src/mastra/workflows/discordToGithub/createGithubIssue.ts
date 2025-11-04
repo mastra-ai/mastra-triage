@@ -15,7 +15,7 @@ async function getFirstThreadMessage(
     threadId: string;
   },
   logger?: IMastraLogger,
-): Promise<string | null> {
+): Promise<{ content: string; images: string[] } | null> {
   try {
     const thread = await client.channels.fetch(threadId);
     if (!thread?.isThread()) {
@@ -29,7 +29,16 @@ async function getFirstThreadMessage(
       logger?.info('No starter message found for thread:', threadId);
       return null;
     }
-    return starterMessage.content || null;
+
+    // Extract only image attachments
+    const images = Array.from(starterMessage.attachments.values())
+      .filter(attachment => attachment.contentType?.startsWith('image/'))
+      .map(attachment => attachment.url);
+
+    return {
+      content: starterMessage.content || '',
+      images,
+    };
   } catch (error) {
     logger?.error('Error fetching thread message:', error);
     return null;
@@ -60,15 +69,29 @@ const createGithubIssueStep = createStep({
 
     logger?.debug('discord message', JSON.stringify(message));
 
-    // Create Discord deep link by replacing https:// with discord://
-    const discordDeepLink = post.url.replace('https://', 'discord://');
+    // Format the message content
+    let bodyContent = message?.content || '';
+    
+    // Add images if any exist
+    if (message?.images && message.images.length > 0) {
+      const imageMarkdown = message.images
+        .map((url, index) => `![Screenshot ${index + 1}](${url})`)
+        .join('\n\n');
+      
+      // Add images after the message content
+      if (bodyContent) {
+        bodyContent += '\n\n---\n\n' + imageMarkdown;
+      } else {
+        bodyContent = imageMarkdown;
+      }
+    }
 
     // Create a new issue
     const newIssue = await octokit.rest.issues.create({
       owner,
       repo,
       title,
-      body: `This issue was created from Discord post ${post.id}:\n\n[![Open in Browser](https://img.shields.io/badge/Open_in_Browser-7289DA?style=for-the-badge&logo=googlechrome&logoColor=white)](${post.url}) [![Open in Discord](https://img.shields.io/badge/Open_in_Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](${discordDeepLink})\n\n${message}`,
+      body: `This issue was created from Discord post ${post.id}:\n\n[![Open in Discord](https://img.shields.io/badge/Open_in_Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](${post.url})\n\n${bodyContent}`,
       labels: ['status: needs triage', 'discord'],
     });
 
