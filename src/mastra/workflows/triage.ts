@@ -53,7 +53,9 @@ Issue Body: ${inputData.body ?? ''}`;
 
     const traigeAgent = mastra.getAgentById('triageAgent');
     const result = await traigeAgent.generate(prompt, {
-      output: triageOutput,
+      structuredOutput: {
+        schema: triageOutput,
+      },
     });
 
     return result.object;
