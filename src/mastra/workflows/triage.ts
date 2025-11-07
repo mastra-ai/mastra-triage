@@ -1,6 +1,7 @@
 import { createStep, createWorkflow } from '@mastra/core/workflows';
 import { z } from 'zod';
 import { getGithubClient } from '../shared/github';
+import { getMemberByLogin } from '../constants/members';
 
 const owner = 'mastra-ai';
 const repo = 'mastra';
@@ -12,9 +13,17 @@ const initialInput = z.object({
 });
 const triageOutput = z.object({
   product_area: z.string(),
-  assignee: z.string(),
+  squad: z.string(),
+  assignees: z.array(z.string()),
   reason: z.string(),
-  github_username: z.string(),
+});
+
+const outputSchema = z.object({
+  issueNumber: z.boolean(),
+  result: z.object({
+    assignees: z.array(z.string()),
+    labels: z.array(z.string()),
+  }),
 });
 
 const fetchPullRequestsStep = createStep({
@@ -65,52 +74,55 @@ Issue Body: ${inputData.body ?? ''}`;
 const wrapUpStep = createStep({
   id: 'wrap-up',
   inputSchema: triageOutput,
-  outputSchema: z.object({
-    success: z.boolean(),
-  }),
+  outputSchema: outputSchema,
   execute: async ({ inputData, getInitData }) => {
     const octokit = getGithubClient();
 
     const { owner, repo, issueNumber } = getInitData();
 
+    const labels = [inputData.product_area, 'status: needs triage', inputData.squad];
     // Label the issue
     await octokit.rest.issues.addLabels({
       owner,
       repo,
       issue_number: Number(issueNumber),
-      labels: [inputData.product_area, 'status: needs triage'],
+      labels,
     });
 
-    const userName = inputData.github_username.startsWith('@')
-      ? inputData.github_username.slice(1)
-      : inputData.github_username;
+    const assignees = inputData.assignees.map(assignee => getMemberByLogin(assignee)!.login).filter(Boolean);
 
     await octokit.rest.issues.addAssignees({
       owner,
       repo,
       issue_number: Number(issueNumber),
-      assignees: [userName],
+      assignees,
     });
 
-    console.log(`Assigned ${inputData.github_username} to issue #${PR}`);
+    console.log(`Assigned ${assignees.join(', ')} to issue #${issueNumber}`);
 
     await octokit.rest.issues.createComment({
       owner,
       repo,
       issue_number: Number(issueNumber),
-      body: `Thank you for reporting this issue! We have assigned it to @${userName} and will look into it as soon as possible.`,
+      body: `Thank you for reporting this issue! We have assigned it to the ${inputData.squad} and we will look into it as soon as possible.`,
     });
 
     console.log(`Commented on issue #${issueNumber}`);
 
-    return { success: true };
+    return {
+      issueNumber,
+      result: {
+        assignees,
+        labels,
+      },
+    };
   },
 });
 
 export const triageWorkflow = createWorkflow({
   id: 'triage',
   inputSchema: initialInput,
-  outputSchema: triageOutput,
+  outputSchema: outputSchema,
   steps: [fetchPullRequestsStep, callTriageAgentStep, wrapUpStep],
 })
   .then(fetchPullRequestsStep)

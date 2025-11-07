@@ -18,19 +18,19 @@
     "node": ">=20.9.0"
   },
   "dependencies": {
-    "@mastra/auth": "^0.1.4",
-    "@mastra/core": "^0.23.3",
-    "@mastra/libsql": "^0.16.1",
-    "@mastra/loggers": "^0.10.18",
-    "@mastra/mcp": "^0.14.1",
-    "@mastra/memory": "^0.15.10",
+    "@mastra/auth": "^0.1.5",
+    "@mastra/core": "^0.24.0",
+    "@mastra/libsql": "^0.16.2",
+    "@mastra/loggers": "^0.10.19",
+    "@mastra/mcp": "^0.14.2",
+    "@mastra/memory": "^0.15.11",
     "discord.js": "^14.24.2",
     "octokit": "^5.0.5",
     "zod": "^4.1.12"
   },
   "devDependencies": {
     "@types/node": "^24.10.0",
-    "mastra": "^0.17.7",
+    "mastra": "^0.18.0",
     "prettier": "^3.6.2",
     "typescript": "^5.9.3"
   }
