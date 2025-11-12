@@ -50,6 +50,9 @@ const createGithubIssueStep = createStep({
   inputSchema: postSchema,
   outputSchema: z.object({
     html_url: z.string(),
+    number: z.number(),
+    title: z.string(),
+    body: z.string(),
   }),
   execute: async ({ inputData: post, mastra }) => {
     const logger = mastra?.getLogger();
@@ -87,17 +90,24 @@ const createGithubIssueStep = createStep({
     }
 
     // Create a new issue
+    const issueBody = `This issue was created from Discord post ${post.id}:\n\n[![Open in Discord](https://img.shields.io/badge/Open_in_Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](${post.url})\n\n${bodyContent}`;
+    
     const newIssue = await octokit.rest.issues.create({
       owner,
       repo,
       title,
-      body: `This issue was created from Discord post ${post.id}:\n\n[![Open in Discord](https://img.shields.io/badge/Open_in_Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](${post.url})\n\n${bodyContent}`,
+      body: issueBody,
       labels: ['status: needs triage', 'discord'],
     });
 
     logger?.debug(`Created new issue: ${newIssue.data.html_url} for ${title}`);
 
-    return newIssue.data;
+    return {
+      html_url: newIssue.data.html_url,
+      number: newIssue.data.number,
+      title: newIssue.data.title,
+      body: issueBody,
+    };
   },
 });
 
@@ -107,12 +117,18 @@ const createDiscordPostStep = createStep({
     post: postSchema,
     issue: z.object({
       html_url: z.string(),
+      number: z.number(),
+      title: z.string(),
+      body: z.string(),
     }),
   }),
   outputSchema: z.object({
     success: z.boolean(),
     thread: z.string(),
     githubIssue: z.string(),
+    issueNumber: z.number(),
+    issueTitle: z.string(),
+    issueBody: z.string(),
   }),
   execute: async ({ inputData: { post, issue }, mastra }) => {
     const logger = mastra?.getLogger();
@@ -123,7 +139,53 @@ const createDiscordPostStep = createStep({
       await thread.send(`📝 Created GitHub issue: ${issue.html_url}`);
     }
 
-    return { success: true, thread: post.id, githubIssue: issue.html_url };
+    return { 
+      success: true, 
+      thread: post.id, 
+      githubIssue: issue.html_url,
+      issueNumber: issue.number,
+      issueTitle: issue.title,
+      issueBody: issue.body,
+    };
+  },
+});
+
+// Step to log analysis readiness (actual analysis workflow should be triggered separately)
+const logAnalysisStep = createStep({
+  id: 'log-analysis-ready',
+  inputSchema: z.object({
+    discordPost: postSchema,
+    issueNumber: z.number(),
+    issueTitle: z.string(),
+    issueBody: z.string(),
+    githubIssue: z.string(),
+  }),
+  outputSchema: z.object({
+    success: z.boolean(),
+    thread: z.string(),
+    githubIssue: z.string(),
+  }),
+  execute: async ({ inputData, mastra }) => {
+    const logger = mastra?.getLogger();
+    
+    logger?.info(
+      `Issue #${inputData.issueNumber} created. Ready for first-pass analysis.`,
+      {
+        issueNumber: inputData.issueNumber,
+        issueUrl: inputData.githubIssue,
+        discordThread: inputData.discordPost.url,
+      }
+    );
+    
+    // Note: The first-pass analysis workflow can be triggered separately
+    // via the Mastra server API or by calling:
+    // mastra.workflows.firstPassAnalysisWorkflow.execute({...})
+
+    return {
+      success: true,
+      thread: inputData.discordPost.id,
+      githubIssue: inputData.githubIssue,
+    };
   },
 });
 
@@ -135,7 +197,7 @@ export const createGithubIssueWorkflow = createWorkflow({
     thread: z.string(),
     githubIssue: z.string(),
   }),
-  steps: [createGithubIssueStep, createDiscordPostStep],
+  steps: [createGithubIssueStep, createDiscordPostStep, logAnalysisStep],
 })
   .then(createGithubIssueStep)
   .map(async ({ inputData: issue, getInitData }) => {
@@ -145,4 +207,15 @@ export const createGithubIssueWorkflow = createWorkflow({
     };
   })
   .then(createDiscordPostStep)
+  .map(async ({ inputData, getInitData }) => {
+    const initData = getInitData();
+    return {
+      discordPost: initData,
+      issueNumber: inputData.issueNumber,
+      issueTitle: inputData.issueTitle,
+      issueBody: inputData.issueBody,
+      githubIssue: inputData.githubIssue,
+    };
+  })
+  .then(logAnalysisStep)
   .commit();

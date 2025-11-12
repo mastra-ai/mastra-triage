@@ -23,6 +23,7 @@
     "@mastra/libsql": "^0.16.2",
     "@mastra/loggers": "^0.10.19",
     "@mastra/mcp": "^0.14.2",
+    "@mastra/mcp-docs-server": "^0.13.39",
     "@mastra/memory": "^0.15.11",
     "discord.js": "^14.24.2",
     "octokit": "^5.0.5",
