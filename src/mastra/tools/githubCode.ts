@@ -2,13 +2,13 @@ import { createTool } from '@mastra/core';
 import { z } from 'zod';
 import { getGithubClient } from '../shared/github';
 
-const MASTRA_OWNER = 'mastra-ai';
+const MASTRA_OWNER = 'graysonhicks';
 const MASTRA_REPO = 'mastra';
-
+console.log('MASTRA_OWNER', MASTRA_OWNER);
 // Tool to search through Mastra source code
 export const searchMastraCodeTool = createTool({
   id: 'search-mastra-code',
-  description: 'Search through the Mastra source code repository. Use this to find relevant code, functions, classes, or implementations.',
+  description: 'Search through the Mastra source code repository. Use this to find relevant code, functions, classes, or implementations. If totalCount is 0, stop using this tool and try other tools like issue search, docs, or examples instead.',
   inputSchema: z.object({
     query: z.string().describe('The search query (e.g., "Agent class", "workflow execute", "memory storage")'),
     path: z.string().optional().describe('Optional path to limit search to a specific directory (e.g., "packages/core")'),
@@ -21,6 +21,7 @@ export const searchMastraCodeTool = createTool({
       snippet: z.string(),
     })),
     totalCount: z.number(),
+    error: z.string().optional(),
   }),
   execute: async ({ context: input }) => {
     const octokit = getGithubClient();
@@ -37,6 +38,8 @@ export const searchMastraCodeTool = createTool({
         per_page: input.maxResults || 5,
       });
 
+      console.log('Search results:', data);
+
       const results = data.items.map(item => ({
         path: item.path,
         url: item.html_url,
@@ -49,9 +52,11 @@ export const searchMastraCodeTool = createTool({
       };
     } catch (error) {
       console.error('Error searching Mastra code:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       return {
         results: [],
         totalCount: 0,
+        error: `Search failed: ${errorMessage}. This may indicate API rate limits or repository access issues.`,
       };
     }
   },
@@ -60,7 +65,7 @@ export const searchMastraCodeTool = createTool({
 // Tool to read a specific file from Mastra repository
 export const readMastraFileTool = createTool({
   id: 'read-mastra-file',
-  description: 'Read the contents of a specific file from the Mastra repository. Use this after finding a relevant file to see its full contents.',
+  description: 'Read the contents of a specific file from the Mastra repository. Use ONLY after code search identifies a relevant file. For large files, you may get truncated content - focus on the key sections shown.',
   inputSchema: z.object({
     path: z.string().describe('The file path in the repository (e.g., "packages/core/src/agent/index.ts")'),
     ref: z.string().optional().default('main').describe('Git ref (branch, tag, or commit) to read from'),
@@ -84,7 +89,17 @@ export const readMastraFileTool = createTool({
 
       // GitHub API returns content as base64
       if ('content' in data && data.type === 'file') {
-        const content = Buffer.from(data.content, 'base64').toString('utf-8');
+        let content = Buffer.from(data.content, 'base64').toString('utf-8');
+        
+        // For large files, show beginning (imports/types) and end (exports/main logic)
+        const maxChars = 3500;
+        
+        if (content.length > maxChars) {
+          const firstPart = content.substring(0, 2000);
+          const lastPart = content.substring(content.length - 1500);
+          content = firstPart + '\n\n...[File truncated - showing key sections. Original size: ' + data.size + ' bytes. Middle section omitted.]\n\n' + lastPart;
+        }
+        
         return {
           content,
           path: data.path,
@@ -130,14 +145,24 @@ export const searchMastraIssuesTool = createTool({
         sort: 'updated',
       });
 
-      const results = data.items.map(item => ({
-        number: item.number,
-        title: item.title,
-        state: item.state,
-        url: item.html_url,
-        body: item.body || null,
-        labels: item.labels.map(label => typeof label === 'string' ? label : label.name || ''),
-      }));
+      const results = data.items.map(item => {
+        // Truncate long issue bodies to prevent token overflow (keep ~500 chars per issue)
+        let body = item.body || null;
+        const maxBodyChars = 500;
+        
+        if (body && body.length > maxBodyChars) {
+          body = body.substring(0, maxBodyChars) + '...[truncated]';
+        }
+        
+        return {
+          number: item.number,
+          title: item.title,
+          state: item.state,
+          url: item.html_url,
+          body,
+          labels: item.labels.map(label => typeof label === 'string' ? label : label.name || ''),
+        };
+      });
 
       return {
         results,
