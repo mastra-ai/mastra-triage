@@ -41,9 +41,9 @@ export const fetchForumPosts = createTool({
       // Combine active and archived threads
       const allThreads = [...Array.from(activeThreads.threads.values())];
 
-      // Calculate the timestamp for 24 hours ago
-      const twentyFourHoursAgo = new Date();
-      twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 24 * 8 * inputData.fetchLimit);
+      // Calculate the start date based on fetchLimit (in days)
+      const startDate = new Date();
+      startDate.setHours(startDate.getHours() - 24 * inputData.fetchLimit);
 
       // Map to the return type and filter threads from the last 24 hours
       const mappedThreads = allThreads
@@ -57,7 +57,7 @@ export const fetchForumPosts = createTool({
           url: thread.url,
           tags: thread.appliedTags.map(tag => availableTagsMap.get(tag) || tag),
         }))
-        .filter(thread => thread.createdAt >= twentyFourHoursAgo)
+        .filter(thread => thread.createdAt >= startDate)
         .reverse();
 
       logger?.info(`Found ${mappedThreads.length} posts`);
