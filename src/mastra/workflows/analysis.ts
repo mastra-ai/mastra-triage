@@ -4,7 +4,7 @@ import { analysisAgent } from "../agents/analysis";
 import {
   fetchPostsOutputSchema as fetchThreadsOutputSchema,
   fetchPostsStep as fetchThreadsStep,
-} from "./shared";
+} from "./";
 import { getDiscordClient } from "../helpers/client";
 import { getFirstThreadMessage } from "../helpers/messages";
 import { promises as fs } from "fs";
@@ -33,7 +33,9 @@ const analyzeMessages = createStep({
     const discordClient = await getDiscordClient();
 
     const postsForAgent = [];
+    const postsForAgent = [];
 
+    const postCache: Record<string, string> = {};
     const postCache: Record<string, string> = {};
 
     console.log("Fetching threads details...");
@@ -123,6 +125,7 @@ const analyzeMessages = createStep({
     );
 
     const summary = [];
+    const summary = [];
 
     for (const category in groupedPosts) {
       console.log(`Analyzing category: ${category}`);
@@ -131,6 +134,8 @@ const analyzeMessages = createStep({
         .map((post) => postCache[post.id])
         .join("\n");
 
+      const result = await analysisAgent.generate(
+        `
       const result = await analysisAgent.generate(
         `
                 Analyze the following messages:
@@ -166,6 +171,7 @@ const analyzeMessages = createStep({
       });
     }
 
+    const markdownTable = `
     const markdownTable = `
 | Category | Count | Severity | Summary |
 |----------|-------|----------|---------|
