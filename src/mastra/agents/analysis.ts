@@ -10,5 +10,5 @@ export const analysisAgent = new Agent({
     ## Categories
     ${categories.map(c => c.name).join(', ')}
   `,
-  model: 'openai/gpt-4o',
+  model: 'openai/gpt-5-mini',
 });
