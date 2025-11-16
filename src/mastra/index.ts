@@ -7,9 +7,10 @@ import { createGithubIssueWorkflow } from './workflows/discordToGithub/createGit
 import { discordAnalysisWorkflow } from './workflows/analysis';
 import { MastraJwtAuth } from '@mastra/auth';
 import { triageWorkflow } from './workflows/triage';
+import { analysisAgent } from './agents/analysis';
 
 export const mastra = new Mastra({
-  agents: { triageAgent },
+  agents: { triageAgent, analysisAgent },
   storage: new LibSQLStore({
     // stores telemetry, evals, ... into memory storage, if it needs to persist, change to file:../mastra.db
     url: ':memory:',
