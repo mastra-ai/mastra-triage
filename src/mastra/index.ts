@@ -5,9 +5,10 @@ import { LibSQLStore } from '@mastra/libsql';
 import { triageAgent } from './agents/triage';
 import { discordToGithubWorkflow } from './workflows';
 import { discordAnalysisWorkflow } from './workflows/analysis';
+import { analysisAgent } from './agents/analysis';
 
 export const mastra = new Mastra({
-  agents: { triageAgent },
+  agents: { triageAgent, analysisAgent },
   storage: new LibSQLStore({
     // stores telemetry, evals, ... into memory storage, if it needs to persist, change to file:../mastra.db
     url: ":memory:",
