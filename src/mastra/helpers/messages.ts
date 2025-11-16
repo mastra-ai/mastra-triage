@@ -255,10 +255,10 @@ export async function fetchForumPosts({
         // Combine active and archived threads
         const allThreads = [...Array.from(activeThreads.threads.values())];
 
-        // Calculate the timestamp for 24 hours ago
-        const twentyFourHoursAgo = new Date();
-        twentyFourHoursAgo.setHours(
-            twentyFourHoursAgo.getHours() - 24 * 8 * fetchLimit
+        // Calculate the start date based on fetchLimit (in days)
+        const startDate = new Date();
+        startDate.setHours(
+            startDate.getHours() - 24 * fetchLimit
         );
 
         // Map to the return type and filter threads from the last 24 hours
@@ -272,7 +272,7 @@ export async function fetchForumPosts({
                 locked: thread.locked || false,
                 url: thread.url,
             }))
-            .filter((thread) => thread.createdAt >= twentyFourHoursAgo)
+            .filter((thread) => thread.createdAt >= startDate)
             .reverse();
     } catch (error) {
         console.error("Error fetching forum posts:", error);
