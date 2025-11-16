@@ -120,7 +120,13 @@ const createDiscordPostStep = createStep({
 
     const thread = await discordClient.channels.fetch(post.id);
     if (thread?.isThread()) {
-      await thread.send(`📝 Created GitHub issue: ${issue.html_url}`);
+      const starterMessage = await thread.fetchStarterMessage();
+      const authorMention = starterMessage?.author ? `<@${starterMessage.author.id}>` : '';
+      await thread.send(`
+        📝 Created GitHub issue: ${issue.html_url}
+        🔍 If you're experiencing an error, please provide a [minimal reproducible example](https://stackoverflow.com/help/minimal-reproducible-example) to help us resolve it quickly.
+        🙏 Thank you ${authorMention} for helping us improve Mastra!
+      `);
     }
 
     return { success: true, thread: post.id, githubIssue: issue.html_url };
