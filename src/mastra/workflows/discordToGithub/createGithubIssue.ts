@@ -124,7 +124,7 @@ const createDiscordPostStep = createStep({
       const authorMention = starterMessage?.author ? `<@${starterMessage.author.id}>` : '';
       await thread.send(
         `📝 Created GitHub issue: <${issue.html_url}>\n\n` +
-        `🔍 If you're experiencing an error, please provide a [minimal reproducible example](<https://stackoverflow.com/help/minimal-reproducible-example>) to help us resolve it quickly.\n\n` +
+        `🔍 If you're experiencing an error, please provide a [minimal reproducible example](<https://github.com/mastra-ai/mastra/blob/main/CONTRIBUTING.md#minimal-reproduction>) to help us resolve it quickly.\n\n` +
         `🙏 Thank you ${authorMention} for helping us improve Mastra!`
       );
     }
