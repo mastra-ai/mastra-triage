@@ -8,7 +8,6 @@ import { discordAnalysisWorkflow } from './workflows/analysis';
 import { MastraJwtAuth } from '@mastra/auth';
 import { triageWorkflow } from './workflows/triage';
 import { analysisAgent } from './agents/analysis';
-import { githubIssueManagerWorkflow } from './workflows/githubIssueManager';
 
 export const mastra = new Mastra({
   agents: { triageAgent, analysisAgent },
@@ -24,7 +23,6 @@ export const mastra = new Mastra({
     createGithubIssueWorkflow,
     discordAnalysisWorkflow,
     triageWorkflow,
-    githubIssueManagerWorkflow,
   },
   logger: new PinoLogger({
     name: 'Mastra',
