@@ -106,7 +106,7 @@ const wrapUpStep = createStep({
       issue_number: Number(issueNumber),
       body: 
       `Thank you for reporting this issue! We have assigned it to the ${inputData.squad} and we will look into it as soon as possible.\n\n`+
-      `🔍 If you're experiencing an error, please provide a [minimal reproducible example](https://github.com/mastra-ai/mastra/blob/main/CONTRIBUTING.md#minimal-reproduction) to help us resolve it quickly.`,
+      `If you're experiencing an error, please provide a [minimal reproducible example](https://github.com/mastra-ai/mastra/blob/main/CONTRIBUTING.md#minimal-reproduction) whenever possible to help us resolve it quickly.`,
     });
 
     console.log(`Commented on issue #${issueNumber}`);
