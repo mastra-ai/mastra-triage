@@ -217,6 +217,48 @@ export async function getFirstThreadMessage({
 }
 
 /**
+ * Fetches all messages from a Discord thread
+ * @param client Discord client
+ * @param threadId Thread ID to fetch messages from
+ * @returns Array of messages with author and content
+ */
+export async function getAllThreadMessages({
+  client,
+  threadId,
+}: {
+  client: Client;
+  threadId: string;
+}): Promise<Array<{ author: string; content: string; timestamp: string }>> {
+  try {
+    const thread = await client.channels.fetch(threadId);
+    if (!thread?.isThread()) {
+      console.error(`Channel ${threadId} is not a thread`);
+      return [];
+    }
+
+    // Fetch all messages using pagination
+    const messages = await fetchMessagesWithPagination(
+      thread.messages,
+      undefined,
+      undefined,
+      `thread ${threadId}`,
+    );
+
+    // Convert to structured format, ordered chronologically
+    return Array.from(messages.values())
+      .sort((a, b) => a.createdTimestamp - b.createdTimestamp)
+      .map(msg => ({
+        author: msg.author.username,
+        content: msg.content,
+        timestamp: msg.createdAt.toISOString(),
+      }));
+  } catch (error) {
+    console.error('Error fetching thread messages:', error);
+    return [];
+  }
+}
+
+/**
  * Fetches forum posts from a Discord forum channel
  * @param options Configuration for fetching forum posts
  * @returns Promise with an array of forum posts
