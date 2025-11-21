@@ -16,9 +16,17 @@ const threadAnalysisSchema = z.object({
   messageCount: z.number(),
   type: z.enum(['Bug', 'Feature Request', 'Question']),
   category: z.string(),
+  severityScore: z.number().min(1).max(10),
   severity: z.enum(['MINOR', 'MAJOR', 'CRITICAL']),
   summary: z.string(),
 });
+
+// Helper function to derive severity category from numeric score
+function getSeverityCategory(score: number): 'MINOR' | 'MAJOR' | 'CRITICAL' {
+  if (score >= 1 && score <= 3) return 'MINOR';
+  if (score >= 4 && score <= 7) return 'MAJOR';
+  return 'CRITICAL'; // 8-10
+}
 
 // Step 1: Fetch forum threads
 const fetchThreadsStep = createStep({
@@ -121,6 +129,11 @@ Classify this thread based on the ENTIRE conversation, considering:
 - How the issue evolved through the discussion
 - Follow-up messages that might reveal bugs or increase severity
 - Resolution status or ongoing problems
+
+Provide a severity score from 1-10 where:
+- 1-3: MINOR issues (cosmetic, low priority, minimal impact)
+- 4-7: MAJOR issues (significant but not blocking, moderate impact)
+- 8-10: CRITICAL issues (blocking, high priority, severe impact)
       `.trim();
 
       const result = await agent.generate(prompt, {
@@ -128,13 +141,15 @@ Classify this thread based on the ENTIRE conversation, considering:
           schema: z.object({
             type: z.enum(['Bug', 'Feature Request', 'Question']),
             category: z.string(),
-            severity: z.enum(['MINOR', 'MAJOR', 'CRITICAL']),
+            severityScore: z.number().min(1).max(10).describe('Severity score from 1-10'),
             summary: z.string(),
           }),
         },
       });
 
-      logger?.info(`✓ Analyzed: ${thread.name} (${messages.length} messages)`);
+      const severity = getSeverityCategory(result.object.severityScore);
+
+      logger?.info(`✓ Analyzed: ${thread.name} (${messages.length} messages) - Severity: ${result.object.severityScore}/10 (${severity})`);
 
       return {
         threadId: thread.id,
@@ -144,7 +159,8 @@ Classify this thread based on the ENTIRE conversation, considering:
         messageCount: messages.length,
         type: result.object.type,
         category: result.object.category,
-        severity: result.object.severity,
+        severityScore: result.object.severityScore,
+        severity,
         summary: result.object.summary,
       };
     } catch (error) {
@@ -186,6 +202,7 @@ const generateTableStep = createStep({
       total: z.number(),
       byType: z.record(z.string(), z.number()),
       bySeverity: z.record(z.string(), z.number()),
+      averageSeverityScore: z.number(),
       byCategory: z.record(
         z.string(),
         z.object({
@@ -210,9 +227,8 @@ const generateTableStep = createStep({
       CRITICAL: '🔴',
     };
 
-    // Sort by severity priority (CRITICAL first)
-    const severityOrder = { CRITICAL: 0, MAJOR: 1, MINOR: 2 };
-    const sorted = [...inputData.analyses].sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity]);
+    // Sort by severity score (highest first), then by category
+    const sorted = [...inputData.analyses].sort((a, b) => b.severityScore - a.severityScore);
 
     // Calculate statistics with all possible values
     const allTypes = ['Bug', 'Feature Request', 'Question'] as const;
@@ -241,9 +257,12 @@ const generateTableStep = createStep({
       }
     > = {};
 
+    let totalSeverityScore = 0;
+
     inputData.analyses.forEach(a => {
       byType[a.type] = (byType[a.type] || 0) + 1;
       bySeverity[a.severity] = (bySeverity[a.severity] || 0) + 1;
+      totalSeverityScore += a.severityScore;
 
       // Initialize category if not exists
       if (!byCategory[a.category]) {
@@ -260,10 +279,15 @@ const generateTableStep = createStep({
       byCategory[a.category][a.type] += 1;
     });
 
+    const averageSeverityScore = inputData.analyses.length > 0
+      ? Number((totalSeverityScore / inputData.analyses.length).toFixed(1))
+      : 0;
+
     const stats = {
       total: inputData.analyses.length,
       byType,
       bySeverity,
+      averageSeverityScore,
       byCategory,
     };
 
@@ -301,6 +325,11 @@ ${typeStatsTable}
 ### By Severity
 ${severityStatsTable}
 
+**Average Severity Score**: ${stats.averageSeverityScore.toFixed(1)}/10
+- 1-3: MINOR issues (cosmetic, low priority, minimal impact)
+- 4-7: MAJOR issues (significant but not blocking, moderate impact)
+- 8-10: CRITICAL issues (blocking, high priority, severe impact)
+
 ## Category Breakdown
 ${categoryBreakdownTable}
 
@@ -311,12 +340,12 @@ ${categoryBreakdownTable}
 `;
 
     const table =
-      `| Thread Name | Type | Severity | Category | Summary | URL |\n` +
-      `|-------------|------|----------|----------|---------|-----|\n` +
+      `| Thread Name | Type | Severity | Score | Category | Summary | URL |\n` +
+      `|-------------|------|----------|-------|----------|---------|-----|\n` +
       sorted
         .map(
           a =>
-            `| ${a.threadName} | ${typeAbbrev[a.type]} | ${severityEmoji[a.severity]} | ${a.category} | ${a.summary} | [Link](${a.url}) |`,
+            `| ${a.threadName} | ${typeAbbrev[a.type]} | ${severityEmoji[a.severity]} | ${a.severityScore}/10 | ${a.category} | ${a.summary} | [Link](${a.url}) |`,
         )
         .join('\n');
 
@@ -335,6 +364,7 @@ const saveFileStep = createStep({
       total: z.number(),
       byType: z.record(z.string(), z.number()),
       bySeverity: z.record(z.string(), z.number()),
+      averageSeverityScore: z.number(),
       byCategory: z.record(
         z.string(),
         z.object({
@@ -379,6 +409,7 @@ export const forumThreadTriageWorkflow = createWorkflow({
       total: z.number(),
       byType: z.record(z.string(), z.number()),
       bySeverity: z.record(z.string(), z.number()),
+      averageSeverityScore: z.number(),
       byCategory: z.record(
         z.string(),
         z.object({
