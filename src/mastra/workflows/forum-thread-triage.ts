@@ -81,53 +81,33 @@ const fetchThreadsStep = createStep({
   },
 });
 
-// Step 2: Analyze individual threads with full conversation context
-const analyzeThreadsStep = createStep({
-  id: 'analyze-threads',
-  inputSchema: z.object({
-    success: z.boolean(),
-    posts: z.array(postSchema),
-  }),
-  outputSchema: z.object({
-    analyses: z.array(threadAnalysisSchema),
-  }),
-  execute: async ({ inputData, mastra }) => {
+// Step 2: Analyze a single thread with full conversation context
+const analyzeThreadStep = createStep({
+  id: 'analyze-thread',
+  inputSchema: postSchema,
+  outputSchema: threadAnalysisSchema.nullable(),
+  execute: async ({ inputData: thread, mastra }) => {
     const logger = mastra?.getLogger();
     const discordClient = await getDiscordClient();
     const agent = mastra.getAgentById('threadClassifierAgent');
 
-    logger?.info(`Analyzing ${inputData.posts.length} threads...`);
+    try {
+      // Fetch ALL messages from the thread
+      const messages = await getAllThreadMessages({
+        client: discordClient,
+        threadId: thread.id,
+      });
 
-    const analyses: Array<{
-      threadId: string;
-      threadName: string;
-      url: string;
-      tags: string[];
-      messageCount: number;
-      type: 'Bug' | 'Feature Request' | 'Question';
-      category: string;
-      severity: 'MINOR' | 'MAJOR' | 'CRITICAL';
-      summary: string;
-    }> = [];
+      if (messages.length === 0) {
+        logger?.warn(`No messages found for thread: ${thread.name}`);
+        return null;
+      }
 
-    for (const thread of inputData.posts) {
-      try {
-        // Fetch ALL messages from the thread
-        const messages = await getAllThreadMessages({
-          client: discordClient,
-          threadId: thread.id,
-        });
+      // Format the conversation for the agent
+      const conversation = messages.map(msg => `[${msg.author}]: ${msg.content}`).join('\n\n');
 
-        if (messages.length === 0) {
-          logger?.warn(`No messages found for thread: ${thread.name}`);
-          continue;
-        }
-
-        // Format the conversation for the agent
-        const conversation = messages.map(msg => `[${msg.author}]: ${msg.content}`).join('\n\n');
-
-        // Prepare context for the agent
-        const prompt = `
+      // Prepare context for the agent
+      const prompt = `
 Analyze this Discord forum thread:
 
 **Thread Title**: ${thread.name}
@@ -141,41 +121,55 @@ Classify this thread based on the ENTIRE conversation, considering:
 - How the issue evolved through the discussion
 - Follow-up messages that might reveal bugs or increase severity
 - Resolution status or ongoing problems
-        `.trim();
+      `.trim();
 
-        const result = await agent.generate(prompt, {
-          structuredOutput: {
-            schema: z.object({
-              type: z.enum(['Bug', 'Feature Request', 'Question']),
-              category: z.string(),
-              severity: z.enum(['MINOR', 'MAJOR', 'CRITICAL']),
-              summary: z.string(),
-            }),
-          },
-        });
+      const result = await agent.generate(prompt, {
+        structuredOutput: {
+          schema: z.object({
+            type: z.enum(['Bug', 'Feature Request', 'Question']),
+            category: z.string(),
+            severity: z.enum(['MINOR', 'MAJOR', 'CRITICAL']),
+            summary: z.string(),
+          }),
+        },
+      });
 
-        analyses.push({
-          threadId: thread.id,
-          threadName: thread.name,
-          url: thread.url,
-          tags: thread.tags,
-          messageCount: messages.length,
-          type: result.object.type,
-          category: result.object.category,
-          severity: result.object.severity,
-          summary: result.object.summary,
-        });
+      logger?.info(`✓ Analyzed: ${thread.name} (${messages.length} messages)`);
 
-        logger?.info(`✓ Analyzed: ${thread.name} (${messages.length} messages)`);
-      } catch (error) {
-        logger?.error(`Error analyzing thread ${thread.name}:`, error);
-        // Continue with next thread even if one fails
-        continue;
-      }
+      return {
+        threadId: thread.id,
+        threadName: thread.name,
+        url: thread.url,
+        tags: thread.tags,
+        messageCount: messages.length,
+        type: result.object.type,
+        category: result.object.category,
+        severity: result.object.severity,
+        summary: result.object.summary,
+      };
+    } catch (error) {
+      logger?.error(`Error analyzing thread ${thread.name}:`, error);
+      // Return null for failed analyses
+      return null;
     }
+  },
+});
 
-    logger?.info(`Successfully analyzed ${analyses.length} out of ${inputData.posts.length} threads`);
-
+// Step 3: Filter out null results from failed thread analyses
+const filterAnalysesStep = createStep({
+  id: 'filter-analyses',
+  inputSchema: z.object({
+    items: z.array(threadAnalysisSchema.nullable()),
+  }),
+  outputSchema: z.object({
+    analyses: z.array(threadAnalysisSchema),
+  }),
+  execute: async ({ inputData, mastra }) => {
+    const logger = mastra?.getLogger();
+    const analyses = inputData.items.filter((item): item is z.infer<typeof threadAnalysisSchema> => item !== null);
+    
+    logger?.info(`Successfully analyzed ${analyses.length} threads`);
+    
     return { analyses };
   },
 });
@@ -398,7 +392,16 @@ export const forumThreadTriageWorkflow = createWorkflow({
   }),
 })
   .then(fetchThreadsStep)
-  .then(analyzeThreadsStep)
+  .map(async ({ inputData }) => {
+    // Extract posts array for foreach iteration
+    return inputData.posts;
+  })
+  .foreach(analyzeThreadStep, { concurrency: 5 })
+  .map(async ({ inputData }) => {
+    // Package the array results for the filter step
+    return { items: inputData };
+  })
+  .then(filterAnalysesStep)
   .then(generateTableStep)
   .then(saveFileStep)
   .commit();
