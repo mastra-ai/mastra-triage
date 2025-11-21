@@ -9,7 +9,7 @@ import { createGithubIssueWorkflow } from './workflows/discordToGithub/createGit
 import { discordAnalysisWorkflow } from './workflows/analysis';
 import { triageWorkflow } from './workflows/triage';
 import { githubIssueManagerWorkflow } from './workflows/githubIssueManager';
-import { forumThreadTriageWorkflow } from './workflows/forum-thread-triage';
+import { forumThreadAnalysisWorkflow } from './workflows/forum-thread-analysis';
 import { MastraJwtAuth } from '@mastra/auth';
 
 export const mastra = new Mastra({
@@ -27,7 +27,7 @@ export const mastra = new Mastra({
     discordAnalysisWorkflow,
     triageWorkflow,
     githubIssueManagerWorkflow,
-    forumThreadTriageWorkflow,
+    forumThreadAnalysisWorkflow,
   },
   logger: new PinoLogger({
     name: 'Mastra',

@@ -395,8 +395,8 @@ const saveFileStep = createStep({
 });
 
 // Create the workflow
-export const forumThreadTriageWorkflow = createWorkflow({
-  id: 'forum-thread-triage',
+export const forumThreadAnalysisWorkflow = createWorkflow({
+  id: 'forum-thread-analysis',
   inputSchema: z.object({
     forumChannelId: z.string().describe('The ID of the Discord forum channel to fetch threads from'),
     fetchLimit: z.coerce.number().optional().default(1).describe('Number of days to fetch threads from'),
