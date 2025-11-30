@@ -20,7 +20,7 @@ export const mastra = new Mastra({
     url: ':memory:',
   }),
   bundler: {
-    externals: ['discord.js'],
+    externals: ['discord.js', "@mastra/auth"],
   },
   workflows: {
     discordToGithubWorkflow,
