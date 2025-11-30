@@ -36,8 +36,8 @@ export const mastra = new Mastra({
     level: process.env.NODE_ENV === 'development' ? 'debug' : 'info',
   }),
   server: {
-    // experimental_auth: new MastraJwtAuth({
-    //   secret: process.env.MASTRA_JWT_SECRET,
-    // }),
+    experimental_auth: new MastraJwtAuth({
+      secret: process.env.MASTRA_JWT_SECRET,
+    }),
   },
 });
