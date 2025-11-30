@@ -1,6 +1,16 @@
 import { IMastraLogger } from '@mastra/core/logger';
 
 /**
+ * Schema for Discord sync tracker data
+ */
+export interface SyncTrackerData {
+  version: number;
+  lastMessageId: string;
+  lastTimestamp: string; // ISO 8601 format
+  lastAuthorIsTeamMember?: boolean; // Whether the last Discord message author has Admin or Mastra Team role
+}
+
+/**
  * Extracts Discord thread/channel ID from a GitHub issue body
  * Supports both badge markdown format and plain Discord URLs
  */
@@ -26,7 +36,7 @@ export function formatDiscordMessageAsComment(
 ): string {
   const formattedTime = timestamp.toISOString();
 
-  return `**Discord Message** from @${author} at ${formattedTime}
+  return `**Discord Message** from ${author} at ${formattedTime}
 
 ${content}
 
@@ -38,28 +48,56 @@ ${content}
 
 /**
  * Creates or updates a sync tracker comment to prevent duplicate message syncing
+ * Now uses JSON format for better extensibility
  */
-export function createSyncTrackerComment(lastMessageId: string, lastTimestamp: Date): string {
-  return `<!-- DISCORD_SYNC: last_message_id=${lastMessageId}, last_timestamp=${lastTimestamp.toISOString()} -->
+export function createSyncTrackerComment(
+  lastMessageId: string,
+  lastTimestamp: Date,
+  lastAuthorIsTeamMember?: boolean,
+): string {
+  const syncData: SyncTrackerData = {
+    version: 1,
+    lastMessageId,
+    lastTimestamp: lastTimestamp.toISOString(),
+    lastAuthorIsTeamMember,
+  };
 
-Last Discord sync: ${lastTimestamp.toISOString()}`;
+  const jsonString = JSON.stringify(syncData);
+  
+  return `<!-- DISCORD_SYNC: ${jsonString} -->
+
+### Discord Sync Tracker
+
+- **Last Message ID:** \`${lastMessageId}\`
+- **Last Sync Timestamp:** ${lastTimestamp.toISOString()}${lastAuthorIsTeamMember !== undefined ? `\n- **Last Author is Team Member:** ${lastAuthorIsTeamMember ? 'Yes' : 'No'}` : ''}
+
+---
+*This tracker helps prevent duplicate message syncing from Discord*`;
 }
 
 /**
  * Parses a sync tracker comment to extract last synced message info
+ * Expects JSON format (legacy format has been migrated)
  */
 export function parseSyncTrackerComment(
   commentBody: string,
-): { lastMessageId: string; lastTimestamp: Date } | null {
-  const syncRegex = /<!-- DISCORD_SYNC: last_message_id=(\S+), last_timestamp=(\S+) -->/;
-  const match = commentBody.match(syncRegex);
+): { lastMessageId: string; lastTimestamp: Date; lastAuthorIsTeamMember?: boolean } | null {
+  const jsonRegex = /<!-- DISCORD_SYNC: ({.+?}) -->/;
+  const jsonMatch = commentBody.match(jsonRegex);
 
-  if (!match) return null;
+  if (!jsonMatch) return null;
 
-  return {
-    lastMessageId: match[1],
-    lastTimestamp: new Date(match[2]),
-  };
+  try {
+    const syncData: SyncTrackerData = JSON.parse(jsonMatch[1]);
+    return {
+      lastMessageId: syncData.lastMessageId,
+      lastTimestamp: new Date(syncData.lastTimestamp),
+      lastAuthorIsTeamMember: syncData.lastAuthorIsTeamMember,
+    };
+  } catch (error) {
+    console.error('Failed to parse JSON sync tracker:', error);
+    return null;
+  }
 }
 
 /**
