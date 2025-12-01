@@ -20,7 +20,7 @@ export const mastra = new Mastra({
     url: ':memory:',
   }),
   bundler: {
-    externals: ['discord.js', "@mastra/auth"],
+    externals: ['discord.js', '@mastra/auth'],
   },
   workflows: {
     discordToGithubWorkflow,
@@ -33,11 +33,14 @@ export const mastra = new Mastra({
   },
   logger: new PinoLogger({
     name: 'Mastra',
-    level: process.env.NODE_ENV === 'development' ? 'debug' : 'info',
+    level: process.env.MASTRA_DEV === 'true' ? 'debug' : 'info',
   }),
   server: {
-    experimental_auth: new MastraJwtAuth({
-      secret: process.env.MASTRA_JWT_SECRET,
-    }),
+    experimental_auth:
+      process.env.MASTRA_DEV === 'true'
+        ? undefined
+        : new MastraJwtAuth({
+            secret: process.env.MASTRA_JWT_SECRET,
+          }),
   },
 });
