@@ -257,6 +257,15 @@ const generateTableStep = createStep({
       }
     > = {};
 
+    // Track detailed category data for summaries
+    const categoryDetails: Record<
+      string,
+      {
+        threads: z.infer<typeof threadAnalysisSchema>[];
+        totalSeverityScore: number;
+      }
+    > = {};
+
     let totalSeverityScore = 0;
 
     inputData.analyses.forEach(a => {
@@ -274,9 +283,21 @@ const generateTableStep = createStep({
         };
       }
 
+      // Initialize category details if not exists
+      if (!categoryDetails[a.category]) {
+        categoryDetails[a.category] = {
+          threads: [],
+          totalSeverityScore: 0,
+        };
+      }
+
       // Increment category counts
       byCategory[a.category].total += 1;
       byCategory[a.category][a.type] += 1;
+
+      // Track detailed category data
+      categoryDetails[a.category].threads.push(a);
+      categoryDetails[a.category].totalSeverityScore += a.severityScore;
     });
 
     const averageSeverityScore = inputData.analyses.length > 0
@@ -304,12 +325,21 @@ ${allTypes.map(type => `| ${type} | ${stats.byType[type]} |`).join('\n')}`;
 |----------|-------|
 ${allSeverities.map(severity => `| ${severityEmoji[severity]} ${severity} | ${stats.bySeverity[severity]} |`).join('\n')}`;
 
-    // Create category breakdown table
-    const categoryBreakdownTable = `| Category | Total | Bugs | Features | Questions |
-|----------|-------|------|----------|-----------|
+    // Create category breakdown table with key issues
+    const categoryBreakdownTable = `| Category | Total | Bugs | Features | Questions | Key Issues |
+|----------|-------|------|----------|-----------|------------|
 ${Object.entries(stats.byCategory)
   .sort((a, b) => b[1].total - a[1].total) // Sort by total count descending
-  .map(([category, counts]) => `| ${category} | ${counts.total} | ${counts.Bug} | ${counts['Feature Request']} | ${counts.Question} |`)
+  .map(([category, counts]) => {
+    // Get top 3 key issues for this category (sorted by severity)
+    const details = categoryDetails[category];
+    const keyIssues = [...details.threads]
+      .sort((a, b) => b.severityScore - a.severityScore)
+      .slice(0, 3)
+      .map(t => `• ${t.summary}`)
+      .join('<br>');
+    return `| ${category} | ${counts.total} | ${counts.Bug} | ${counts['Feature Request']} | ${counts.Question} | ${keyIssues} |`;
+  })
   .join('\n')}`;
 
     const header = `# Forum Thread Analysis Report
@@ -340,12 +370,12 @@ ${categoryBreakdownTable}
 `;
 
     const table =
-      `| Thread Name | Type | Severity | Score | Category | Summary | URL |\n` +
-      `|-------------|------|----------|-------|----------|---------|-----|\n` +
+      `| Type | Severity | Score | Category | Summary | Thread Name | URL |\n` +
+      `|------|----------|-------|----------|---------|-------------|-----|\n` +
       sorted
         .map(
           a =>
-            `| ${a.threadName} | ${typeAbbrev[a.type]} | ${severityEmoji[a.severity]} | ${a.severityScore}/10 | ${a.category} | ${a.summary} | [Link](${a.url}) |`,
+            `| ${typeAbbrev[a.type]} | ${severityEmoji[a.severity]} | ${a.severityScore}/10 | ${a.category} | ${a.summary} | ${a.threadName} | [Link](${a.url}) |`,
         )
         .join('\n');
 
