@@ -127,7 +127,7 @@ ${content}
 
 **Instructions:**
 - Select multiple labels if the issue spans multiple areas (e.g., a bug in the workflow engine might get both "area: workflows" and "bug")
-- Only include labels you are confident about (medium or high confidence)
+- Only include labels you have HIGH confidence about - medium/low confidence labels will be ignored
 - Don't include labels that are only tangentially related
 - Only return labels from the list provided above`;
 
@@ -154,13 +154,13 @@ ${content}
       const classification = result.object;
 
       // Filter to only include valid labels that exist in the filtered area labels
-      // and have at least medium confidence
+      // and have high confidence only
       const validLabels = classification.labels.filter(l => {
         const exists = areaLabels.some(repoLabel => repoLabel.name === l.label);
         if (!exists) {
           logger?.warn(`Label "${l.label}" not found in repo, skipping`);
         }
-        return exists && (l.confidence === 'high' || l.confidence === 'medium');
+        return exists && l.confidence === 'high';
       });
 
       logger?.debug(
@@ -184,6 +184,7 @@ ${content}
 /**
  * Maps labels to their corresponding squad based on the categories constant.
  * Returns unique squad labels for the classified areas.
+ * An issue can span multiple squads if it touches multiple areas.
  */
 function getSquadsForLabels(labels: string[]): string[] {
   const squads = new Set<string>();
