@@ -16,15 +16,3 @@ export const members = new Map<string, Member>(membersData.map(member => [member
 export const getMemberByLogin = (login: string): Member | undefined => {
   return members.get(login);
 };
-
-export const getMembersByRole = (role: string): Member[] => {
-  return Array.from(members.values()).filter(member => member.role === role);
-};
-
-export const getOwners = (): Member[] => {
-  return getMembersByRole('Owner');
-};
-
-export const getMembers = (): Member[] => {
-  return getMembersByRole('Member');
-};

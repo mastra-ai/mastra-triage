@@ -18,12 +18,14 @@
     "node": ">=20.9.0"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^3.0.1",
     "@mastra/auth": "^0.1.6",
     "@mastra/core": "^0.24.6",
     "@mastra/libsql": "^0.16.3",
     "@mastra/loggers": "^0.10.19",
     "@mastra/mcp": "^0.14.4",
     "@mastra/memory": "^0.15.12",
+    "ai": "^6.0.3",
     "discord.js": "^14.25.1",
     "octokit": "^5.0.5",
     "zod": "^4.1.13"
