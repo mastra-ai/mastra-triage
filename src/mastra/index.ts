@@ -11,6 +11,7 @@ import { discordSyncWorkflow } from './workflows/discordSync';
 import { classificationWorkflow } from './workflows/classification';
 import { discordAnalysisWorkflow } from './workflows/analysis';
 import { forumThreadAnalysisWorkflow } from './workflows/forum-thread-analysis';
+import { MastraJwtAuth } from '@mastra/auth';
 
 export const mastra = new Mastra({
   agents: { classificationAgent, effortImpactAgent, analysisAgent, threadClassifierAgent },
@@ -35,4 +36,12 @@ export const mastra = new Mastra({
     name: 'Mastra',
     level: process.env.MASTRA_DEV === 'true' ? 'debug' : 'info',
   }),
+  server: {
+    experimental_auth:
+      process.env.MASTRA_DEV === 'true'
+        ? undefined
+        : new MastraJwtAuth({
+            secret: process.env.MASTRA_JWT_SECRET,
+          }),
+  },
 });
