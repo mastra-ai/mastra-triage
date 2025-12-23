@@ -2,8 +2,6 @@ import { createStep, createWorkflow } from '@mastra/core/workflows';
 import { z } from 'zod';
 import { getRepoLabels } from '../../shared/github';
 import { categories } from '../../constants';
-import { openai } from '@ai-sdk/openai';
-import { generateObject } from 'ai';
 
 /**
  * Input schema for classification
@@ -71,38 +69,6 @@ const fetchLabelsStep = createStep({
 });
 
 /**
- * System prompt for the classification step
- */
-const CLASSIFICATION_SYSTEM_PROMPT = `You are an expert at classifying technical questions and issues for the Mastra AI framework.
-
-Your task is to analyze the given title and content, then determine which GitHub labels best match the issue.
-
-## Classification Rules
-
-1. Analyze the title and content to identify the primary technical areas being discussed
-2. Match the content to ALL appropriate labels that apply
-3. Consider the label descriptions when making your decision
-4. Only pick labels that actually match the issue content - don't guess
-5. Assign confidence levels based on how clearly the issue matches each label
-
-## Common Areas in Mastra
-
-- **Agents**: AI agents, LLM integration, model providers (OpenAI, Anthropic, etc.)
-- **Workflows**: Workflow engine, steps, orchestration, suspend/resume
-- **Tools**: Agent tools, function calling, tool execution
-- **Memory**: Conversation memory, chat history
-- **MCP**: Model Context Protocol
-- **RAG**: Retrieval augmented generation, embeddings, vector search
-- **Voice**: Speech-to-text, text-to-speech, audio
-- **Storage**: Databases, persistence, data storage
-- **Streaming**: Real-time responses, SSE, streaming
-- **CLI**: Command line interface, mastra commands
-- **Docs**: Documentation issues
-- **Examples**: Example projects, sample code
-
-Select multiple labels if the issue spans multiple areas.`;
-
-/**
  * Step: Classify issue/thread area using LLM
  * Filters out squad (trio-*), effort, and impact labels - those are handled by other steps
  * Returns multiple area labels if they are all applicable
@@ -166,11 +132,13 @@ ${content}
 - Only return labels from the list provided above`;
 
     try {
-      const result = await generateObject({
-        model: openai('gpt-4o-mini'),
-        system: CLASSIFICATION_SYSTEM_PROMPT,
-        prompt,
-        schema: z.object({
+      const classificationAgent = mastra?.getAgent('classificationAgent');
+      if (!classificationAgent) {
+        throw new Error('Classification agent not found');
+      }
+
+      const result = await classificationAgent.generate(prompt, {
+        output: z.object({
           labels: z
             .array(
               z.object({
@@ -214,15 +182,14 @@ ${content}
 });
 
 /**
- * Maps area labels to their corresponding squad based on the categories constant.
+ * Maps labels to their corresponding squad based on the categories constant.
  * Returns unique squad labels for the classified areas.
  */
 function getSquadsForLabels(labels: string[]): string[] {
   const squads = new Set<string>();
 
   for (const label of labels) {
-    // Normalize the label for matching (e.g., "area: workflows" -> "workflows")
-    const normalizedLabel = label.toLowerCase().replace(/^area:\s*/i, '').trim();
+    const normalizedLabel = label.toLowerCase();
 
     // Find matching category by name or keywords
     for (const category of categories) {
@@ -284,27 +251,6 @@ const labelSquadStep = createStep({
 });
 
 /**
- * System prompt for effort/impact estimation
- */
-const EFFORT_IMPACT_SYSTEM_PROMPT = `You are an expert at estimating the effort and impact of technical issues for the Mastra AI framework.
-
-Your task is to analyze the given issue and estimate:
-
-1. **Effort**: How much work is required to address this issue?
-   - Consider: code complexity, scope of changes, testing requirements, documentation needs
-   - Low: Quick fix, typo, small config change, simple bug
-   - Medium: Moderate code changes, new small feature, bug requiring investigation
-   - High: Major feature, architectural changes, significant refactoring
-
-2. **Impact**: How much value does resolving this issue provide?
-   - Consider: number of users affected, severity of the problem, strategic importance
-   - Low: Edge case, minor inconvenience, affects few users
-   - Medium: Affects subset of users, moderate improvement, nice-to-have
-   - High: Affects many users, critical bug, blocking issue, security concern
-
-Be conservative with estimates. When in doubt, estimate higher effort and lower impact.`;
-
-/**
  * Step: Estimate effort and impact using LLM
  * Uses separate LLM call to avoid biasing area classification
  */
@@ -362,11 +308,13 @@ Select exactly ONE effort label and ONE impact label from the lists above (if av
 Provide brief reasoning for each estimate.`;
 
     try {
-      const result = await generateObject({
-        model: openai('gpt-4o-mini'),
-        system: EFFORT_IMPACT_SYSTEM_PROMPT,
-        prompt,
-        schema: z.object({
+      const effortImpactAgent = mastra?.getAgent('effortImpactAgent');
+      if (!effortImpactAgent) {
+        throw new Error('Effort/Impact agent not found');
+      }
+
+      const result = await effortImpactAgent.generate(prompt, {
+        output: z.object({
           effortLabel: z
             .string()
             .nullable()

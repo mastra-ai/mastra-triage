@@ -30,7 +30,8 @@ This project runs as a Mastra Cloud deployment and is triggered by GitHub Action
 │                                                                             │
 │  Agents:                                                                    │
 │    • triageAgent              → Classifies issues by area/squad             │
-│    • areaClassifierAgent      → Labels issues by product area               │
+│    • classificationAgent      → Labels issues by product area               │
+│    • effortImpactAgent        → Estimates effort and impact                 │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -252,17 +253,27 @@ Used by `triageWorkflow` to classify GitHub issues.
 - Assigns to appropriate squad (trio-tnt, trio-wp, trio-tb, etc.)
 - Returns: `product_area`, `squad`, `assignees`, `reason`
 
-### Area Classifier Agent
+### Classification Agent
 
 Used by `discordToGithubWorkflow` to label Discord-originated issues.
 
 **Model:** `openai/gpt-4o-mini`
 
 **Capabilities:**
-- Fetches available labels from GitHub repository
 - Analyzes Discord thread title and content
-- Picks the most appropriate area label
-- Returns: `label`, `confidence`, `reasoning`
+- Picks all appropriate area labels with confidence levels
+- Returns: `labels[]`, `reasoning`
+
+### Effort/Impact Agent
+
+Used by `discordToGithubWorkflow` to estimate issue complexity.
+
+**Model:** `openai/gpt-4o-mini`
+
+**Capabilities:**
+- Estimates effort required to resolve the issue
+- Estimates impact/value of resolving the issue
+- Returns: `effortLabel`, `impactLabel`, `reasoning`
 
 ---
 
@@ -290,15 +301,16 @@ src/mastra/
 │   └── squads.ts            # Squad member mappings
 ├── agents/
 │   ├── triage.ts            # Issue triage agent
-│   └── areaClassifier.ts    # Area classification agent
+│   └── classification.ts    # Classification & effort/impact agents
 ├── workflows/
 │   ├── triage.ts            # GitHub issue triage workflow
 │   ├── discordSync/         # Discord → GitHub message sync workflow
 │   │   └── index.ts
 │   ├── discordToGithub/     # Discord → GitHub issue creation workflow
 │   │   ├── index.ts         # Main workflow
-│   │   ├── classifyArea.ts  # Step: classify area using areaClassifierAgent
 │   │   └── createGithubIssue.ts  # Sub-workflow: create issue & post to Discord
+│   ├── classification/      # Issue classification workflow
+│   │   └── index.ts         # Classify area, squad, effort & impact
 │   └── githubIssueManager/  # Issue follow-up management workflow
 │       ├── index.ts
 │       └── helpers.ts       # Discord sync comment helpers
