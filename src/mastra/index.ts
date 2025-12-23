@@ -2,15 +2,19 @@ import { Mastra } from '@mastra/core/mastra';
 import { PinoLogger } from '@mastra/loggers';
 import { LibSQLStore } from '@mastra/libsql';
 import { classificationAgent, effortImpactAgent } from './agents/classification';
+import { analysisAgent } from './agents/analysis';
+import { threadClassifierAgent } from './agents/thread-classifier';
 import { discordToGithubWorkflow } from './workflows/discordToGithub';
 import { triageWorkflow } from './workflows/triage';
 import { githubIssueManagerWorkflow } from './workflows/githubIssueManager';
 import { discordSyncWorkflow } from './workflows/discordSync';
 import { classificationWorkflow } from './workflows/classification';
+import { discordAnalysisWorkflow } from './workflows/analysis';
+import { forumThreadAnalysisWorkflow } from './workflows/forum-thread-analysis';
 import { MastraJwtAuth } from '@mastra/auth';
 
 export const mastra = new Mastra({
-  agents: { classificationAgent, effortImpactAgent },
+  agents: { classificationAgent, effortImpactAgent, analysisAgent, threadClassifierAgent },
   storage: new LibSQLStore({
     // stores telemetry, evals, ... into memory storage, if it needs to persist, change to file:../mastra.db
     url: ':memory:',
@@ -24,6 +28,9 @@ export const mastra = new Mastra({
     triageWorkflow,
     githubIssueManagerWorkflow,
     discordSyncWorkflow,
+    // Manual trigger workflows for reporting (used by Romain and Abhi)
+    discordAnalysisWorkflow,
+    forumThreadAnalysisWorkflow,
   },
   logger: new PinoLogger({
     name: 'Mastra',
