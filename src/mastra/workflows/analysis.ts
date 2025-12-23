@@ -1,3 +1,18 @@
+/**
+ * Discord Analysis Workflow
+ *
+ * ⚠️ MANUAL TRIGGER ONLY - DO NOT DELETE
+ *
+ * This workflow is NOT triggered by GitHub Actions. It is invoked manually
+ * by Romain and Abhi for generating periodic reports on Discord forum thread
+ * activity and category analysis.
+ *
+ * Use case: Categorizing Discord help forum threads and generating severity
+ * reports for each category to help identify pain points.
+ *
+ * Output: Generates a markdown summary file (category-summary.md) and JSON
+ * dumps of categorized posts for further analysis.
+ */
 import { createStep, createWorkflow } from '@mastra/core/workflows';
 import { z } from 'zod';
 import { analysisAgent } from '../agents/analysis';
@@ -221,3 +236,4 @@ export const discordAnalysisWorkflow = createWorkflow({
   .then(analyzeMessages)
   .then(saveMarkDownToFile)
   .commit();
+

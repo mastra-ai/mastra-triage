@@ -1,3 +1,18 @@
+/**
+ * Forum Thread Analysis Workflow
+ *
+ * ⚠️ MANUAL TRIGGER ONLY - DO NOT DELETE
+ *
+ * This workflow is NOT triggered by GitHub Actions. It is invoked manually
+ * by Romain and Abhi for generating periodic reports on Discord forum thread
+ * activity and sentiment analysis.
+ *
+ * Use case: Analyzing Discord help forum threads to identify trends, severity
+ * distribution, and key issues across different product categories.
+ *
+ * Output: Generates a markdown report file (forum-thread-analysis.md) with
+ * statistics, category breakdowns, and detailed thread analysis.
+ */
 import { createStep, createWorkflow } from '@mastra/core/workflows';
 import { z } from 'zod';
 import { getDiscordClient } from '../helpers/client';
@@ -466,3 +481,4 @@ export const forumThreadAnalysisWorkflow = createWorkflow({
   .then(generateTableStep)
   .then(saveFileStep)
   .commit();
+

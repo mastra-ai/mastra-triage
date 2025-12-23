@@ -12,3 +12,4 @@ export const analysisAgent = new Agent({
   `,
   model: 'openai/gpt-5-mini',
 });
+

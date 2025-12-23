@@ -5,6 +5,7 @@ import { getGithubClient } from '../../shared/github';
 import { z } from 'zod';
 import { Client } from 'discord.js';
 import { IMastraLogger } from '@mastra/core/logger';
+import { classifyAreaStep, fetchLabelsStep, labelSquadStep, estimateEffortImpactStep } from '../classification';
 
 async function getFirstThreadMessage(
   {
@@ -45,19 +46,20 @@ async function getFirstThreadMessage(
   }
 }
 
-const createGithubIssueStep = createStep({
-  id: 'create-github-issue',
+/**
+ * Step to fetch Discord message content for classification
+ */
+const fetchDiscordContentStep = createStep({
+  id: 'fetch-discord-content',
   inputSchema: postSchema,
   outputSchema: z.object({
-    html_url: z.string(),
+    post: postSchema,
+    content: z.string(),
+    images: z.array(z.string()),
   }),
   execute: async ({ inputData: post, mastra }) => {
     const logger = mastra?.getLogger();
     const discordClient = await getDiscordClient(logger);
-    const octokit = getGithubClient();
-    const title = post.name;
-    const owner = 'mastra-ai';
-    const repo = 'mastra';
 
     const message = await getFirstThreadMessage(
       {
@@ -67,17 +69,45 @@ const createGithubIssueStep = createStep({
       logger,
     );
 
-    logger?.debug('discord message', JSON.stringify(message));
+    return {
+      post,
+      content: message?.content || '',
+      images: message?.images || [],
+    };
+  },
+});
+
+const createGithubIssueInputSchema = z.object({
+  post: postSchema,
+  content: z.string(),
+  images: z.array(z.string()),
+  areaLabels: z.array(z.string()).describe('Classified area labels from AI'),
+  squadLabels: z.array(z.string()).describe('Squad labels derived from area classifications'),
+  effortLabel: z.string().nullable().describe('Effort estimate label'),
+  impactLabel: z.string().nullable().describe('Impact estimate label'),
+});
+
+const createGithubIssueStep = createStep({
+  id: 'create-github-issue',
+  inputSchema: createGithubIssueInputSchema,
+  outputSchema: z.object({
+    html_url: z.string(),
+  }),
+  execute: async ({ inputData, mastra }) => {
+    const { post, content, images, areaLabels, squadLabels, effortLabel, impactLabel } = inputData;
+    const logger = mastra?.getLogger();
+    const octokit = getGithubClient();
+    const title = post.name;
+    const owner = 'mastra-ai';
+    const repo = 'mastra';
 
     // Format the message content
-    let bodyContent = message?.content || '';
-    
+    let bodyContent = content || '';
+
     // Add images if any exist
-    if (message?.images && message.images.length > 0) {
-      const imageMarkdown = message.images
-        .map((url, index) => `![Screenshot ${index + 1}](${url})`)
-        .join('\n\n');
-      
+    if (images && images.length > 0) {
+      const imageMarkdown = images.map((url, index) => `![Screenshot ${index + 1}](${url})`).join('\n\n');
+
       // Add images after the message content
       if (bodyContent) {
         bodyContent += '\n\n---\n\n' + imageMarkdown;
@@ -86,13 +116,33 @@ const createGithubIssueStep = createStep({
       }
     }
 
+    // Build labels array - base labels + area labels + squad labels + effort/impact
+    const labels = ['status: needs triage', 'discord', ...areaLabels, ...squadLabels];
+
+    if (effortLabel) {
+      labels.push(effortLabel);
+    }
+    if (impactLabel) {
+      labels.push(impactLabel);
+    }
+
+    if (areaLabels.length > 0) {
+      logger?.debug(`Creating GitHub issue with area labels: ${areaLabels.join(', ')}`);
+    }
+    if (squadLabels.length > 0) {
+      logger?.debug(`Creating GitHub issue with squad labels: ${squadLabels.join(', ')}`);
+    }
+    if (effortLabel || impactLabel) {
+      logger?.debug(`Creating GitHub issue with effort: ${effortLabel}, impact: ${impactLabel}`);
+    }
+
     // Create a new issue
     const newIssue = await octokit.rest.issues.create({
       owner,
       repo,
       title,
       body: `This issue was created from Discord post ${post.id}:\n\n[![Open in Discord](https://img.shields.io/badge/Open_in_Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](${post.url})\n\n${bodyContent}`,
-      labels: ['status: needs triage', 'discord'],
+      labels,
     });
 
     logger?.debug(`Created new issue: ${newIssue.data.html_url} for ${title}`);
@@ -122,8 +172,8 @@ const createDiscordPostStep = createStep({
     if (thread?.isThread()) {
       await thread.send(
         `📝 Created GitHub issue: <${issue.html_url}>\n\n` +
-        `🔍 If you're experiencing an error, please provide a [minimal reproducible example](<https://github.com/mastra-ai/mastra/blob/main/CONTRIBUTING.md#minimal-reproduction>) whenever possible to help us resolve it quickly.\n\n` +
-        `🙏 Thank you for helping us improve Mastra!`
+          `🔍 If you're experiencing an error, please provide a [minimal reproducible example](<https://github.com/mastra-ai/mastra/blob/main/CONTRIBUTING.md#minimal-reproduction>) whenever possible to help us resolve it quickly.\n\n` +
+          `🙏 Thank you for helping us improve Mastra!`,
       );
     }
 
@@ -139,12 +189,44 @@ export const createGithubIssueWorkflow = createWorkflow({
     thread: z.string(),
     githubIssue: z.string(),
   }),
-  steps: [createGithubIssueStep, createDiscordPostStep],
 })
-  .then(createGithubIssueStep)
-  .map(async ({ inputData: issue, getInitData }) => {
+  // Step 1: Fetch Discord message content
+  .then(fetchDiscordContentStep)
+  // Step 2: Fetch labels from GitHub
+  .map(async ({ inputData }) => {
     return {
-      post: getInitData(),
+      title: inputData.post.name,
+      content: inputData.content,
+    };
+  })
+  .then(fetchLabelsStep)
+  // Step 3: Classify the area using LLM (returns multiple labels)
+  .then(classifyAreaStep)
+  // Step 4: Label with squad based on area classifications
+  .then(labelSquadStep)
+  // Step 5: Estimate effort and impact
+  .then(estimateEffortImpactStep)
+  // Step 6: Create GitHub issue with all labels
+  .map(async ({ inputData: classification, getStepResult }) => {
+    const discordContent = getStepResult(fetchDiscordContentStep);
+    // Extract label names from the classification result
+    const areaLabels = classification.labels.map(l => l.label);
+    return {
+      post: discordContent.post,
+      content: discordContent.content,
+      images: discordContent.images,
+      areaLabels,
+      squadLabels: classification.squadLabels,
+      effortLabel: classification.effortLabel,
+      impactLabel: classification.impactLabel,
+    };
+  })
+  .then(createGithubIssueStep)
+  // Step 7: Post back to Discord
+  .map(async ({ inputData: issue, getStepResult }) => {
+    const discordContent = getStepResult(fetchDiscordContentStep);
+    return {
+      post: discordContent.post,
       issue,
     };
   })
