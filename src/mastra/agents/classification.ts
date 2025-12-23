@@ -54,4 +54,3 @@ Your task is to analyze the given issue and estimate:
 Be conservative with estimates. When in doubt, estimate higher effort and lower impact.`,
   model: 'openai/gpt-4o-mini',
 });
-

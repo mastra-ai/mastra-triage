@@ -315,4 +315,3 @@ export async function fetchForumPosts({
     throw error;
   }
 }
-
