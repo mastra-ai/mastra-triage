@@ -1,7 +1,6 @@
 import { Mastra } from '@mastra/core/mastra';
 import { PinoLogger } from '@mastra/loggers';
 import { LibSQLStore } from '@mastra/libsql';
-import { triageAgent } from './agents/triage';
 import { classificationAgent, effortImpactAgent } from './agents/classification';
 import { discordToGithubWorkflow } from './workflows/discordToGithub';
 import { triageWorkflow } from './workflows/triage';
@@ -10,7 +9,7 @@ import { discordSyncWorkflow } from './workflows/discordSync';
 import { classificationWorkflow } from './workflows/classification';
 
 export const mastra = new Mastra({
-  agents: { triageAgent, classificationAgent, effortImpactAgent },
+  agents: { classificationAgent, effortImpactAgent },
   storage: new LibSQLStore({
     // stores telemetry, evals, ... into memory storage, if it needs to persist, change to file:../mastra.db
     url: ':memory:',

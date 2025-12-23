@@ -29,7 +29,6 @@ This project runs as a Mastra Cloud deployment and is triggered by GitHub Action
 │    • githubIssueManagerWorkflow → Add follow-up labels to stale issues      │
 │                                                                             │
 │  Agents:                                                                    │
-│    • triageAgent              → Classifies issues by area/squad             │
 │    • classificationAgent      → Labels issues by product area               │
 │    • effortImpactAgent        → Estimates effort and impact                 │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -52,18 +51,33 @@ New Issue Created
          │
          ▼
 ┌──────────────────┐
-│  Triage Agent    │  ← AI classifies by product area & squad
+│ Fetch Labels     │  ← Get available labels from GitHub repo
 └────────┬─────────┘
          │
          ▼
 ┌──────────────────┐
-│    Wrap Up       │  ← Add labels, assign team members, post comment
+│ Classify Area    │  ← AI picks best area labels (e.g., "area: workflows")
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│ Label Squad      │  ← Derive squad from area (e.g., "trio-tnt")
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│ Estimate Effort  │  ← AI estimates effort & impact labels
+│ & Impact         │
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│ Apply Labels     │  ← Add all labels, post welcome comment
 └──────────────────┘
 ```
 
 **Actions:**
-- Adds labels: `[product_area]`, `status: needs triage`, `[squad]`
-- Assigns issue to squad members
+- Adds labels: `status: needs triage`, `[area]`, `[squad]`, `[effort]`, `[impact]`
 - Posts a welcome comment with next steps
 
 ---
@@ -111,7 +125,18 @@ Issue]   No skip-github  Has skip-github
   │           │            │
   │           ▼            │
   │   ┌───────────────┐    │
-  │   │ Classify Area │ ← AI picks best GitHub label
+  │   │ Classify Area │ ← AI picks best area labels
+  │   └───────┬───────┘    │
+  │           │            │
+  │           ▼            │
+  │   ┌───────────────┐    │
+  │   │ Label Squad   │ ← Derive squad from area
+  │   └───────┬───────┘    │
+  │           │            │
+  │           ▼            │
+  │   ┌───────────────┐    │
+  │   │Estimate Effort│ ← AI estimates effort & impact
+  │   │& Impact       │    │
   │   └───────┬───────┘    │
   │           │            │
   │           ▼            │
@@ -131,7 +156,7 @@ Issue]   No skip-github  Has skip-github
 
 **Actions:**
 - Creates GitHub issues from Discord help forum threads
-- Labels issues: `status: needs triage`, `discord`, `[area]`
+- Labels issues: `status: needs triage`, `discord`, `[area]`, `[squad]`, `[effort]`, `[impact]`
 - Posts a reply to the Discord thread with the GitHub issue link
 
 ---
@@ -241,32 +266,20 @@ Cron Trigger
 
 ## Agents
 
-### Triage Agent
-
-Used by `triageWorkflow` to classify GitHub issues.
-
-**Model:** `openai/gpt-4o-mini`
-
-**Capabilities:**
-- Analyzes issue title and body
-- Matches content to product areas (Agents, Workflows, Storage, CLI, etc.)
-- Assigns to appropriate squad (trio-tnt, trio-wp, trio-tb, etc.)
-- Returns: `product_area`, `squad`, `assignees`, `reason`
-
 ### Classification Agent
 
-Used by `discordToGithubWorkflow` to label Discord-originated issues.
+Used by both `triageWorkflow` and `discordToGithubWorkflow` to classify issues.
 
 **Model:** `openai/gpt-4o-mini`
 
 **Capabilities:**
-- Analyzes Discord thread title and content
+- Analyzes issue/thread title and content
 - Picks all appropriate area labels with confidence levels
 - Returns: `labels[]`, `reasoning`
 
 ### Effort/Impact Agent
 
-Used by `discordToGithubWorkflow` to estimate issue complexity.
+Used by both `triageWorkflow` and `discordToGithubWorkflow` to estimate issue complexity.
 
 **Model:** `openai/gpt-4o-mini`
 
@@ -297,10 +310,8 @@ src/mastra/
 ├── index.ts                 # Mastra instance configuration
 ├── constants.ts             # Product areas and ownership definitions
 ├── constants/
-│   ├── members.ts           # GitHub org members
-│   └── squads.ts            # Squad member mappings
+│   └── members.ts           # GitHub org members
 ├── agents/
-│   ├── triage.ts            # Issue triage agent
 │   └── classification.ts    # Classification & effort/impact agents
 ├── workflows/
 │   ├── triage.ts            # GitHub issue triage workflow
