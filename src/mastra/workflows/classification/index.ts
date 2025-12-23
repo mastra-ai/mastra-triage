@@ -71,7 +71,7 @@ const fetchLabelsStep = createStep({
 /**
  * Step: Classify issue/thread area using LLM
  * Filters out squad (trio-*), effort, and impact labels - those are handled by other steps
- * Returns multiple area labels if they are all applicable
+ * Returns only 1-2 most relevant area labels with high confidence
  */
 const classifyAreaStep = createStep({
   id: 'classify-area',
@@ -118,7 +118,7 @@ const classifyAreaStep = createStep({
 
 ${labelList}
 
-Please classify this issue/question and select ALL appropriate labels from the list above.
+Please classify this issue/question and select the ONE or TWO most relevant labels from the list above.
 
 **Title:** ${title}
 
@@ -126,9 +126,11 @@ Please classify this issue/question and select ALL appropriate labels from the l
 ${content}
 
 **Instructions:**
-- Select multiple labels if the issue spans multiple areas (e.g., a bug in the workflow engine might get both "area: workflows" and "bug")
+- Select only the 1-2 labels that represent the PRIMARY area(s) this issue is about
+- Do NOT label everything that's merely mentioned - focus on what the issue is fundamentally about
 - Only include labels you have HIGH confidence about - medium/low confidence labels will be ignored
-- Don't include labels that are only tangentially related
+- A label should only be included if the issue requires action or attention in that area
+- When in doubt, fewer labels is better than more
 - Only return labels from the list provided above`;
 
     try {
