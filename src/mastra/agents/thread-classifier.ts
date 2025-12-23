@@ -87,4 +87,3 @@ export const threadClassifierAgent = new Agent({
   model: 'openrouter/google/gemini-3-pro-preview',
 //   model: 'openrouter/anthropic/claude-opus-4.1',
 });
-
