@@ -22,15 +22,21 @@ This project runs as a Mastra Cloud deployment and is triggered by GitHub Action
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                    Mastra Cloud (this project)                              │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  Workflows:                                                                 │
+│  Workflows (GitHub Actions triggered):                                      │
 │    • triageWorkflow           → Triage new GitHub issues                    │
 │    • discordToGithubWorkflow  → Create GitHub issues from Discord threads   │
 │    • discordSyncWorkflow      → Sync Discord messages to GitHub issues      │
 │    • githubIssueManagerWorkflow → Add follow-up labels to stale issues      │
 │                                                                             │
+│  Workflows (Manual trigger for reporting):                                  │
+│    • forumThreadAnalysisWorkflow → Analyze Discord threads for reporting    │
+│    • discordAnalysisWorkflow     → Categorize Discord posts for reporting   │
+│                                                                             │
 │  Agents:                                                                    │
 │    • classificationAgent      → Labels issues by product area               │
 │    • effortImpactAgent        → Estimates effort and impact                 │
+│    • threadClassifierAgent    → Classifies threads (manual reporting)       │
+│    • analysisAgent            → Analyzes categories (manual reporting)      │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -264,6 +270,105 @@ Cron Trigger
 
 ---
 
+## Manual Trigger Workflows (Reporting)
+
+> ⚠️ **DO NOT DELETE** - These workflows are intentionally not triggered by GitHub Actions.
+
+The following workflows are invoked manually by team members (Romain and Abhi) for generating periodic reports on Discord forum activity. They are not "dead code" - they serve an important reporting function.
+
+### 5. Forum Thread Analysis (`forumThreadAnalysisWorkflow`)
+
+**Trigger:** Manual invocation only
+
+**Purpose:** Analyzes Discord help forum threads to identify trends, severity distribution, and key issues across different product categories.
+
+**Flow:**
+```
+Manual Trigger
+      │
+      ▼
+┌─────────────────────────┐
+│ Fetch Forum Threads     │  ← Get threads from Discord help forum
+└──────────┬──────────────┘
+           │
+           ▼
+     ┌─────┴─────┐
+     │  For Each │  (concurrency: 5)
+     │   Thread  │
+     └─────┬─────┘
+           │
+           ▼
+┌─────────────────────────┐
+│ Fetch All Messages      │  ← Get complete conversation from thread
+└──────────┬──────────────┘
+           │
+           ▼
+┌─────────────────────────┐
+│ Classify Thread         │  ← AI classifies type, category, severity
+└──────────┬──────────────┘
+           │
+           ▼
+┌─────────────────────────┐
+│ Generate Report         │  ← Create markdown table with statistics
+└──────────┬──────────────┘
+           │
+           ▼
+┌─────────────────────────┐
+│ Save to File            │  ← forum-thread-analysis.md
+└─────────────────────────┘
+```
+
+**Output:**
+- `forum-thread-analysis.md` - Comprehensive report with:
+  - Summary statistics (by type, by severity)
+  - Category breakdown with key issues
+  - Detailed thread analysis table
+
+---
+
+### 6. Discord Analysis (`discordAnalysisWorkflow`)
+
+**Trigger:** Manual invocation only
+
+**Purpose:** Categorizes Discord help forum threads and generates severity reports for each category to help identify pain points.
+
+**Flow:**
+```
+Manual Trigger
+      │
+      ▼
+┌─────────────────────────┐
+│ Fetch Forum Posts       │  ← Get threads from Discord help forum
+└──────────┬──────────────┘
+           │
+           ▼
+┌─────────────────────────┐
+│ Fetch First Message     │  ← Get starter message for each thread
+└──────────┬──────────────┘
+           │
+           ▼
+┌─────────────────────────┐
+│ Categorize Threads      │  ← AI groups threads by category
+└──────────┬──────────────┘
+           │
+           ▼
+┌─────────────────────────┐
+│ Analyze Categories      │  ← AI summarizes each category
+└──────────┬──────────────┘
+           │
+           ▼
+┌─────────────────────────┐
+│ Save Reports            │  ← category-summary.md, JSON dumps
+└─────────────────────────┘
+```
+
+**Output:**
+- `category-summary.md` - Summary table with category counts and severity
+- `posts-dump.json` - Raw posts data
+- `categorized-posts-dump.json` - Posts grouped by category
+
+---
+
 ## Agents
 
 ### Classification Agent
@@ -287,6 +392,28 @@ Used by both `triageWorkflow` and `discordToGithubWorkflow` to estimate issue co
 - Estimates effort required to resolve the issue
 - Estimates impact/value of resolving the issue
 - Returns: `effortLabel`, `impactLabel`, `reasoning`
+
+### Thread Classifier Agent (Manual Reporting)
+
+Used by `forumThreadAnalysisWorkflow` for detailed thread analysis.
+
+**Model:** `openrouter/google/gemini-3-pro-preview`
+
+**Capabilities:**
+- Analyzes complete Discord forum thread conversations
+- Classifies threads as Bug, Feature Request, or Question
+- Assigns severity scores (1-10) based on impact
+- Provides concise summaries of thread content
+
+### Analysis Agent (Manual Reporting)
+
+Used by `discordAnalysisWorkflow` for category-based analysis.
+
+**Model:** `openai/gpt-4o-mini`
+
+**Capabilities:**
+- Categorizes Discord messages into product areas
+- Generates severity-based summaries for each category
 
 ---
 
@@ -312,9 +439,16 @@ src/mastra/
 ├── constants/
 │   └── members.ts           # GitHub org members
 ├── agents/
-│   └── classification.ts    # Classification & effort/impact agents
+│   ├── classification.ts    # Classification & effort/impact agents
+│   ├── analysis.ts          # Discord analysis agent (manual reporting)
+│   └── thread-classifier.ts # Thread classifier agent (manual reporting)
+├── helpers/
+│   ├── client.ts            # Discord client initialization (manual reporting)
+│   └── messages.ts          # Discord message fetching utilities (manual reporting)
 ├── workflows/
 │   ├── triage.ts            # GitHub issue triage workflow
+│   ├── analysis.ts          # Discord analysis workflow (manual reporting)
+│   ├── forum-thread-analysis.ts  # Forum thread analysis workflow (manual reporting)
 │   ├── discordSync/         # Discord → GitHub message sync workflow
 │   │   └── index.ts
 │   ├── discordToGithub/     # Discord → GitHub issue creation workflow
