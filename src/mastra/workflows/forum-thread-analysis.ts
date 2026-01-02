@@ -18,9 +18,64 @@ import { z } from 'zod';
 import { getDiscordClient } from '../helpers/client';
 import { getAllThreadMessages } from '../helpers/messages';
 import { postSchema } from '../shared/post';
+import { getGithubClient } from '../shared/github';
 import { promises as fs } from 'fs';
 import { join } from 'path';
 import { ForumChannel } from 'discord.js';
+
+const TRIAGER_BOT_APP_ID = '1379372702242181182';
+
+/**
+ * Extracts the GitHub issue status from a message containing a GitHub issue link.
+ * @param message - Message object containing a GitHub issue URL in its content
+ * @returns The issue state ('open' | 'closed') or null if extraction/fetch fails
+ */
+type IssueStatus = 'open' | 'closed' | 'waiting for author' | 'needs reproduction' | null;
+
+async function getIssueStatus(message: { content: string }): Promise<IssueStatus> {
+  // Extract GitHub issue URL from message content
+  // Pattern: https://github.com/{owner}/{repo}/issues/{issue_number}
+  const githubIssueRegex = /https:\/\/github\.com\/([^/]+)\/([^/]+)\/issues\/(\d+)/;
+  const match = message.content.match(githubIssueRegex);
+
+  if (!match) {
+    return null;
+  }
+
+  const [, owner, repo, issueNumber] = match;
+
+  try {
+    const octokit = getGithubClient();
+    const { data: issue } = await octokit.rest.issues.get({
+      owner,
+      repo,
+      issue_number: parseInt(issueNumber, 10),
+    });
+
+    // If closed, return closed status
+    if (issue.state === 'closed') {
+      return 'closed';
+    }
+
+    // Check for specific status labels
+    const labels = issue.labels.map(label => (typeof label === 'string' ? label : label.name));
+
+
+    if (labels.includes('status: needs reproduction')) {
+      return 'needs reproduction';
+    }
+
+    if (labels.includes('status: waiting for author')) {
+      return 'waiting for author';
+    }
+
+    // Default to open if no specific status label
+    return 'open';
+  } catch (error) {
+    console.error(`Failed to fetch issue status for ${owner}/${repo}#${issueNumber}:`, error);
+    return null;
+  }
+}
 
 // Schema for individual thread analysis
 const threadAnalysisSchema = z.object({
@@ -34,6 +89,10 @@ const threadAnalysisSchema = z.object({
   severityScore: z.number().min(1).max(10),
   severity: z.enum(['MINOR', 'MAJOR', 'CRITICAL']),
   summary: z.string(),
+  issueStatus: z
+    .enum(['open', 'closed', 'waiting for author', 'needs reproduction'])
+    .nullable()
+    .describe('GitHub issue status if a linked issue exists'),
 });
 
 // Helper function to derive severity category from numeric score
@@ -47,7 +106,10 @@ function getSeverityCategory(score: number): 'MINOR' | 'MAJOR' | 'CRITICAL' {
 const fetchThreadsStep = createStep({
   id: 'fetch-threads',
   inputSchema: z.object({
-    forumChannelId: z.string().describe('The ID of the Discord forum channel to fetch threads from'),
+    forumChannelId: z
+      .string()
+      .default('1349006916902191125')
+      .describe('The ID of the Discord forum channel to fetch threads from'),
     fetchLimit: z.coerce.number().optional().default(1).describe('Number of days to fetch threads from'),
   }),
   outputSchema: z.object({
@@ -126,6 +188,24 @@ const analyzeThreadStep = createStep({
         return null;
       }
 
+      // Get the triager bot's messages and check for GitHub issue status
+      let issueStatus: IssueStatus = null;
+      const triageBotMessages = messages.filter(msg => msg.authorId === TRIAGER_BOT_APP_ID);
+      console.info('triageBotMessages', triageBotMessages);
+      if (triageBotMessages.length > 0) {
+        // find the github issue link in the triage bot's messages
+        const githubIssueLink = triageBotMessages.find(msg => msg.content.includes('github.com/'));
+        if (githubIssueLink) {
+          // get status of the issue
+          issueStatus = await getIssueStatus(githubIssueLink);
+          if (issueStatus) {
+            logger?.debug(`Issue ${githubIssueLink}  status: ${issueStatus}`);
+          }
+        } else {
+          logger?.debug(`No github issue link found in the triage bot's messages`);
+        }
+      }
+
       // Format the conversation for the agent
       const conversation = messages.map(msg => `[${msg.author}]: ${msg.content}`).join('\n\n');
 
@@ -164,7 +244,9 @@ Provide a severity score from 1-10 where:
 
       const severity = getSeverityCategory(result.object.severityScore);
 
-      logger?.info(`✓ Analyzed: ${thread.name} (${messages.length} messages) - Severity: ${result.object.severityScore}/10 (${severity})`);
+      logger?.info(
+        `✓ Analyzed: ${thread.name} (${messages.length} messages) - Severity: ${result.object.severityScore}/10 (${severity})`,
+      );
 
       return {
         threadId: thread.id,
@@ -177,6 +259,7 @@ Provide a severity score from 1-10 where:
         severityScore: result.object.severityScore,
         severity,
         summary: result.object.summary,
+        issueStatus,
       };
     } catch (error) {
       logger?.error(`Error analyzing thread ${thread.name}:`, error);
@@ -198,18 +281,92 @@ const filterAnalysesStep = createStep({
   execute: async ({ inputData, mastra }) => {
     const logger = mastra?.getLogger();
     const analyses = inputData.items.filter((item): item is z.infer<typeof threadAnalysisSchema> => item !== null);
-    
+
     logger?.info(`Successfully analyzed ${analyses.length} threads`);
-    
+
     return { analyses };
   },
 });
 
-// Step 3: Generate markdown table with severity column and statistics
+// Step 4: Generate category summaries using agent
+const generateCategorySummariesStep = createStep({
+  id: 'generate-category-summaries',
+  inputSchema: z.object({
+    analyses: z.array(threadAnalysisSchema),
+  }),
+  outputSchema: z.object({
+    analyses: z.array(threadAnalysisSchema),
+    categorySummaries: z.record(z.string(), z.string()),
+  }),
+  execute: async ({ inputData, mastra }) => {
+    const logger = mastra?.getLogger();
+    const agent = mastra.getAgentById('categorySummaryAgent');
+
+    // Group threads by category
+    const categoriesMap: Record<string, z.infer<typeof threadAnalysisSchema>[]> = {};
+    inputData.analyses.forEach(analysis => {
+      if (!categoriesMap[analysis.category]) {
+        categoriesMap[analysis.category] = [];
+      }
+      categoriesMap[analysis.category].push(analysis);
+    });
+
+    logger?.info(`Generating summaries for ${Object.keys(categoriesMap).length} categories...`);
+
+    // Generate summary for each category
+    const categorySummaries: Record<string, string> = {};
+
+    for (const [category, threads] of Object.entries(categoriesMap)) {
+      try {
+        // Prepare thread information for the agent
+        const threadList = threads
+          .map((t, idx) => `${idx + 1}. [Severity ${t.severityScore}/10] ${t.threadName}\n   Summary: ${t.summary}`)
+          .join('\n\n');
+
+        const prompt = `
+Analyze these ${threads.length} threads in the "${category}" category:
+
+${threadList}
+
+Provide a concise 2-3 sentence high-level overview of:
+- Common themes and patterns across these threads
+- Key concerns raised by users
+- Overall nature of issues in this category
+
+Keep it brief and actionable.
+        `.trim();
+
+        // const result = await agent.generate(prompt, {
+        //   structuredOutput: {
+        //     schema: z.object({
+        //       summary: z.string().describe('A concise 2-3 sentence overview of the category'),
+        //     }),
+        //   },
+        // });
+
+        // categorySummaries[category] = result.object.summary;
+        categorySummaries[category] = '';
+        logger?.info(`✓ Generated summary for category: ${category}`);
+      } catch (error) {
+        logger?.error(`Error generating summary for category ${category}:`, error);
+        // Fallback to a generic summary
+        categorySummaries[category] = `${threads.length} threads covering various topics in this category.`;
+      }
+    }
+
+    return {
+      analyses: inputData.analyses,
+      categorySummaries,
+    };
+  },
+});
+
+// Step 5: Generate markdown table with severity column and statistics
 const generateTableStep = createStep({
   id: 'generate-table',
   inputSchema: z.object({
     analyses: z.array(threadAnalysisSchema),
+    categorySummaries: z.record(z.string(), z.string()),
   }),
   outputSchema: z.object({
     markdownTable: z.string(),
@@ -272,21 +429,20 @@ const generateTableStep = createStep({
       }
     > = {};
 
-    // Track detailed category data for summaries
-    const categoryDetails: Record<
-      string,
-      {
-        threads: z.infer<typeof threadAnalysisSchema>[];
-        totalSeverityScore: number;
-      }
-    > = {};
-
     let totalSeverityScore = 0;
+
+    // Cross-tabulation of Type x Severity
+    const typeBySeverity: Record<string, Record<string, number>> = {
+      Bug: { CRITICAL: 0, MAJOR: 0, MINOR: 0 },
+      'Feature Request': { CRITICAL: 0, MAJOR: 0, MINOR: 0 },
+      Question: { CRITICAL: 0, MAJOR: 0, MINOR: 0 },
+    };
 
     inputData.analyses.forEach(a => {
       byType[a.type] = (byType[a.type] || 0) + 1;
       bySeverity[a.severity] = (bySeverity[a.severity] || 0) + 1;
       totalSeverityScore += a.severityScore;
+      typeBySeverity[a.type][a.severity] += 1;
 
       // Initialize category if not exists
       if (!byCategory[a.category]) {
@@ -298,26 +454,22 @@ const generateTableStep = createStep({
         };
       }
 
-      // Initialize category details if not exists
-      if (!categoryDetails[a.category]) {
-        categoryDetails[a.category] = {
-          threads: [],
-          totalSeverityScore: 0,
-        };
-      }
-
       // Increment category counts
       byCategory[a.category].total += 1;
       byCategory[a.category][a.type] += 1;
-
-      // Track detailed category data
-      categoryDetails[a.category].threads.push(a);
-      categoryDetails[a.category].totalSeverityScore += a.severityScore;
     });
 
-    const averageSeverityScore = inputData.analyses.length > 0
-      ? Number((totalSeverityScore / inputData.analyses.length).toFixed(1))
-      : 0;
+    const averageSeverityScore =
+      inputData.analyses.length > 0 ? Number((totalSeverityScore / inputData.analyses.length).toFixed(1)) : 0;
+
+    // Count issue statuses
+    const byIssueStatus = {
+      open: inputData.analyses.filter(
+        a => a.issueStatus === 'open' || a.issueStatus === 'waiting for author' || a.issueStatus === 'needs reproduction',
+      ).length,
+      closed: inputData.analyses.filter(a => a.issueStatus === 'closed').length,
+      noIssue: inputData.analyses.filter(a => a.issueStatus === null).length,
+    };
 
     const stats = {
       total: inputData.analyses.length,
@@ -330,45 +482,34 @@ const generateTableStep = createStep({
     // Generate markdown table with header
     const currentDate = new Date().toISOString().split('T')[0];
 
-    // Create type statistics table
-    const typeStatsTable = `| Type | Count |
-|------|-------|
-${allTypes.map(type => `| ${type} | ${stats.byType[type]} |`).join('\n')}`;
+    // Create cross-tabulation table: Type x Severity
+    const summaryStatsTable = `| Type | ${severityEmoji.CRITICAL} Critical | ${severityEmoji.MAJOR} Major | ${severityEmoji.MINOR} Minor | Total |
+|------|----------|-------|-------|-------|
+${allTypes.map(type => `| ${type} | ${typeBySeverity[type].CRITICAL} | ${typeBySeverity[type].MAJOR} | ${typeBySeverity[type].MINOR} | ${stats.byType[type]} |`).join('\n')}
+| **Total** | **${stats.bySeverity.CRITICAL}** | **${stats.bySeverity.MAJOR}** | **${stats.bySeverity.MINOR}** | **${stats.total}** |`;
 
-    // Create severity statistics table
-    const severityStatsTable = `| Severity | Count |
-|----------|-------|
-${allSeverities.map(severity => `| ${severityEmoji[severity]} ${severity} | ${stats.bySeverity[severity]} |`).join('\n')}`;
-
-    // Create category breakdown table with key issues
-    const categoryBreakdownTable = `| Category | Total | Bugs | Features | Questions | Key Issues |
-|----------|-------|------|----------|-----------|------------|
+    // Create category breakdown table with agent-generated summaries
+    // const categoryBreakdownTable = `| Category | Total | Bugs | Features | Questions | Summary |
+    const categoryBreakdownTable = `| Category | Total | Bugs | Features | Questions |
+|----------|-------|------|----------|-----------|
 ${Object.entries(stats.byCategory)
   .sort((a, b) => b[1].total - a[1].total) // Sort by total count descending
   .map(([category, counts]) => {
-    // Get top 3 key issues for this category (sorted by severity)
-    const details = categoryDetails[category];
-    const keyIssues = [...details.threads]
-      .sort((a, b) => b.severityScore - a.severityScore)
-      .slice(0, 3)
-      .map(t => `• ${t.summary}`)
-      .join('<br>');
-    return `| ${category} | ${counts.total} | ${counts.Bug} | ${counts['Feature Request']} | ${counts.Question} | ${keyIssues} |`;
+    const summary = inputData.categorySummaries[category] || 'No summary available';
+    // return `| ${category} | ${counts.total} | ${counts.Bug} | ${counts['Feature Request']} | ${counts.Question} | ${summary} |`;
+    return `| ${category} | ${counts.total} | ${counts.Bug} | ${counts['Feature Request']} | ${counts.Question} |`;
   })
   .join('\n')}`;
 
     const header = `# Forum Thread Analysis Report
 
 **Analysis Date**: ${currentDate}
-**Total Threads**: ${stats.total}
+
+**Total Threads**: ${stats.total} (${byIssueStatus.open} open, ${byIssueStatus.closed} closed, ${byIssueStatus.noIssue} no issue linked)
 
 ## Summary Statistics
 
-### By Type
-${typeStatsTable}
-
-### By Severity
-${severityStatsTable}
+${summaryStatsTable}
 
 **Average Severity Score**: ${stats.averageSeverityScore.toFixed(1)}/10
 - 1-3: MINOR issues (cosmetic, low priority, minimal impact)
@@ -384,13 +525,21 @@ ${categoryBreakdownTable}
 
 `;
 
+    const issueStatusDisplay = (status: IssueStatus) => {
+      if (status === 'open') return '🔴 Open';
+      if (status === 'closed') return '🟢 Closed';
+      if (status === 'waiting for author') return '⏳ Waiting for Author';
+      if (status === 'needs reproduction') return '🔍 Needs Reproduction';
+      return '—';
+    };
+
     const table =
-      `| Type | Severity | Score | Category | Summary | Thread Name | URL |\n` +
-      `|------|----------|-------|----------|---------|-------------|-----|\n` +
+      `| Type | Severity | Score | Category | Summary | Thread Name | Issue Status | URL |\n` +
+      `|------|----------|-------|----------|---------|-------------|--------------|-----|\n` +
       sorted
         .map(
           a =>
-            `| ${typeAbbrev[a.type]} | ${severityEmoji[a.severity]} | ${a.severityScore}/10 | ${a.category} | ${a.summary} | ${a.threadName} | [Link](${a.url}) |`,
+            `| ${typeAbbrev[a.type]} | ${severityEmoji[a.severity]} | ${a.severityScore}/10 | ${a.category} | ${a.summary} | ${a.threadName} | ${issueStatusDisplay(a.issueStatus)} | [Link](${a.url}) |`,
         )
         .join('\n');
 
@@ -400,7 +549,7 @@ ${categoryBreakdownTable}
   },
 });
 
-// Step 4: Save markdown table to file
+// Step 6: Save markdown table to file
 const saveFileStep = createStep({
   id: 'save-file',
   inputSchema: z.object({
@@ -443,7 +592,10 @@ const saveFileStep = createStep({
 export const forumThreadAnalysisWorkflow = createWorkflow({
   id: 'forum-thread-analysis',
   inputSchema: z.object({
-    forumChannelId: z.string().describe('The ID of the Discord forum channel to fetch threads from'),
+    forumChannelId: z
+      .string()
+      .default('1349006916902191125')
+      .describe('The ID of the Discord forum channel to fetch threads from'),
     fetchLimit: z.coerce.number().optional().default(1).describe('Number of days to fetch threads from'),
   }),
   outputSchema: z.object({
@@ -478,7 +630,7 @@ export const forumThreadAnalysisWorkflow = createWorkflow({
     return { items: inputData };
   })
   .then(filterAnalysesStep)
+  .then(generateCategorySummariesStep)
   .then(generateTableStep)
   .then(saveFileStep)
   .commit();
-

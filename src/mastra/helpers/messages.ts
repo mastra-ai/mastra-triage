@@ -228,7 +228,7 @@ export async function getAllThreadMessages({
 }: {
   client: Client;
   threadId: string;
-}): Promise<Array<{ author: string; content: string; timestamp: string }>> {
+}): Promise<Array<{ author: string; authorId: string; content: string; timestamp: string }>> {
   try {
     const thread = await client.channels.fetch(threadId);
     if (!thread?.isThread()) {
@@ -249,6 +249,7 @@ export async function getAllThreadMessages({
       .sort((a, b) => a.createdTimestamp - b.createdTimestamp)
       .map(msg => ({
         author: msg.author.username,
+        authorId: msg.author.id,
         content: msg.content,
         timestamp: msg.createdAt.toISOString(),
       }));

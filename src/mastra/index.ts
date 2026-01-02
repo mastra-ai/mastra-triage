@@ -4,6 +4,7 @@ import { LibSQLStore } from '@mastra/libsql';
 import { classificationAgent, effortImpactAgent } from './agents/classification';
 import { analysisAgent } from './agents/analysis';
 import { threadClassifierAgent } from './agents/thread-classifier';
+import { categorySummaryAgent } from './agents/category-summary';
 import { discordToGithubWorkflow } from './workflows/discordToGithub';
 import { triageWorkflow } from './workflows/triage';
 import { githubIssueManagerWorkflow } from './workflows/githubIssueManager';
@@ -14,7 +15,7 @@ import { forumThreadAnalysisWorkflow } from './workflows/forum-thread-analysis';
 import { MastraJwtAuth } from '@mastra/auth';
 
 export const mastra = new Mastra({
-  agents: { classificationAgent, effortImpactAgent, analysisAgent, threadClassifierAgent },
+  agents: { classificationAgent, effortImpactAgent, analysisAgent, threadClassifierAgent, categorySummaryAgent },
   storage: new LibSQLStore({
     // stores telemetry, evals, ... into memory storage, if it needs to persist, change to file:../mastra.db
     url: ':memory:',
@@ -36,6 +37,11 @@ export const mastra = new Mastra({
     name: 'Mastra',
     level: process.env.MASTRA_DEV === 'true' ? 'debug' : 'info',
   }),
+  observability: {
+    default: {
+      enabled: true,
+    }
+  },
   server: {
     experimental_auth:
       process.env.MASTRA_DEV === 'true'
