@@ -97,9 +97,10 @@ const classifyAreaStep = createStep({
     // - trio-* labels (squad labels)
     // - effort:* labels
     // - impact:* labels
+    // - status:* labels
     const areaLabels = labels.filter(l => {
       const name = l.name.toLowerCase();
-      return !name.startsWith('trio-') && !name.startsWith('effort:') && !name.startsWith('impact:');
+      return !name.startsWith('trio-') && !name.startsWith('effort:') && !name.startsWith('impact:') && !name.startsWith('status:');
     });
 
     if (areaLabels.length === 0) {
