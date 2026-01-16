@@ -28,9 +28,9 @@ const TRIAGER_BOT_APP_ID = '1379372702242181182';
 /**
  * Extracts the GitHub issue status from a message containing a GitHub issue link.
  * @param message - Message object containing a GitHub issue URL in its content
- * @returns The issue state ('open' | 'closed') or null if extraction/fetch fails
+ * @returns The issue state ('open' | 'closed' | 'pr pending' | ...) or null if extraction/fetch fails
  */
-type IssueStatus = 'open' | 'closed' | 'waiting for author' | 'needs reproduction' | null;
+type IssueStatus = 'open' | 'closed' | 'waiting for author' | 'needs reproduction' | 'pr pending' | null;
 
 async function getIssueStatus(message: { content: string }): Promise<IssueStatus> {
   // Extract GitHub issue URL from message content
@@ -57,9 +57,32 @@ async function getIssueStatus(message: { content: string }): Promise<IssueStatus
       return 'closed';
     }
 
+    // Check for linked/referenced PRs via timeline events
+    try {
+      const { data: timeline } = await octokit.rest.issues.listEventsForTimeline({
+        owner,
+        repo,
+        issue_number: parseInt(issueNumber, 10),
+        per_page: 100,
+      });
+
+      const hasLinkedPR = timeline.some(
+        event =>
+          event.event === 'cross-referenced' &&
+          'source' in event &&
+          event.source?.issue?.pull_request != null
+      );
+
+      if (hasLinkedPR) {
+        return 'pr pending';
+      }
+    } catch (timelineError) {
+      // Timeline fetch failed, continue with default status
+      console.warn(`Failed to fetch timeline for ${owner}/${repo}#${issueNumber}:`, timelineError);
+    }
+
     // Check for specific status labels
     const labels = issue.labels.map(label => (typeof label === 'string' ? label : label.name));
-
 
     if (labels.includes('status: needs reproduction')) {
       return 'needs reproduction';
@@ -90,7 +113,7 @@ const threadAnalysisSchema = z.object({
   severity: z.enum(['MINOR', 'MAJOR', 'CRITICAL']),
   summary: z.string(),
   issueStatus: z
-    .enum(['open', 'closed', 'waiting for author', 'needs reproduction'])
+    .enum(['open', 'closed', 'waiting for author', 'needs reproduction', 'pr pending'])
     .nullable()
     .describe('GitHub issue status if a linked issue exists'),
 });
@@ -191,7 +214,7 @@ const analyzeThreadStep = createStep({
       // Get the triager bot's messages and check for GitHub issue status
       let issueStatus: IssueStatus = null;
       const triageBotMessages = messages.filter(msg => msg.authorId === TRIAGER_BOT_APP_ID);
-      console.info('triageBotMessages', triageBotMessages);
+
       if (triageBotMessages.length > 0) {
         // find the github issue link in the triage bot's messages
         const githubIssueLink = triageBotMessages.find(msg => msg.content.includes('github.com/'));
@@ -465,7 +488,7 @@ const generateTableStep = createStep({
     // Count issue statuses
     const byIssueStatus = {
       open: inputData.analyses.filter(
-        a => a.issueStatus === 'open' || a.issueStatus === 'waiting for author' || a.issueStatus === 'needs reproduction',
+        a => a.issueStatus === 'open' || a.issueStatus === 'waiting for author' || a.issueStatus === 'needs reproduction' || a.issueStatus === 'pr pending',
       ).length,
       closed: inputData.analyses.filter(a => a.issueStatus === 'closed').length,
       noIssue: inputData.analyses.filter(a => a.issueStatus === null).length,
@@ -530,6 +553,7 @@ ${categoryBreakdownTable}
       if (status === 'closed') return '🟢 Closed';
       if (status === 'waiting for author') return '⏳ Waiting for Author';
       if (status === 'needs reproduction') return '🔍 Needs Reproduction';
+      if (status === 'pr pending') return '🔍 PR Pending';
       return '—';
     };
 
