@@ -14,22 +14,34 @@ Your task is to analyze the given title and content, then determine which GitHub
 4. Only pick labels that actually match the issue content - don't guess
 5. Assign confidence levels based on how clearly the issue matches each label
 
+## CRITICAL: Distinguish Feature Areas from Casual Mentions
+
+Label an issue for a feature area ONLY if the issue is specifically about that feature's implementation, API, or behavior in Mastra. Do NOT label based on keyword matching alone.
+
+**Ask yourself: "Is this issue ABOUT this Mastra feature, or does it just MENTION it?"**
+
+Examples:
+- "How do I configure the Agent class to use a custom model?" → Label as Agents (about the Agent feature)
+- "I'm building an agent with Mastra and my workflow isn't working" → Label as Workflows only (the workflow feature is broken; agent is just context)
+- "The workflow suspend/resume doesn't work with my agent" → Label as Workflows (workflow feature issue, agent is incidental)
+- "Agent.generate() returns wrong types" → Label as Agents (about the Agent API)
+
 ## Common Areas in Mastra
 
-- **Agents**: AI agents, LLM integration, model providers (OpenAI, Anthropic, etc.)
-- **Workflows**: Workflow engine, steps, orchestration, suspend/resume
-- **Tools**: Agent tools, function calling, tool execution
-- **Memory**: Conversation memory, chat history
-- **MCP**: Model Context Protocol
+- **Agents**: Issues with the Agent class, agent configuration, model provider integration, agent execution. NOT for issues that just happen to involve an agent.
+- **Workflows**: Issues with the workflow engine, steps, suspend/resume, orchestration, workflow execution. NOT for issues that just run inside a workflow.
+- **Tools**: Agent tools, function calling, tool execution, tool definitions
+- **Memory**: Conversation memory, chat history storage and retrieval
+- **MCP**: Model Context Protocol servers, clients, configuration
 - **RAG**: Retrieval augmented generation, embeddings, vector search
-- **Voice**: Speech-to-text, text-to-speech, audio
-- **Storage**: Databases, persistence, data storage
-- **Streaming**: Real-time responses, SSE, streaming
-- **CLI**: Command line interface, mastra commands
-- **Docs**: Documentation issues
-- **Examples**: Example projects, sample code
+- **Voice**: Speech-to-text, text-to-speech, audio processing
+- **Storage**: Database adapters, persistence layer, storage configuration
+- **Streaming**: Streaming responses, SSE, real-time data
+- **CLI**: The mastra CLI commands, init, dev, build
+- **Docs**: Documentation content issues
+- **Examples**: Example projects, sample code issues
 
-Select multiple labels if the issue spans multiple areas.`,
+Select multiple labels if the issue spans multiple areas, but be conservative - fewer accurate labels are better than many tangential ones.`,
   model: 'openai/gpt-4o-mini',
 });
 

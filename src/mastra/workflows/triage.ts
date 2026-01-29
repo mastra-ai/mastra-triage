@@ -63,6 +63,32 @@ const applyLabelsStep = createStep({
     const octokit = getGithubClient();
     const { owner, repo, issueNumber } = getInitData();
 
+    // Get existing labels on the issue to avoid duplicates
+    const existingIssue = await octokit.rest.issues.get({
+      owner,
+      repo,
+      issue_number: Number(issueNumber),
+    });
+    const existingLabels = existingIssue.data.labels.map(l => (typeof l === 'string' ? l : l.name || ''));
+
+    // Remove existing effort/impact labels to avoid duplicates
+    const labelsToRemove = existingLabels.filter(
+      l => l.toLowerCase().startsWith('effort:') || l.toLowerCase().startsWith('impact:'),
+    );
+    for (const label of labelsToRemove) {
+      try {
+        await octokit.rest.issues.removeLabel({
+          owner,
+          repo,
+          issue_number: Number(issueNumber),
+          name: label,
+        });
+        logger?.debug(`Removed existing label: ${label}`);
+      } catch {
+        // Label might not exist, ignore
+      }
+    }
+
     // Build labels array from classification results
     const areaLabels = inputData.labels.map(l => l.label);
     const labels = ['status: needs triage', ...areaLabels, ...inputData.squadLabels];
