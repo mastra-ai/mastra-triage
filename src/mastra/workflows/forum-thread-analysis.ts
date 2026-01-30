@@ -109,7 +109,7 @@ const threadAnalysisSchema = z.object({
   messageCount: z.number(),
   type: z.enum(['Bug', 'Feature Request', 'Question']),
   category: z.string(),
-  severityScore: z.number().min(1).max(10),
+  severityScore: z.number().min(0).max(10),
   severity: z.enum(['MINOR', 'MAJOR', 'CRITICAL']),
   summary: z.string(),
   issueStatus: z
@@ -120,8 +120,8 @@ const threadAnalysisSchema = z.object({
 
 // Helper function to derive severity category from numeric score
 function getSeverityCategory(score: number): 'MINOR' | 'MAJOR' | 'CRITICAL' {
-  if (score >= 1 && score <= 3) return 'MINOR';
-  if (score >= 4 && score <= 7) return 'MAJOR';
+  if (score <= 3) return 'MINOR'; // 0-3 (0 = non-bug default)
+  if (score <= 7) return 'MAJOR'; // 4-7
   return 'CRITICAL'; // 8-10
 }
 
@@ -259,7 +259,7 @@ Provide a severity score from 1-10 where:
           schema: z.object({
             type: z.enum(['Bug', 'Feature Request', 'Question']),
             category: z.string(),
-            severityScore: z.number().min(1).max(10).describe('Severity score from 1-10'),
+            severityScore: z.number().min(0).max(10).describe('Severity score from 1-10 for bugs, 0 for non-bugs'),
             summary: z.string(),
           }),
         },
@@ -410,12 +410,6 @@ const generateTableStep = createStep({
     }),
   }),
   execute: async ({ inputData }) => {
-    const typeAbbrev = {
-      Bug: 'BUG',
-      'Feature Request': 'FEAT',
-      Question: 'Q',
-    };
-
     const severityEmoji = {
       MINOR: '🟢',
       MAJOR: '🟡',
@@ -425,17 +419,15 @@ const generateTableStep = createStep({
     // Sort by severity score (highest first), then by category
     const sorted = [...inputData.analyses].sort((a, b) => b.severityScore - a.severityScore);
 
-    // Calculate statistics with all possible values
-    const allTypes = ['Bug', 'Feature Request', 'Question'] as const;
-    const allSeverities = ['CRITICAL', 'MAJOR', 'MINOR'] as const;
-
-    // Initialize with all types and severities at 0
+    // Initialize type counts
     const byType: Record<string, number> = {
       Bug: 0,
       'Feature Request': 0,
       Question: 0,
     };
-    const bySeverity: Record<string, number> = {
+
+    // Severity counts (bugs only)
+    const bugSeverity: Record<string, number> = {
       CRITICAL: 0,
       MAJOR: 0,
       MINOR: 0,
@@ -452,20 +444,18 @@ const generateTableStep = createStep({
       }
     > = {};
 
-    let totalSeverityScore = 0;
-
-    // Cross-tabulation of Type x Severity
-    const typeBySeverity: Record<string, Record<string, number>> = {
-      Bug: { CRITICAL: 0, MAJOR: 0, MINOR: 0 },
-      'Feature Request': { CRITICAL: 0, MAJOR: 0, MINOR: 0 },
-      Question: { CRITICAL: 0, MAJOR: 0, MINOR: 0 },
-    };
+    let totalBugSeverityScore = 0;
+    let bugCount = 0;
 
     inputData.analyses.forEach(a => {
       byType[a.type] = (byType[a.type] || 0) + 1;
-      bySeverity[a.severity] = (bySeverity[a.severity] || 0) + 1;
-      totalSeverityScore += a.severityScore;
-      typeBySeverity[a.type][a.severity] += 1;
+
+      // Only track severity for bugs
+      if (a.type === 'Bug') {
+        bugSeverity[a.severity] += 1;
+        totalBugSeverityScore += a.severityScore;
+        bugCount += 1;
+      }
 
       // Initialize category if not exists
       if (!byCategory[a.category]) {
@@ -482,8 +472,7 @@ const generateTableStep = createStep({
       byCategory[a.category][a.type] += 1;
     });
 
-    const averageSeverityScore =
-      inputData.analyses.length > 0 ? Number((totalSeverityScore / inputData.analyses.length).toFixed(1)) : 0;
+    const averageBugSeverityScore = bugCount > 0 ? Number((totalBugSeverityScore / bugCount).toFixed(1)) : 0;
 
     // Count issue statuses
     const byIssueStatus = {
@@ -497,29 +486,34 @@ const generateTableStep = createStep({
     const stats = {
       total: inputData.analyses.length,
       byType,
-      bySeverity,
-      averageSeverityScore,
+      bySeverity: bugSeverity,
+      averageSeverityScore: averageBugSeverityScore,
       byCategory,
     };
 
     // Generate markdown table with header
     const currentDate = new Date().toISOString().split('T')[0];
 
-    // Create cross-tabulation table: Type x Severity
-    const summaryStatsTable = `| Type | ${severityEmoji.CRITICAL} Critical | ${severityEmoji.MAJOR} Major | ${severityEmoji.MINOR} Minor | Total |
-|------|----------|-------|-------|-------|
-${allTypes.map(type => `| ${type} | ${typeBySeverity[type].CRITICAL} | ${typeBySeverity[type].MAJOR} | ${typeBySeverity[type].MINOR} | ${stats.byType[type]} |`).join('\n')}
-| **Total** | **${stats.bySeverity.CRITICAL}** | **${stats.bySeverity.MAJOR}** | **${stats.bySeverity.MINOR}** | **${stats.total}** |`;
+    // Summary table with type counts and bug severity breakdown
+    const summaryStatsTable = `| Type | Count |
+|------|-------|
+| Bug | ${stats.byType.Bug} |
+| Feature Request | ${stats.byType['Feature Request']} |
+| Question | ${stats.byType.Question} |
+| **Total** | **${stats.total}** |
 
-    // Create category breakdown table with agent-generated summaries
-    // const categoryBreakdownTable = `| Category | Total | Bugs | Features | Questions | Summary |
+### Bug Severity Breakdown
+
+| ${severityEmoji.CRITICAL} Critical | ${severityEmoji.MAJOR} Major | ${severityEmoji.MINOR} Minor |
+|----------|-------|-------|
+| ${bugSeverity.CRITICAL} | ${bugSeverity.MAJOR} | ${bugSeverity.MINOR} |`;
+
+    // Create category breakdown table
     const categoryBreakdownTable = `| Category | Total | Bugs | Features | Questions |
 |----------|-------|------|----------|-----------|
 ${Object.entries(stats.byCategory)
   .sort((a, b) => b[1].total - a[1].total) // Sort by total count descending
   .map(([category, counts]) => {
-    const summary = inputData.categorySummaries[category] || 'No summary available';
-    // return `| ${category} | ${counts.total} | ${counts.Bug} | ${counts['Feature Request']} | ${counts.Question} | ${summary} |`;
     return `| ${category} | ${counts.total} | ${counts.Bug} | ${counts['Feature Request']} | ${counts.Question} |`;
   })
   .join('\n')}`;
@@ -534,7 +528,7 @@ ${Object.entries(stats.byCategory)
 
 ${summaryStatsTable}
 
-**Average Severity Score**: ${stats.averageSeverityScore.toFixed(1)}/10
+**Average Bug Severity Score**: ${averageBugSeverityScore.toFixed(1)}/10
 - 1-3: MINOR issues (cosmetic, low priority, minimal impact)
 - 4-7: MAJOR issues (significant but not blocking, moderate impact)
 - 8-10: CRITICAL issues (blocking, high priority, severe impact)
@@ -549,7 +543,7 @@ ${categoryBreakdownTable}
 `;
 
     const issueStatusDisplay = (status: IssueStatus) => {
-      if (status === 'open') return '🔴 Open';
+      if (status === 'open') return '🟠 Open';
       if (status === 'closed') return '🟢 Closed';
       if (status === 'waiting for author') return '⏳ Waiting for Author';
       if (status === 'needs reproduction') return '🔍 Needs Reproduction';
@@ -557,15 +551,49 @@ ${categoryBreakdownTable}
       return '—';
     };
 
-    const table =
-      `| Type | Severity | Score | Category | Summary | Thread Name | Issue Status | URL |\n` +
-      `|------|----------|-------|----------|---------|-------------|--------------|-----|\n` +
-      sorted
-        .map(
-          a =>
-            `| ${typeAbbrev[a.type]} | ${severityEmoji[a.severity]} | ${a.severityScore}/10 | ${a.category} | ${a.summary} | ${a.threadName} | ${issueStatusDisplay(a.issueStatus)} | [Link](${a.url}) |`,
-        )
-        .join('\n');
+    const generateBugTable = (items: typeof sorted) => {
+      if (items.length === 0) return '_No threads in this category._\n';
+      return (
+        `| Severity | Score | Category | Summary | Thread Name | Issue Status | URL |\n` +
+        `|----------|-------|----------|---------|-------------|--------------|-----|\n` +
+        items
+          .map(
+            a =>
+              `| ${severityEmoji[a.severity]} | ${a.severityScore}/10 | ${a.category} | ${a.summary} | ${a.threadName} | ${issueStatusDisplay(a.issueStatus)} | [Link](${a.url}) |`,
+          )
+          .join('\n')
+      );
+    };
+
+    const generateSimpleTable = (items: typeof sorted) => {
+      if (items.length === 0) return '_No threads in this category._\n';
+      return (
+        `| Category | Summary | Thread Name | Issue Status | URL |\n` +
+        `|----------|---------|-------------|--------------|-----|\n` +
+        items
+          .map(
+            a =>
+              `| ${a.category} | ${a.summary} | ${a.threadName} | ${issueStatusDisplay(a.issueStatus)} | [Link](${a.url}) |`,
+          )
+          .join('\n')
+      );
+    };
+
+    const bugs = sorted.filter(a => a.type === 'Bug');
+    const questions = sorted.filter(a => a.type === 'Question');
+    const featureRequests = sorted.filter(a => a.type === 'Feature Request');
+
+    const table = `### Bugs (${bugs.length})
+
+${generateBugTable(bugs)}
+
+### Questions (${questions.length})
+
+${generateSimpleTable(questions)}
+
+### Feature Requests (${featureRequests.length})
+
+${generateSimpleTable(featureRequests)}`;
 
     const markdownTable = header + table;
 

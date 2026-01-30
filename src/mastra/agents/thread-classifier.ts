@@ -24,47 +24,27 @@ export const threadClassifierAgent = new Agent({
       * Seeking guidance on using existing features
       * Asking about best practices or configuration
     
-    ## Severity Classification
-    
-    ### 🔴 CRITICAL
-    - **Bugs**: Data loss, security vulnerabilities, crashes, production blockers, major outages
-      * Multiple users reporting the same issue increases severity
-      * Issues preventing core functionality
-      * Mastra Cloud service outages
-    
-    - **Features**: Critical missing functionality blocking essential use cases
-      * Security-related features
-      * Core workflow blockers
-    
-    - **Questions**: Complex problems with no workarounds, blocking critical implementations
-      * Preventing users from using the product
-      * Security or data integrity concerns
-    
-    ### 🟡 MAJOR  
-    - **Bugs**: Performance degradation, partial failures, significant usability problems
-      * Affects user experience but has workarounds
-      * Recurring issues multiple users encounter
-    
-    - **Features**: Important capabilities that significantly improve UX
-      * Frequently requested enhancements
-      * Competitive feature gaps
-    
-    - **Questions**: Core functionality questions, complex integrations
-      * About important but not critical features
-      * Advanced use cases
-    
-    ### 🟢 MINOR
-    - **Bugs**: Visual glitches, typos, edge cases, documentation errors
-      * Low-impact issues
-      * Affects few users or rare scenarios
-    
-    - **Features**: Nice-to-have improvements, convenience features
-      * Polish and refinement
-      * Optional enhancements
-    
-    - **Questions**: Basic how-to questions, simple configuration
-      * Easily answered with documentation
-      * Beginner-level queries
+    ## Severity Classification (Bugs Only)
+
+    **For Feature Requests and Questions, always use severityScore: 0**
+
+    For Bugs, assign a severity score from 1-10:
+
+    ### 🔴 CRITICAL (8-10)
+    - Data loss, security vulnerabilities, crashes, production blockers, major outages
+    - Multiple users reporting the same issue increases severity
+    - Issues preventing core functionality
+    - Mastra Cloud service outages
+
+    ### 🟡 MAJOR (4-7)
+    - Performance degradation, partial failures, significant usability problems
+    - Affects user experience but has workarounds
+    - Recurring issues multiple users encounter
+
+    ### 🟢 MINOR (1-3)
+    - Visual glitches, typos, edge cases, documentation errors
+    - Low-impact issues
+    - Affects few users or rare scenarios
     
     ## Categories
     Match to the most relevant category based on keywords and context:
@@ -83,7 +63,8 @@ export const threadClassifierAgent = new Agent({
     4. Consider resolution status (resolved, ongoing, workaround provided)
     5. Classify based on final understanding, not just initial message
   `,
-//   model: 'openrouter/openai/gpt-5.1',
+  // model: 'openrouter/openai/gpt-5.2',
   model: 'openrouter/google/gemini-3-pro-preview',
-//   model: 'openrouter/anthropic/claude-opus-4.1',
+  // model: 'openrouter/moonshotai/kimi-k2.5'
+  // model: 'openrouter/anthropic/claude-opus-4.5',
 });
