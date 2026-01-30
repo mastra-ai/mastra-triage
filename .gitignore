@@ -6,3 +6,4 @@ dist
 .env
 *.db
 *.db-*
+forum-thread-analysis.md
