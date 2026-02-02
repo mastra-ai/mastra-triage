@@ -28,7 +28,8 @@ export const categories: AreaOfOwnership[] = [
     owners: ['trio-tnt'],
     category: 'open-source',
     keywords: ['Streaming', 'Stream', 'SSE', 'Server-Sent Events', 'Real-time', 'Workflow Streaming'],
-    assignWhen: 'Issue mentions streaming responses, SSE, or real-time data streaming',
+    assignWhen:
+      'Issue is specifically ABOUT streaming implementation, SSE handling, or real-time response behavior. NOT for issues that just use streaming.',
   },
   {
     name: 'CI / Tests',
@@ -76,7 +77,8 @@ export const categories: AreaOfOwnership[] = [
     owners: ['trio-tb'],
     category: 'open-source',
     keywords: ['Agent', 'Agents', 'AI Agent', 'LLM', 'OpenAI', 'Claude', 'Anthropic', 'Gemini', 'Bedrock', 'OpenRouter'],
-    assignWhen: 'Issue mentions agent functionality or AI model integration',
+    assignWhen:
+      'Issue is specifically ABOUT the Agent class API, agent configuration, model provider setup, or agent execution behavior. NOT for issues that just happen to use an agent.',
   },
   {
     name: 'Tools',
@@ -84,7 +86,8 @@ export const categories: AreaOfOwnership[] = [
     owners: ['trio-tb'],
     category: 'open-source',
     keywords: ['Tools', 'Tool', 'Function Calling', 'Tool Execution'],
-    assignWhen: 'Issue mentions agent tools, tool definitions, or function calling',
+    assignWhen:
+      'Issue is specifically ABOUT tool definitions, tool execution, or function calling mechanics. NOT for issues that just use tools as part of an agent.',
   },
   {
     name: 'Memory',
@@ -92,7 +95,8 @@ export const categories: AreaOfOwnership[] = [
     owners: ['trio-tb'],
     category: 'open-source',
     keywords: ['Memory', 'Conversation Memory', 'Chat History', 'Context Retention'],
-    assignWhen: 'Issue mentions memory functionality or conversation history',
+    assignWhen:
+      'Issue is specifically ABOUT memory configuration, chat history storage/retrieval, or context retention behavior. NOT for issues where memory is just enabled.',
   },
   {
     name: 'MCP',
@@ -116,7 +120,8 @@ export const categories: AreaOfOwnership[] = [
     owners: ['trio-tnt'],
     category: 'open-source',
     keywords: ['Workflow', 'Workflows', 'Steps', 'Suspend', 'Resume', 'Orchestration'],
-    assignWhen: 'Issue mentions workflow engine, steps, or workflow execution',
+    assignWhen:
+      'Issue is specifically ABOUT the workflow engine, step definitions, suspend/resume behavior, or orchestration logic. NOT for issues that just run inside a workflow.',
   },
   {
     name: 'Networks',
@@ -132,7 +137,8 @@ export const categories: AreaOfOwnership[] = [
     owners: ['trio-tnt'],
     category: 'open-source',
     keywords: ['Storage', 'Database', 'Databases', 'Persistence', 'LibSQL', 'PostgreSQL', 'Vector DB'],
-    assignWhen: 'Issue mentions data storage, databases, or persistence',
+    assignWhen:
+      'Issue is specifically ABOUT storage adapters, database configuration, or persistence layer behavior. NOT for issues that just use a database.',
   },
   {
     name: 'RAG',

@@ -130,7 +130,14 @@ ${content}
 - Select multiple labels if the issue spans multiple areas (e.g., a bug in the workflow engine might get both "area: workflows" and "bug")
 - Only include labels you are confident about (medium or high confidence)
 - Don't include labels that are only tangentially related
-- Only return labels from the list provided above`;
+- Only return labels from the list provided above
+
+**IMPORTANT - Avoid over-labeling:**
+- Do NOT label for a feature area just because the word appears in the text
+- Label for a feature area ONLY if the issue is specifically ABOUT that feature's implementation, API, or behavior
+- Example: "My agent's workflow fails" → label for workflows (the issue is about workflow behavior), NOT for agents (agent is just context)
+- Ask: "Is this issue reporting a problem with THIS feature, or just mentioning it?"
+- When in doubt, use fewer labels - accuracy over coverage`;
 
     try {
       const classificationAgent = mastra?.getAgent('classificationAgent');
