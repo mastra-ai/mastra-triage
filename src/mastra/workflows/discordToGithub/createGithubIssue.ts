@@ -173,6 +173,7 @@ const createDiscordPostStep = createStep({
       await thread.send(
         `📝 Created GitHub issue: <${issue.html_url}>\n\n` +
           `🔍 If you're experiencing an error, please provide a [minimal reproducible example](<https://github.com/mastra-ai/mastra/blob/main/CONTRIBUTING.md#minimal-reproduction>) whenever possible to help us resolve it quickly.\n\n` +
+          `💡 You can also ask your question in the <#1452669948718616760> channel to potentially get faster help.\n\n` +
           `🙏 Thank you for helping us improve Mastra!`,
       );
     }
