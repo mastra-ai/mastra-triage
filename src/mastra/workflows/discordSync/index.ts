@@ -362,7 +362,7 @@ export const discordSyncWorkflow = createWorkflow({
   .then(fetchDiscordLabeledIssuesStep)
   .map(async ({ inputData: { issues }, getInitData, mastra }) => {
     const logger = mastra?.getLogger();
-    const { owner, repo } = getInitData();
+    const { owner, repo } = getInitData<any>();
     
     // Filter to keep only issues with required status labels
     const requiredLabels = ['status: waiting for author', 'status: needs reproduction'];

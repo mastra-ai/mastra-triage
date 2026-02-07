@@ -2,6 +2,7 @@ import { Agent } from '@mastra/core/agent';
 import { categories } from '../constants';
 
 export const analysisAgent = new Agent({
+  id: 'analysis-agent',
   name: 'Discord Message Analysis Agent',
   instructions: `
     You are a specialized Discord analysis agent that analyzes and classifies messages from help forums.

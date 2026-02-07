@@ -61,7 +61,7 @@ const applyLabelsStep = createStep({
   execute: async ({ inputData, getInitData, mastra }) => {
     const logger = mastra?.getLogger();
     const octokit = getGithubClient();
-    const { owner, repo, issueNumber } = getInitData();
+    const { owner, repo, issueNumber } = getInitData<any>();
 
     // Get existing labels on the issue to avoid duplicates
     const existingIssue = await octokit.rest.issues.get({

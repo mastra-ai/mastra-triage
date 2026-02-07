@@ -1,6 +1,7 @@
 import { Agent } from '@mastra/core/agent';
 
 export const categorySummaryAgent = new Agent({
+  id: 'category-summary-agent',
   name: 'Category Summary Agent',
   instructions: `
     You are analyzing a collection of Discord forum threads within a specific category to generate concise summaries.

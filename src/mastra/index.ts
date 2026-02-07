@@ -13,15 +13,17 @@ import { classificationWorkflow } from './workflows/classification';
 import { discordAnalysisWorkflow } from './workflows/analysis';
 import { forumThreadAnalysisWorkflow } from './workflows/forum-thread-analysis';
 import { MastraJwtAuth } from '@mastra/auth';
+import { DefaultExporter, Observability } from '@mastra/observability';
 
 export const mastra = new Mastra({
   agents: { classificationAgent, effortImpactAgent, analysisAgent, threadClassifierAgent, categorySummaryAgent },
   storage: new LibSQLStore({
+    id: 'libsql-memory',
     // stores telemetry, evals, ... into memory storage, if it needs to persist, change to file:../mastra.db
     url: ':memory:',
   }),
   bundler: {
-    externals: ['discord.js', '@mastra/auth'],
+    externals: true,
   },
   workflows: {
     classificationWorkflow,
@@ -37,13 +39,18 @@ export const mastra = new Mastra({
     name: 'Mastra',
     level: process.env.MASTRA_DEV === 'true' ? 'debug' : 'info',
   }),
-  observability: {
-    default: {
-      enabled: true,
-    }
-  },
+  observability: new Observability({
+    configs: {
+      default: {
+        serviceName: 'mastra',
+        exporters: [
+          new DefaultExporter(), // Persists traces to storage for Mastra Studio
+        ],
+      },
+    },
+  }),
   server: {
-    experimental_auth:
+    auth:
       process.env.MASTRA_DEV === 'true'
         ? undefined
         : new MastraJwtAuth({

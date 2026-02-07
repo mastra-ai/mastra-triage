@@ -1,6 +1,7 @@
 import { Agent } from '@mastra/core/agent';
 
 export const classificationAgent = new Agent({
+  id: 'classification-agent',
   name: 'Classification Agent',
   instructions: `You are an expert at classifying technical questions and issues for the Mastra AI framework.
 
@@ -46,6 +47,7 @@ Select multiple labels if the issue spans multiple areas, but be conservative - 
 });
 
 export const effortImpactAgent = new Agent({
+  id: 'effort-impact-agent',
   name: 'Effort Impact Agent',
   instructions: `You are an expert at estimating the effort and impact of technical issues for the Mastra AI framework.
 

@@ -50,7 +50,7 @@ const processPostWorkflow = createWorkflow({
   .sleep(1000)
   .then(getGithubIssueStep)
   .map(async ({ getInitData }) => {
-    return getInitData() as z.infer<typeof postSchema>;
+    return getInitData<any>() as z.infer<typeof postSchema>;
   })
   .branch([
     [

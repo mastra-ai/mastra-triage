@@ -2,6 +2,7 @@ import { Agent } from '@mastra/core/agent';
 import { categories } from '../constants';
 
 export const threadClassifierAgent = new Agent({
+  id: 'thread-classifier-agent',
   name: 'Thread Classifier Agent',
   instructions: `
     You are analyzing complete Discord forum thread conversations to classify them accurately.

@@ -220,7 +220,7 @@ const processIssueWorkflow = createWorkflow({
 })
   .then(checkCommentAuthorStep)
   .map(async ({ getStepResult, getInitData }) => {
-    const { number } = getInitData();
+    const { number } = getInitData<any>();
     const commentResult = getStepResult(checkCommentAuthorStep);
 
     return {
@@ -248,7 +248,7 @@ export const githubIssueManagerWorkflow = createWorkflow({
 })
   .then(fetchWaitingIssuesStep)
   .map(async ({ inputData: { issues }, getInitData }) => {
-    const { owner, repo } = getInitData();
+    const { owner, repo } = getInitData<any>();
     return issues.map(issue => ({ ...issue, owner, repo }));
   })
   .foreach(processIssueWorkflow, { concurrency: 10 })
