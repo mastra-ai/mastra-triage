@@ -19,7 +19,7 @@ export const fetchForumPosts = createTool({
   description: 'Fetch forum posts from a Discord channel',
   inputSchema,
   outputSchema,
-  execute: async ({ context: inputData, mastra }) => {
+  execute: async (inputData, { mastra }) => {
     const logger = mastra?.getLogger();
     const discordClient = await getDiscordClient(logger);
 
