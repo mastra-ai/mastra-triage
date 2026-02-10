@@ -146,17 +146,19 @@ ${content}
       }
 
       const result = await classificationAgent.generate(prompt, {
-        output: z.object({
-          labels: z
-            .array(
-              z.object({
-                label: z.string().describe('The exact label name from the list'),
-                confidence: z.enum(['high', 'medium', 'low']).describe('Classification confidence'),
-              }),
-            )
-            .describe('Array of applicable labels with confidence levels'),
-          reasoning: z.string().describe('Brief explanation of why these labels were chosen'),
-        }),
+        structuredOutput: {
+          schema: z.object({
+            labels: z
+              .array(
+                z.object({
+                  label: z.string().describe('The exact label name from the list'),
+                  confidence: z.enum(['high', 'medium', 'low']).describe('Classification confidence'),
+                }),
+              )
+              .describe('Array of applicable labels with confidence levels'),
+            reasoning: z.string().describe('Brief explanation of why these labels were chosen'),
+          }),
+        },
       });
 
       const classification = result.object;
@@ -322,18 +324,20 @@ Provide brief reasoning for each estimate.`;
       }
 
       const result = await effortImpactAgent.generate(prompt, {
-        output: z.object({
-          effortLabel: z
-            .string()
-            .nullable()
-            .describe('The exact effort label name from the list, or null if no effort labels available'),
-          impactLabel: z
-            .string()
-            .nullable()
-            .describe('The exact impact label name from the list, or null if no impact labels available'),
-          effortReasoning: z.string().describe('Brief explanation for the effort estimate'),
-          impactReasoning: z.string().describe('Brief explanation for the impact estimate'),
-        }),
+        structuredOutput: {
+          schema: z.object({
+            effortLabel: z
+              .string()
+              .nullable()
+              .describe('The exact effort label name from the list, or null if no effort labels available'),
+            impactLabel: z
+              .string()
+              .nullable()
+              .describe('The exact impact label name from the list, or null if no impact labels available'),
+            effortReasoning: z.string().describe('Brief explanation for the effort estimate'),
+            impactReasoning: z.string().describe('Brief explanation for the impact estimate'),
+          }),
+        },
       });
 
       const estimation = result.object;
