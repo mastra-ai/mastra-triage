@@ -22,6 +22,7 @@ const outputSchema = z.object({
   issueNumber: z.number(),
   result: z.object({
     labels: z.array(z.string()),
+    assignees: z.array(z.string()),
   }),
 });
 
@@ -128,6 +129,7 @@ const applyLabelsStep = createStep({
       issueNumber,
       result: {
         labels,
+        assignees: [],
       },
     };
   },
