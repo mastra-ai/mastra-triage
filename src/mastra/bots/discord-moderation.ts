@@ -82,11 +82,6 @@ function buildModeratorComponents(
         .setStyle(ButtonStyle.Secondary)
         .setLabel('Reply in Thread')
         .setDisabled(disabled),
-    );
-  }
-
-  if (decisionAction !== 'delete') {
-    actionButtons.push(
       new ButtonBuilder()
         .setCustomId(`${MOD_ACTION_DELETE}:${channelId}:${messageId}`)
         .setStyle(ButtonStyle.Danger)
@@ -116,7 +111,7 @@ async function applyWarnInThread(
   safeReply: string,
   action: 'warn' | 'redirect',
   logger?: ReturnType<Mastra['getLogger']>,
-): Promise<boolean> {
+): Promise<void> {
   const warningMessage = buildUserDm(safeReply, message.content);
   const threadPrefix = action === 'redirect' ? 'help-guidance' : 'warning';
 
@@ -125,7 +120,7 @@ async function applyWarnInThread(
       logger?.error('Failed to send warning in thread', error);
       return null;
     });
-    return true;
+    return;
   }
 
   await message
@@ -137,8 +132,6 @@ async function applyWarnInThread(
       logger?.error('Failed to create warning thread', error);
       return null;
     });
-
-  return true;
 }
 
 async function logModerationDecision(
@@ -308,7 +301,6 @@ async function handleModeratorAction(interaction: ButtonInteraction, logger?: Re
     await sourceMessage.author.send(deleteMessage).catch(() => null);
     await interaction.editReply('Deleted message and notified user via DM.');
   }
-
 
   const messageUrl = sourceMessage.url || `https://discord.com/channels/${interaction.guildId}/${channelId}/${messageId}`;
   const decisionAction = getDecisionActionFromLogMessage(interaction);
