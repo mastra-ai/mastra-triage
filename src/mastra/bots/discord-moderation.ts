@@ -35,8 +35,14 @@ function shouldSkipMessage(message: Message): boolean {
   return false;
 }
 
+function quoteMessageContent(content: string, maxLength = 1500): string {
+  const normalized = content.replace(/\r\n/g, '\n').trim();
+  const clipped = normalized.length > maxLength ? `${normalized.slice(0, maxLength)}…` : normalized;
+  return `>>> ${clipped || '[no text content]'}`;
+}
+
 function buildUserDm(baseMessage: string, originalMessage: string): string {
-  return `${baseMessage}\n\nYour message:\n> ${originalMessage}`;
+  return `${baseMessage}\n\nYour message:\n${quoteMessageContent(originalMessage)}`;
 }
 
 async function logModerationDecision(
@@ -73,7 +79,8 @@ async function logModerationDecision(
     `User: <@${message.author.id}>`,
     `Channel: <#${message.channelId}>`,
     `Message: ${message.url}`,
-    `Content: ${message.content}`,
+    'Content:',
+    quoteMessageContent(message.content),
   ].join('\n');
 
   await logChannel.send(content).catch(error => {
@@ -82,7 +89,11 @@ async function logModerationDecision(
   });
 }
 
-async function applyDecision(message: Message, decision: z.infer<typeof moderationDecisionSchema>): Promise<void> {
+async function applyDecision(
+  message: Message,
+  decision: z.infer<typeof moderationDecisionSchema>,
+  logger?: ReturnType<Mastra['getLogger']>,
+): Promise<void> {
   if (decision.action === 'allow') {
     return;
   }
@@ -97,7 +108,23 @@ async function applyDecision(message: Message, decision: z.infer<typeof moderati
       message.content,
     );
 
-    await message.author.send(warningMessage).catch(() => null);
+    if (message.channel.isThread() && message.channel.isSendable()) {
+      await message.channel.send(`<@${message.author.id}>\n${warningMessage}`).catch(error => {
+        logger?.error('Failed to send warning in thread', error);
+        return null;
+      });
+      return;
+    }
+
+    await message
+      .startThread({
+        name: `warning-${message.author.username}`.slice(0, 100),
+      })
+      .then(thread => thread.send(`<@${message.author.id}>\n${warningMessage}`))
+      .catch(error => {
+        logger?.error('Failed to create warning thread', error);
+        return null;
+      });
     return;
   }
 
@@ -154,7 +181,7 @@ export async function initializeDiscordModerationBot(mastra: Mastra): Promise<vo
       });
 
       const decision = result.object;
-      await applyDecision(message, decision);
+      await applyDecision(message, decision, logger);
       await logModerationDecision(message, decision, logger);
     } catch (error) {
       logger?.error('Failed to moderate Discord message', error);
