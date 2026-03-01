@@ -35,6 +35,10 @@ function shouldSkipMessage(message: Message): boolean {
   return false;
 }
 
+function buildUserDm(baseMessage: string, originalMessage: string): string {
+  return `${baseMessage}\n\nYour message:\n> ${originalMessage}`;
+}
+
 async function logModerationDecision(
   message: Message,
   decision: z.infer<typeof moderationDecisionSchema>,
@@ -69,6 +73,7 @@ async function logModerationDecision(
     `User: <@${message.author.id}>`,
     `Channel: <#${message.channelId}>`,
     `Message: ${message.url}`,
+    `Content: ${message.content}`,
   ].join('\n');
 
   await logChannel.send(content).catch(error => {
@@ -87,17 +92,24 @@ async function applyDecision(message: Message, decision: z.infer<typeof moderati
   }
 
   if (decision.action === 'warn') {
-    await message.author
-      .send(decision.safeReply || 'Please keep discussion respectful and follow the server rules.')
-      .catch(() => null);
+    const warningMessage = buildUserDm(
+      decision.safeReply || 'Please keep discussion respectful and follow the server rules.',
+      message.content,
+    );
+
+    await message.author.send(warningMessage).catch(() => null);
     return;
   }
 
   if (decision.action === 'delete') {
     await message.delete().catch(() => null);
-    await message.author
-      .send(decision.safeReply || 'Your message was removed because it violates server rules.')
-      .catch(() => null);
+
+    const deleteMessage = buildUserDm(
+      decision.safeReply || 'Your message was removed because it violates server rules.',
+      message.content,
+    );
+
+    await message.author.send(deleteMessage).catch(() => null);
     return;
   }
 
