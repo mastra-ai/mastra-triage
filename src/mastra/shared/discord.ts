@@ -19,7 +19,7 @@ async function createDiscordClient(logger?: IMastraLogger) {
   }
 
   if (!discordClient.isReady()) {
-    await new Promise(resolve => discordClient.once('ready', resolve));
+    await new Promise(resolve => discordClient.once('clientReady', resolve));
   }
 
   return discordClient;

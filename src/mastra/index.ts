@@ -5,6 +5,7 @@ import { classificationAgent, effortImpactAgent } from './agents/classification'
 import { analysisAgent } from './agents/analysis';
 import { threadClassifierAgent } from './agents/thread-classifier';
 import { categorySummaryAgent } from './agents/category-summary';
+import { moderationAgent } from './agents/moderation';
 import { discordToGithubWorkflow } from './workflows/discordToGithub';
 import { triageWorkflow } from './workflows/triage';
 import { githubIssueManagerWorkflow } from './workflows/githubIssueManager';
@@ -14,9 +15,17 @@ import { discordAnalysisWorkflow } from './workflows/analysis';
 import { forumThreadAnalysisWorkflow } from './workflows/forum-thread-analysis';
 import { MastraJwtAuth } from '@mastra/auth';
 import { DefaultExporter, Observability } from '@mastra/observability';
+import { initializeDiscordModerationBot } from './bots/discord-moderation';
 
 export const mastra = new Mastra({
-  agents: { classificationAgent, effortImpactAgent, analysisAgent, threadClassifierAgent, categorySummaryAgent },
+  agents: {
+    classificationAgent,
+    effortImpactAgent,
+    analysisAgent,
+    threadClassifierAgent,
+    categorySummaryAgent,
+    moderationAgent,
+  },
   storage: new LibSQLStore({
     id: 'libsql-memory',
     // stores telemetry, evals, ... into memory storage, if it needs to persist, change to file:../mastra.db
@@ -58,3 +67,5 @@ export const mastra = new Mastra({
           }),
   },
 });
+
+void initializeDiscordModerationBot(mastra);

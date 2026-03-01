@@ -276,7 +276,7 @@ export async function fetchForumPosts({
   try {
     // Wait for the client to be ready
     if (!discordClient.isReady()) {
-      await new Promise(resolve => discordClient.once('ready', resolve));
+      await new Promise(resolve => discordClient.once('clientReady', resolve));
     }
 
     // Get the forum channel

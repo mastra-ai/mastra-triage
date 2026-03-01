@@ -25,7 +25,7 @@ export async function getDiscordClient(): Promise<Client> {
 
   console.log('Logging in to Discord...');
   return new Promise((resolve, reject) => {
-    client!.once('ready', () => {
+    client!.once('clientReady', () => {
       console.log(`Logged in as ${client!.user?.tag}`);
       resolve(client!);
     });
