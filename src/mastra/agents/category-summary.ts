@@ -39,7 +39,7 @@ export const categorySummaryAgent = new Agent({
     
     Provide a summary object with a single 'summary' field containing your 2-3 sentence analysis.
   `,
-  model: 'openrouter/google/gemini-3-pro-preview',
+  model: 'openrouter/google/gemini-3.1-pro-preview',
 });
 
 

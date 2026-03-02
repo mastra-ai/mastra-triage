@@ -7,7 +7,7 @@ export interface AreaOfOwnership {
   name: string;
   squad: string;
   owners: string[];
-  category: 'open-source' | 'cloud';
+  category: 'open-source' | 'cloud' | 'mastracode';
   keywords: string[];
   assignWhen: string;
 }
@@ -277,6 +277,14 @@ export const categories: AreaOfOwnership[] = [
     category: 'cloud',
     keywords: ['Infrastructure', 'AWS', 'Kubernetes', 'DevOps', 'Scaling', 'Cloud Infra'],
     assignWhen: 'Issue mentions cloud infrastructure, AWS, Kubernetes, or DevOps',
+  },
+  {
+    name: 'Mastra Code',
+    squad: 'all',
+    owners: ['trio-tron', 'trio-wp', 'trio-tb', 'trio-tracery'],
+    category: 'mastracode',
+    keywords: ['Mastra Code', 'mastracode'],
+    assignWhen: 'Issue mentions Mastra Code or mastracode',
   },
 ];
 

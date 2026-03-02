@@ -65,7 +65,7 @@ export const threadClassifierAgent = new Agent({
     5. Classify based on final understanding, not just initial message
   `,
   // model: 'openrouter/openai/gpt-5.2',
-  model: 'openrouter/google/gemini-3-pro-preview',
+  model: 'openrouter/google/gemini-3.1-pro-preview',
   // model: 'openrouter/moonshotai/kimi-k2.5'
   // model: 'openrouter/anthropic/claude-opus-4.5',
 });
