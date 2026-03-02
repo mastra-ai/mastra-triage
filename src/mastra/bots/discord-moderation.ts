@@ -214,12 +214,13 @@ async function applyDecision(
     return;
   }
 
-  if (decision.action === 'warn' || decision.action === 'redirect') {
+  // if (decision.action === 'warn' || decision.action === 'redirect') 
+    if (decision.action === 'warn') {
     const warnMessage =
-      decision.safeReply ||
-      (decision.action === 'redirect'
-        ? "You'll likely get faster help in <#1452669948718616760>. If AI can't solve it, create a thread in <#1349006916902191125>."
-        : 'Please keep discussion respectful and follow the server rules.');
+      decision.safeReply || 'Please keep discussion respectful and follow the server rules.';
+      // (decision.action === 'redirect'
+      //   ? "You'll likely get faster help in <#1452669948718616760>. If AI can't solve it, create a thread in <#1349006916902191125>."
+      //   : 'Please keep discussion respectful and follow the server rules.');
     await applyWarnInThread(message, warnMessage, decision.action, logger);
     return;
   }
