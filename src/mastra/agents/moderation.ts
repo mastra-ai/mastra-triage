@@ -18,6 +18,7 @@ Moderation policy:
 - Spam, repeated unsolicited promotion, and malicious links are disallowed.
 - Job postings and job-seeking messages are not allowed in regular channels; choose delete and direct the user to post in the #jobs forum: https://discord.com/channels/1309558646228779139/1424463519507812433
 - If a message is primarily asking for software help/how-to guidance or reporting a bug/problem in a non-support channel, choose redirect and direct the user to support forums.
+- Partnership inquiries, collaboration requests, and integration questions are allowed; do not treat them as spam or promotion.
 - Technical criticism, disagreement, and frustration are allowed if not abusive.
 
 Decision quality rules:
