@@ -206,7 +206,9 @@ async function applyDecision(
   decision: z.infer<typeof moderationDecisionSchema>,
   logger?: ReturnType<Mastra['getLogger']>,
 ): Promise<void> {
-  if (decision.action === 'allow') {
+  // Currently only acting on job-posting moderation (delete action).
+  // To re-enable full moderation, uncomment the warn/redirect/escalate blocks below.
+  if (decision.action !== 'delete') {
     return;
   }
 
@@ -214,16 +216,15 @@ async function applyDecision(
     return;
   }
 
-  // if (decision.action === 'warn' || decision.action === 'redirect') 
-    if (decision.action === 'warn') {
-    const warnMessage =
-      decision.safeReply || 'Please keep discussion respectful and follow the server rules.';
-      // (decision.action === 'redirect'
-      //   ? "You'll likely get faster help in <#1452669948718616760>. If AI can't solve it, create a thread in <#1349006916902191125>."
-      //   : 'Please keep discussion respectful and follow the server rules.');
-    await applyWarnInThread(message, warnMessage, decision.action, logger);
-    return;
-  }
+  // if (decision.action === 'warn' || decision.action === 'redirect') {
+  //   const warnMessage =
+  //     decision.safeReply || 'Please keep discussion respectful and follow the server rules.';
+  //     // (decision.action === 'redirect'
+  //     //   ? "You'll likely get faster help in <#1452669948718616760>. If AI can't solve it, create a thread in <#1349006916902191125>."
+  //     //   : 'Please keep discussion respectful and follow the server rules.');
+  //   await applyWarnInThread(message, warnMessage, decision.action, logger);
+  //   return;
+  // }
 
   if (decision.action === 'delete') {
     await message.delete().catch(() => null);
@@ -237,9 +238,9 @@ async function applyDecision(
     return;
   }
 
-  if (decision.action === 'escalate') {
-    return;
-  }
+  // if (decision.action === 'escalate') {
+  //   return;
+  // }
 }
 
 function parseModAction(customId: string): { action: string; channelId: string; messageId: string } | null {
