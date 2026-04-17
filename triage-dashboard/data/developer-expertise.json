@@ -1,0 +1,304 @@
+{
+    "description": "Mastra developer expertise map. Maps GitHub labels to contributors ranked by commit count in the corresponding codebase area. Generated from git history as of 2026-04-13.",
+    "tags": {
+      "Agents": {
+        "lead": "Abhi Aiyer",
+        "description": "AI agent primitives: agent class, tool calling, model interaction",
+        "contributors": [
+          { "name": "Abhi Aiyer", "commits": 112 },
+          { "name": "Tyler Barnes", "commits": 96 },
+          { "name": "NikAiyer", "commits": 81 },
+          { "name": "Daniel Lew", "commits": 77 },
+          { "name": "Ward Peeters", "commits": 56 },
+          { "name": "Caleb Barnes", "commits": 40 },
+          { "name": "Ehindero Israel", "commits": 38 }
+        ]
+      },
+      "Workflows": {
+        "lead": "dayo",
+        "description": "Step-based workflow execution engine with suspend/resume",
+        "contributors": [
+          { "name": "dayo", "commits": 280 },
+          { "name": "Taofeeq Oluderu", "commits": 85 },
+          { "name": "Tony Kovanen", "commits": 78 },
+          { "name": "Abhi Aiyer", "commits": 61 },
+          { "name": "Ward Peeters", "commits": 45 },
+          { "name": "NikAiyer", "commits": 31 },
+          { "name": "Eric Pinzur", "commits": 29 },
+          { "name": "Ehindero Israel", "commits": 25 }
+        ]
+      },
+      "Memory": {
+        "lead": "Tyler Barnes",
+        "description": "Thread-based persistence, semantic recall, working memory",
+        "contributors": [
+          { "name": "Tyler Barnes", "commits": 129 },
+          { "name": "NikAiyer", "commits": 56 },
+          { "name": "Abhi Aiyer", "commits": 56 },
+          { "name": "Ward Peeters", "commits": 55 },
+          { "name": "Daniel Lew", "commits": 27 },
+          { "name": "Taofeeq Oluderu", "commits": 19 }
+        ]
+      },
+      "RAG": {
+        "lead": "NikAiyer",
+        "description": "Retrieval-augmented generation: embeddings, chunking, vector search",
+        "contributors": [
+          { "name": "NikAiyer", "commits": 63 },
+          { "name": "Abhi Aiyer", "commits": 52 },
+          { "name": "Ward Peeters", "commits": 38 },
+          { "name": "Joshua Folorunsho", "commits": 23 },
+          { "name": "Ehindero Israel", "commits": 13 }
+        ]
+      },
+      "Tools": {
+        "lead": "Abhi Aiyer",
+        "description": "Dynamic tool composition for agent tool calling",
+        "contributors": [
+          { "name": "Abhi Aiyer", "commits": 34 },
+          { "name": "Ward Peeters", "commits": 34 },
+          { "name": "Daniel Lew", "commits": 29 },
+          { "name": "Eric Pinzur", "commits": 21 },
+          { "name": "Ehindero Israel", "commits": 15 },
+          { "name": "NikAiyer", "commits": 13 },
+          { "name": "Tyler Barnes", "commits": 12 }
+        ]
+      },
+      "Evals": {
+        "lead": "Ward Peeters",
+        "description": "Evaluation framework for agent and workflow quality",
+        "contributors": [
+          { "name": "Ward Peeters", "commits": 47 },
+          { "name": "NikAiyer", "commits": 26 },
+          { "name": "Abhi Aiyer", "commits": 11 },
+          { "name": "YujohnNattrass", "commits": 11 },
+          { "name": "Tyler Barnes", "commits": 7 },
+          { "name": "dayo", "commits": 6 }
+        ]
+      },
+      "Agent Network": {
+        "lead": "Abhi Aiyer",
+        "description": "Multi-agent networking and coordination",
+        "contributors": [
+          { "name": "Abhi Aiyer", "commits": 46 },
+          { "name": "NikAiyer", "commits": 30 },
+          { "name": "Tyler Barnes", "commits": 22 },
+          { "name": "Daniel Lew", "commits": 15 },
+          { "name": "Ward Peeters", "commits": 12 }
+        ]
+      },
+      "CLI": {
+        "lead": "Kenny",
+        "description": "Mastra CLI commands: build, dev, start, init",
+        "contributors": [
+          { "name": "Kenny", "commits": 252 },
+          { "name": "Ehindero Israel", "commits": 187 },
+          { "name": "Abhi Aiyer", "commits": 128 },
+          { "name": "Ward Peeters", "commits": 89 },
+          { "name": "Shane Thomas", "commits": 87 },
+          { "name": "Taofeeq Oluderu", "commits": 73 },
+          { "name": "Sam Bhagwat", "commits": 64 }
+        ]
+      },
+      "UI / Dev Playground": {
+        "lead": "Marvin Frachet",
+        "description": "Mastra Studio / Dev Playground UI (React)",
+        "contributors": [
+          { "name": "Marvin Frachet", "commits": 279 },
+          { "name": "Taofeeq Oluderu", "commits": 95 },
+          { "name": "Greg Lobinski", "commits": 87 },
+          { "name": "Daniel Lew", "commits": 41 },
+          { "name": "NikAiyer", "commits": 35 },
+          { "name": "Tyler Barnes", "commits": 32 },
+          { "name": "Ward Peeters", "commits": 32 }
+        ]
+      },
+      "Agent Editor": {
+        "lead": "Daniel Lew",
+        "description": "Visual agent editor feature",
+        "contributors": [
+          { "name": "Daniel Lew", "commits": 19 },
+          { "name": "Marvin Frachet", "commits": 3 },
+          { "name": "Ward Peeters", "commits": 3 },
+          { "name": "Tyler Barnes", "commits": 2 }
+        ]
+      },
+      "Getting Started": {
+        "lead": "Ward Peeters",
+        "description": "create-mastra scaffolding and onboarding",
+        "contributors": [
+          { "name": "Ward Peeters", "commits": 23 },
+          { "name": "Ehindero Israel", "commits": 18 },
+          { "name": "Lennart", "commits": 11 },
+          { "name": "Tyler Barnes", "commits": 4 }
+        ]
+      },
+      "mastracode": {
+        "lead": "Tyler Barnes",
+        "description": "AI coding agent tooling and commands",
+        "contributors": [
+          { "name": "Tyler Barnes", "commits": 60 },
+          { "name": "Abhi Aiyer", "commits": 24 },
+          { "name": "NikAiyer", "commits": 14 },
+          { "name": "Daniel Lew", "commits": 7 },
+          { "name": "Caleb Barnes", "commits": 6 },
+          { "name": "Ward Peeters", "commits": 6 }
+        ]
+      },
+      "Deployment": {
+        "lead": "Ward Peeters",
+        "description": "Deployer package and deployment adapters (Vercel, Cloudflare, etc.)",
+        "contributors": [
+          { "name": "Ward Peeters", "commits": 192 },
+          { "name": "Ehindero Israel", "commits": 85 },
+          { "name": "Abhi Aiyer", "commits": 73 },
+          { "name": "NikAiyer", "commits": 48 },
+          { "name": "Lennart", "commits": 46 },
+          { "name": "Taofeeq Oluderu", "commits": 29 },
+          { "name": "Ryan Hansen", "commits": 23 }
+        ]
+      },
+      "Storage": {
+        "lead": "NikAiyer",
+        "description": "Pluggable storage backends (Postgres, LibSQL, etc.) and vector stores",
+        "contributors": [
+          { "name": "NikAiyer", "commits": 95 },
+          { "name": "Tyler Barnes", "commits": 53 },
+          { "name": "Ward Peeters", "commits": 45 },
+          { "name": "Abhi Aiyer", "commits": 44 },
+          { "name": "Daniel Lew", "commits": 40 },
+          { "name": "YujohnNattrass", "commits": 28 },
+          { "name": "Eric Pinzur", "commits": 19 }
+        ]
+      },
+      "Observability (AI Telemetry)": {
+        "lead": "Eric Pinzur",
+        "description": "OpenTelemetry traces, metrics, logs for AI operations",
+        "contributors": [
+          { "name": "Eric Pinzur", "commits": 77 },
+          { "name": "Ward Peeters", "commits": 15 },
+          { "name": "Roamin", "commits": 12 },
+          { "name": "Lennart", "commits": 11 },
+          { "name": "Anurag Ojha", "commits": 10 }
+        ]
+      },
+      "Logging": {
+        "lead": "Ward Peeters",
+        "description": "Logger primitives and transport implementations",
+        "contributors": [
+          { "name": "Ward Peeters", "commits": 31 },
+          { "name": "Abhi Aiyer", "commits": 8 },
+          { "name": "Tyler Barnes", "commits": 8 },
+          { "name": "Ehindero Israel", "commits": 7 }
+        ]
+      },
+      "Authentication": {
+        "lead": "Ryan Hansen",
+        "description": "Auth middleware and session management",
+        "contributors": [
+          { "name": "Ryan Hansen", "commits": 13 },
+          { "name": "Ward Peeters", "commits": 7 },
+          { "name": "Lennart", "commits": 6 },
+          { "name": "Abhi Aiyer", "commits": 5 }
+        ]
+      },
+      "Mastra Server": {
+        "lead": "NikAiyer",
+        "description": "Mastra server package, route handlers, API surface",
+        "contributors": [
+          { "name": "NikAiyer", "commits": 54 },
+          { "name": "Ward Peeters", "commits": 54 },
+          { "name": "Daniel Lew", "commits": 48 },
+          { "name": "Abhi Aiyer", "commits": 46 },
+          { "name": "Taofeeq Oluderu", "commits": 41 },
+          { "name": "Tyler Barnes", "commits": 29 },
+          { "name": "Ehindero Israel", "commits": 26 },
+          { "name": "Roamin", "commits": 21 }
+        ]
+      },
+      "MCP": {
+        "lead": "Ward Peeters",
+        "description": "Model Context Protocol client/server implementation",
+        "contributors": [
+          { "name": "Ward Peeters", "commits": 47 },
+          { "name": "Daniel Lew", "commits": 32 },
+          { "name": "Abhi Aiyer", "commits": 20 },
+          { "name": "Tyler Barnes", "commits": 19 },
+          { "name": "NikAiyer", "commits": 17 },
+          { "name": "Grayson Hicks", "commits": 10 }
+        ]
+      },
+      "Client SDK - JS": {
+        "lead": "Ehindero Israel",
+        "description": "JavaScript client SDK for consuming Mastra APIs",
+        "contributors": [
+          { "name": "Ehindero Israel", "commits": 71 },
+          { "name": "Ward Peeters", "commits": 57 },
+          { "name": "Taofeeq Oluderu", "commits": 48 },
+          { "name": "Marvin Frachet", "commits": 46 },
+          { "name": "Abhi Aiyer", "commits": 40 },
+          { "name": "Daniel Lew", "commits": 38 }
+        ]
+      },
+      "Voice": {
+        "lead": "Ward Peeters",
+        "description": "Voice primitives and provider integrations (TTS/STT)",
+        "contributors": [
+          { "name": "Ward Peeters", "commits": 27 },
+          { "name": "YujohnNattrass", "commits": 17 },
+          { "name": "Abhi Aiyer", "commits": 11 },
+          { "name": "Ryan Hansen", "commits": 9 },
+          { "name": "Tyler Barnes", "commits": 7 }
+        ]
+      },
+      "Documentation": {
+        "lead": "Sam Bhagwat",
+        "description": "Docs site, guides, API reference, and tutorials",
+        "contributors": [
+          { "name": "Sam Bhagwat", "commits": 238 },
+          { "name": "Kenny", "commits": 196 },
+          { "name": "NikAiyer", "commits": 175 },
+          { "name": "Paul Scanlon", "commits": 150 },
+          { "name": "Abhi Aiyer", "commits": 143 },
+          { "name": "Tyler Barnes", "commits": 133 },
+          { "name": "Lennart", "commits": 127 },
+          { "name": "Ehindero Israel", "commits": 122 },
+          { "name": "Joshua Folorunsho", "commits": 88 },
+          { "name": "Daniel Lew", "commits": 77 },
+          { "name": "dayo", "commits": 73 },
+          { "name": "Alex Booker", "commits": 64 },
+          { "name": "Kehinde", "commits": 62 }
+        ]
+      }
+    },
+    "developers": {
+      "Abhi Aiyer": { "role": "Core Architect / Tech Lead", "top_tags": ["Agents", "Tools", "Workflows", "CLI", "Agent Network"] },
+      "dayo": { "role": "Workflows Architect", "top_tags": ["Workflows", "Documentation"] },
+      "Kenny": { "role": "CLI & Docs Lead", "top_tags": ["CLI", "Documentation"] },
+      "Ehindero Israel": { "role": "Full-Stack Platform Engineer", "top_tags": ["CLI", "Client SDK - JS", "Deployment", "Agents"] },
+      "Ward Peeters": { "role": "Infrastructure & Platform Generalist", "top_tags": ["Deployment", "MCP", "Evals", "Logging", "Voice", "Getting Started", "E2E Tests"] },
+      "NikAiyer": { "role": "Memory / RAG / Storage Specialist", "top_tags": ["RAG", "Storage", "Memory", "Mastra Server"] },
+      "Tyler Barnes": { "role": "Memory & Agent Systems Lead", "top_tags": ["Memory", "Agents", "mastracode", "Storage"] },
+      "Marvin Frachet": { "role": "Playground / Studio Lead", "top_tags": ["UI / Dev Playground", "Client SDK - JS"] },
+      "Daniel Lew": { "role": "Core Systems & Editor Engineer", "top_tags": ["Agent Editor", "Mastra Server", "MCP", "Tools"] },
+      "Taofeeq Oluderu": { "role": "Workflows, CLI & Playground Engineer", "top_tags": ["Workflows", "UI / Dev Playground", "CLI", "Client SDK - JS"] },
+      "Tony Kovanen": { "role": "Core & Workflows Engineer", "top_tags": ["Workflows", "Storage"] },
+      "Eric Pinzur": { "role": "Observability & Telemetry Specialist", "top_tags": ["Observability (AI Telemetry)", "Workflows", "Tools", "Storage"] },
+      "Sam Bhagwat": { "role": "Docs & Content Strategist", "top_tags": ["Documentation", "CLI"] },
+      "Shane Thomas": { "role": "CLI & Docs Contributor", "top_tags": ["CLI", "Documentation"] },
+      "Lennart": { "role": "DevOps / Deployment & Testing", "top_tags": ["Deployment", "Documentation", "Getting Started", "Authentication"] },
+      "Caleb Barnes": { "role": "Core Engineer", "top_tags": ["Agents", "mastracode", "Workflows"] },
+      "Grayson Hicks": { "role": "Generalist (Rising Contributor)", "top_tags": ["MCP", "UI / Dev Playground", "Mastra Server", "Documentation"] },
+      "Roamin": { "role": "Core & Server Contributor", "top_tags": ["Mastra Server", "Observability (AI Telemetry)", "Tools"] },
+      "YujohnNattrass": { "role": "Stores, Voice & Broad Contributor", "top_tags": ["Storage", "Voice", "Evals", "Documentation"] },
+      "Joshua Folorunsho": { "role": "Core & Docs Contributor", "top_tags": ["Documentation", "RAG"] },
+      "Ryan Hansen": { "role": "Auth & Voice Specialist", "top_tags": ["Authentication", "Voice", "Deployment"] },
+      "Paul Scanlon": { "role": "Docs Specialist", "top_tags": ["Documentation"] },
+      "Greg Lobinski": { "role": "Playground UI Engineer", "top_tags": ["UI / Dev Playground"] },
+      "Anurag Ojha": { "role": "Rising Contributor", "top_tags": ["Observability (AI Telemetry)", "Documentation", "MCP"] },
+      "Alex Booker": { "role": "Docs Contributor", "top_tags": ["Documentation"] },
+      "Kehinde": { "role": "Docs Contributor", "top_tags": ["Documentation"] },
+      "Allie Howe": { "role": "Testing & Agent Builder", "top_tags": ["Getting Started"] }
+    }
+  }
+  
