@@ -1,0 +1,32 @@
+{
+  "name": "mastra-oss-triage",
+  "version": "1.0.0",
+  "description": "Triage tool for Mastra open-source GitHub issues and pull requests",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "fetch": "tsx src/fetch.ts",
+    "analyze": "tsx src/analyze.ts",
+    "triage": "tsx src/triage.ts",
+    "fetch-and-analyze": "tsx src/fetch.ts && tsx src/analyze.ts && tsx src/triage.ts",
+    "dashboard": "cd dashboard && npm run dev",
+    "setup": "npm install && cd dashboard && npm install"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.0",
+    "openai": "^4.80.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}

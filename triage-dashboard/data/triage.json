@@ -1,0 +1,6392 @@
+{
+  "generatedAt": "2026-04-16T14:39:46.512Z",
+  "assignments": [
+    {
+      "itemNumber": 15438,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15436,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows"
+          ],
+          "score": 173
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 15432,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15431,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15426,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15421,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 112
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "Agents"
+      ]
+    },
+    {
+      "itemNumber": 15414,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 146
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 108
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 15409,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 15398,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Deployment",
+            "Mastra Server"
+          ],
+          "score": 246
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Deployment",
+            "Mastra Server"
+          ],
+          "score": 119
+        }
+      ],
+      "matchedTags": [
+        "Deployment",
+        "Mastra Server"
+      ]
+    },
+    {
+      "itemNumber": 15387,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15382,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 15367,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15344,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 112
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "Agents"
+      ]
+    },
+    {
+      "itemNumber": 15338,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 192
+        },
+        {
+          "name": "Ehindero Israel",
+          "role": "Full-Stack Platform Engineer",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Deployment"
+      ]
+    },
+    {
+      "itemNumber": 15322,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 192
+        },
+        {
+          "name": "Ehindero Israel",
+          "role": "Full-Stack Platform Engineer",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Deployment"
+      ]
+    },
+    {
+      "itemNumber": 15319,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 15301,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 192
+        },
+        {
+          "name": "Ehindero Israel",
+          "role": "Full-Stack Platform Engineer",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Deployment"
+      ]
+    },
+    {
+      "itemNumber": 15294,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory"
+          ],
+          "score": 225
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory"
+          ],
+          "score": 168
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 15292,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15288,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows",
+            "Evals"
+          ],
+          "score": 286
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Workflows",
+            "RAG",
+            "Evals",
+            "Storage"
+          ],
+          "score": 215
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "RAG",
+        "Evals",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 15275,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 15270,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Authentication"
+          ],
+          "score": 117
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Authentication"
+      ]
+    },
+    {
+      "itemNumber": 15265,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 56
+        }
+      ],
+      "matchedTags": [
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 15263,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Evals",
+            "Storage"
+          ],
+          "score": 184
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "RAG",
+            "Evals",
+            "Storage",
+            "Observability (AI Telemetry)"
+          ],
+          "score": 145
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Evals",
+        "Storage",
+        "Observability (AI Telemetry)"
+      ]
+    },
+    {
+      "itemNumber": 15248,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 192
+        },
+        {
+          "name": "Ehindero Israel",
+          "role": "Full-Stack Platform Engineer",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Deployment"
+      ]
+    },
+    {
+      "itemNumber": 15247,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows"
+          ],
+          "score": 173
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 15246,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 15244,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory",
+            "Tools"
+          ],
+          "score": 141
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Memory",
+            "Tools"
+          ],
+          "score": 90
+        }
+      ],
+      "matchedTags": [
+        "Memory",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 15240,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 112
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "Agents"
+      ]
+    },
+    {
+      "itemNumber": 15234,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Workflows",
+            "Tools"
+          ],
+          "score": 95
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 15229,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 112
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "Agents"
+      ]
+    },
+    {
+      "itemNumber": 15224,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        }
+      ],
+      "matchedTags": [
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 15223,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Eric Pinzur",
+          "role": "Observability & Telemetry Specialist",
+          "matchedTags": [
+            "Observability (AI Telemetry)"
+          ],
+          "score": 77
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Observability (AI Telemetry)"
+          ],
+          "score": 15
+        }
+      ],
+      "matchedTags": [
+        "Observability (AI Telemetry)"
+      ]
+    },
+    {
+      "itemNumber": 15222,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 112
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Agent Editor"
+          ],
+          "score": 98
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Agent Editor"
+      ]
+    },
+    {
+      "itemNumber": 15221,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        }
+      ],
+      "matchedTags": [
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 15206,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Evals"
+          ],
+          "score": 47
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Evals"
+          ],
+          "score": 26
+        }
+      ],
+      "matchedTags": [
+        "Evals"
+      ]
+    },
+    {
+      "itemNumber": 15183,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 15155,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "RAG",
+            "Storage",
+            "Observability (AI Telemetry)"
+          ],
+          "score": 98
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage",
+        "Observability (AI Telemetry)"
+      ]
+    },
+    {
+      "itemNumber": 15150,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory",
+            "Tools"
+          ],
+          "score": 141
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Memory",
+            "Tools"
+          ],
+          "score": 90
+        }
+      ],
+      "matchedTags": [
+        "Memory",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 15147,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 15144,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15118,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory"
+          ],
+          "score": 225
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory"
+          ],
+          "score": 168
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 15110,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15089,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ehindero Israel",
+          "role": "Full-Stack Platform Engineer",
+          "matchedTags": [
+            "CLI",
+            "Client SDK - JS"
+          ],
+          "score": 258
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "CLI"
+          ],
+          "score": 252
+        }
+      ],
+      "matchedTags": [
+        "CLI",
+        "Client SDK - JS"
+      ]
+    },
+    {
+      "itemNumber": 15078,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory"
+          ],
+          "score": 225
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory"
+          ],
+          "score": 168
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 15073,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Mastra Server"
+          ],
+          "score": 158
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Agents",
+            "Mastra Server"
+          ],
+          "score": 135
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Mastra Server"
+      ]
+    },
+    {
+      "itemNumber": 15064,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 15063,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Agents",
+            "Documentation"
+          ],
+          "score": 256
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Documentation"
+          ],
+          "score": 255
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15062,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 56
+        }
+      ],
+      "matchedTags": [
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 15051,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows",
+            "Tools"
+          ],
+          "score": 207
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 15049,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows",
+            "Memory"
+          ],
+          "score": 229
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows",
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 15033,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 15013,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows"
+          ],
+          "score": 173
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 14973,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows"
+          ],
+          "score": 173
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 14930,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Eric Pinzur",
+          "role": "Observability & Telemetry Specialist",
+          "matchedTags": [
+            "Observability (AI Telemetry)"
+          ],
+          "score": 77
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Observability (AI Telemetry)"
+          ],
+          "score": 15
+        }
+      ],
+      "matchedTags": [
+        "Observability (AI Telemetry)"
+      ]
+    },
+    {
+      "itemNumber": 14926,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 14922,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14896,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Workflows",
+            "Tools"
+          ],
+          "score": 95
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 14890,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Marvin Frachet",
+          "role": "Playground / Studio Lead",
+          "matchedTags": [
+            "UI / Dev Playground"
+          ],
+          "score": 279
+        },
+        {
+          "name": "Daniel Lew",
+          "role": "Core Systems & Editor Engineer",
+          "matchedTags": [
+            "Agents",
+            "Tools",
+            "UI / Dev Playground"
+          ],
+          "score": 147
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Tools",
+        "UI / Dev Playground"
+      ]
+    },
+    {
+      "itemNumber": 14875,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 14840,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows",
+            "Voice"
+          ],
+          "score": 184
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows",
+        "Voice"
+      ]
+    },
+    {
+      "itemNumber": 14837,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 14828,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        }
+      ],
+      "matchedTags": [
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 14822,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 14820,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows"
+          ],
+          "score": 173
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 14816,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 146
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 108
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 14792,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory",
+            "mastracode"
+          ],
+          "score": 189
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Memory",
+            "mastracode"
+          ],
+          "score": 80
+        }
+      ],
+      "matchedTags": [
+        "Memory",
+        "mastracode"
+      ]
+    },
+    {
+      "itemNumber": 14781,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14773,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "Voice"
+      ]
+    },
+    {
+      "itemNumber": 14738,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        }
+      ],
+      "matchedTags": [
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 14737,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 112
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "Agents"
+      ]
+    },
+    {
+      "itemNumber": 14723,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory"
+          ],
+          "score": 225
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory"
+          ],
+          "score": 168
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 14707,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 146
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 108
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 14704,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "MCP"
+          ],
+          "score": 132
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "MCP"
+          ],
+          "score": 115
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "MCP"
+      ]
+    },
+    {
+      "itemNumber": 14703,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 14695,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14685,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 14659,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 112
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "Agents"
+      ]
+    },
+    {
+      "itemNumber": 14651,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 56
+        }
+      ],
+      "matchedTags": [
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 14647,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Workflows",
+            "RAG",
+            "Deployment",
+            "Storage",
+            "Observability (AI Telemetry)"
+          ],
+          "score": 335
+        },
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "RAG",
+        "Deployment",
+        "Storage",
+        "Observability (AI Telemetry)"
+      ]
+    },
+    {
+      "itemNumber": 14641,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14639,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 14627,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 14619,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ryan Hansen",
+          "role": "Auth & Voice Specialist",
+          "matchedTags": [
+            "Authentication"
+          ],
+          "score": 13
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Authentication"
+          ],
+          "score": 7
+        }
+      ],
+      "matchedTags": [
+        "Authentication"
+      ]
+    },
+    {
+      "itemNumber": 14613,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 56
+        }
+      ],
+      "matchedTags": [
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 14575,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Logging"
+          ],
+          "score": 120
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Logging"
+          ],
+          "score": 104
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Logging"
+      ]
+    },
+    {
+      "itemNumber": 14559,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 112
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "Agents"
+      ]
+    },
+    {
+      "itemNumber": 14557,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ehindero Israel",
+          "role": "Full-Stack Platform Engineer",
+          "matchedTags": [
+            "CLI",
+            "Client SDK - JS"
+          ],
+          "score": 258
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "CLI"
+          ],
+          "score": 252
+        }
+      ],
+      "matchedTags": [
+        "CLI",
+        "Client SDK - JS"
+      ]
+    },
+    {
+      "itemNumber": 14552,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 112
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "Agents"
+      ]
+    },
+    {
+      "itemNumber": 14542,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        }
+      ],
+      "matchedTags": [
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 14536,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14531,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Tools",
+            "Storage"
+          ],
+          "score": 171
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Tools",
+            "Storage"
+          ],
+          "score": 130
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Tools",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 14525,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14509,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14503,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 192
+        },
+        {
+          "name": "Ehindero Israel",
+          "role": "Full-Stack Platform Engineer",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Deployment"
+      ]
+    },
+    {
+      "itemNumber": 14484,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Mastra Server"
+          ],
+          "score": 54
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Mastra Server"
+          ],
+          "score": 54
+        }
+      ],
+      "matchedTags": [
+        "Mastra Server"
+      ]
+    },
+    {
+      "itemNumber": 14460,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ehindero Israel",
+          "role": "Full-Stack Platform Engineer",
+          "matchedTags": [
+            "CLI",
+            "Mastra Server",
+            "Client SDK - JS"
+          ],
+          "score": 284
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "CLI"
+          ],
+          "score": 252
+        }
+      ],
+      "matchedTags": [
+        "CLI",
+        "Mastra Server",
+        "Client SDK - JS"
+      ]
+    },
+    {
+      "itemNumber": 14451,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Marvin Frachet",
+          "role": "Playground / Studio Lead",
+          "matchedTags": [
+            "UI / Dev Playground"
+          ],
+          "score": 279
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "UI / Dev Playground"
+          ],
+          "score": 95
+        }
+      ],
+      "matchedTags": [
+        "UI / Dev Playground"
+      ]
+    },
+    {
+      "itemNumber": 14409,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 14361,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 56
+        }
+      ],
+      "matchedTags": [
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 14328,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows"
+          ],
+          "score": 173
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 14290,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows"
+          ],
+          "score": 173
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows",
+        "Observability (AI Telemetry)"
+      ]
+    },
+    {
+      "itemNumber": 14289,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 14257,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 146
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 108
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 14216,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory",
+            "RAG",
+            "Storage"
+          ],
+          "score": 214
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory",
+            "Storage"
+          ],
+          "score": 182
+        }
+      ],
+      "matchedTags": [
+        "Memory",
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 14199,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Workflows",
+            "Tools"
+          ],
+          "score": 95
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 14174,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows"
+          ],
+          "score": 173
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 14148,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Workflows",
+            "Tools"
+          ],
+          "score": 95
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 14128,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 56
+        }
+      ],
+      "matchedTags": [
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 14127,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Tools",
+            "MCP"
+          ],
+          "score": 81
+        },
+        {
+          "name": "Daniel Lew",
+          "role": "Core Systems & Editor Engineer",
+          "matchedTags": [
+            "Tools",
+            "MCP"
+          ],
+          "score": 61
+        }
+      ],
+      "matchedTags": [
+        "Tools",
+        "MCP"
+      ]
+    },
+    {
+      "itemNumber": 14115,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 56
+        }
+      ],
+      "matchedTags": [
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 14104,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 14094,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory"
+          ],
+          "score": 225
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory"
+          ],
+          "score": 168
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 14093,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 146
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 108
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 14091,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 192
+        },
+        {
+          "name": "Ehindero Israel",
+          "role": "Full-Stack Platform Engineer",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Deployment"
+      ]
+    },
+    {
+      "itemNumber": 14089,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "Authentication"
+      ]
+    },
+    {
+      "itemNumber": 14082,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 14007,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Marvin Frachet",
+          "role": "Playground / Studio Lead",
+          "matchedTags": [
+            "UI / Dev Playground"
+          ],
+          "score": 279
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "UI / Dev Playground"
+          ],
+          "score": 95
+        }
+      ],
+      "matchedTags": [
+        "UI / Dev Playground",
+        "Observability (AI Telemetry)"
+      ]
+    },
+    {
+      "itemNumber": 13997,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "MCP"
+          ],
+          "score": 47
+        },
+        {
+          "name": "Daniel Lew",
+          "role": "Core Systems & Editor Engineer",
+          "matchedTags": [
+            "MCP"
+          ],
+          "score": 32
+        }
+      ],
+      "matchedTags": [
+        "MCP"
+      ]
+    },
+    {
+      "itemNumber": 13990,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 56
+        }
+      ],
+      "matchedTags": [
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 13987,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        }
+      ],
+      "matchedTags": [
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 13951,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ryan Hansen",
+          "role": "Auth & Voice Specialist",
+          "matchedTags": [
+            "Authentication"
+          ],
+          "score": 13
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Authentication"
+          ],
+          "score": 7
+        }
+      ],
+      "matchedTags": [
+        "Authentication"
+      ]
+    },
+    {
+      "itemNumber": 13931,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 56
+        }
+      ],
+      "matchedTags": [
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 13921,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory",
+            "Voice"
+          ],
+          "score": 232
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory",
+            "Voice"
+          ],
+          "score": 179
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Memory",
+        "Voice"
+      ]
+    },
+    {
+      "itemNumber": 13913,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Tools",
+            "mastracode"
+          ],
+          "score": 72
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Tools",
+            "mastracode"
+          ],
+          "score": 58
+        }
+      ],
+      "matchedTags": [
+        "Tools",
+        "mastracode"
+      ]
+    },
+    {
+      "itemNumber": 13878,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Marvin Frachet",
+          "role": "Playground / Studio Lead",
+          "matchedTags": [
+            "UI / Dev Playground"
+          ],
+          "score": 279
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "UI / Dev Playground"
+          ],
+          "score": 95
+        }
+      ],
+      "matchedTags": [
+        "UI / Dev Playground"
+      ]
+    },
+    {
+      "itemNumber": 13846,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 146
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 108
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 13841,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Agents",
+            "Memory",
+            "Deployment"
+          ],
+          "score": 303
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory",
+            "Deployment"
+          ],
+          "score": 241
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Memory",
+        "Deployment"
+      ]
+    },
+    {
+      "itemNumber": 13793,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 146
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 108
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 13668,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 13651,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows",
+            "Memory"
+          ],
+          "score": 229
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows",
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 13644,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows"
+          ],
+          "score": 173
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 13615,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Voice"
+          ],
+          "score": 123
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Voice"
+          ],
+          "score": 103
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Voice"
+      ]
+    },
+    {
+      "itemNumber": 13547,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 112
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "Agents"
+      ]
+    },
+    {
+      "itemNumber": 13412,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Agents",
+            "RAG",
+            "Tools",
+            "Storage"
+          ],
+          "score": 252
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "RAG",
+            "Tools",
+            "Storage"
+          ],
+          "score": 242
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "RAG",
+        "Tools",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 13379,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ehindero Israel",
+          "role": "Full-Stack Platform Engineer",
+          "matchedTags": [
+            "CLI",
+            "Client SDK - JS"
+          ],
+          "score": 258
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "CLI"
+          ],
+          "score": 252
+        }
+      ],
+      "matchedTags": [
+        "CLI",
+        "Client SDK - JS"
+      ]
+    },
+    {
+      "itemNumber": 13336,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13327,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 56
+        }
+      ],
+      "matchedTags": [
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 13321,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Mastra Server",
+            "Documentation"
+          ],
+          "score": 229
+        }
+      ],
+      "matchedTags": [
+        "Mastra Server",
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 13268,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Workflows",
+            "Tools"
+          ],
+          "score": 95
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 13226,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 13133,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13129,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "Eric Pinzur",
+          "role": "Observability & Telemetry Specialist",
+          "matchedTags": [
+            "Observability (AI Telemetry)"
+          ],
+          "score": 77
+        }
+      ],
+      "matchedTags": [
+        "Memory",
+        "Observability (AI Telemetry)"
+      ]
+    },
+    {
+      "itemNumber": 13115,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13079,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Marvin Frachet",
+          "role": "Playground / Studio Lead",
+          "matchedTags": [
+            "UI / Dev Playground"
+          ],
+          "score": 279
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "UI / Dev Playground"
+          ],
+          "score": 95
+        }
+      ],
+      "matchedTags": [
+        "UI / Dev Playground"
+      ]
+    },
+    {
+      "itemNumber": 13068,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        }
+      ],
+      "matchedTags": [
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 13065,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 13041,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 192
+        },
+        {
+          "name": "Ehindero Israel",
+          "role": "Full-Stack Platform Engineer",
+          "matchedTags": [
+            "Deployment"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Deployment"
+      ]
+    },
+    {
+      "itemNumber": 13033,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ehindero Israel",
+          "role": "Full-Stack Platform Engineer",
+          "matchedTags": [
+            "CLI",
+            "Client SDK - JS"
+          ],
+          "score": 258
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "CLI"
+          ],
+          "score": 252
+        }
+      ],
+      "matchedTags": [
+        "CLI",
+        "Client SDK - JS"
+      ]
+    },
+    {
+      "itemNumber": 12958,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Marvin Frachet",
+          "role": "Playground / Studio Lead",
+          "matchedTags": [
+            "UI / Dev Playground"
+          ],
+          "score": 279
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "UI / Dev Playground"
+      ]
+    },
+    {
+      "itemNumber": 12907,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 12854,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 12845,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Mastra Server"
+          ],
+          "score": 54
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Mastra Server"
+          ],
+          "score": 54
+        }
+      ],
+      "matchedTags": [
+        "Mastra Server"
+      ]
+    },
+    {
+      "itemNumber": 12843,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 12775,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 146
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 108
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 12738,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Workflows",
+            "Tools"
+          ],
+          "score": 95
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 12535,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 12464,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory"
+          ],
+          "score": 225
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Memory"
+          ],
+          "score": 168
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 12426,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 146
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Tools"
+          ],
+          "score": 108
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 12405,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Workflows",
+            "Tools"
+          ],
+          "score": 95
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 12260,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 56
+        }
+      ],
+      "matchedTags": [
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 12208,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        }
+      ],
+      "matchedTags": [
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 12035,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 11792,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory",
+            "RAG",
+            "Storage"
+          ],
+          "score": 214
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory",
+            "Storage"
+          ],
+          "score": 182
+        }
+      ],
+      "matchedTags": [
+        "Memory",
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 11664,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 11552,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        }
+      ],
+      "matchedTags": [
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 11458,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Voice"
+          ],
+          "score": 123
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents",
+            "Voice"
+          ],
+          "score": 103
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Voice"
+      ]
+    },
+    {
+      "itemNumber": 11295,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Mastra Server"
+          ],
+          "score": 54
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Mastra Server"
+          ],
+          "score": 54
+        }
+      ],
+      "matchedTags": [
+        "Mastra Server"
+      ]
+    },
+    {
+      "itemNumber": 11097,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Eric Pinzur",
+          "role": "Observability & Telemetry Specialist",
+          "matchedTags": [
+            "Observability (AI Telemetry)"
+          ],
+          "score": 77
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Observability (AI Telemetry)"
+          ],
+          "score": 15
+        }
+      ],
+      "matchedTags": [
+        "Observability (AI Telemetry)"
+      ]
+    },
+    {
+      "itemNumber": 11076,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 11056,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 112
+        },
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Agents"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "Agents"
+      ]
+    },
+    {
+      "itemNumber": 10935,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 10929,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 10896,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 10889,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 10770,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 10699,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 10453,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 10074,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 9571,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Mastra Server"
+          ],
+          "score": 54
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Mastra Server"
+          ],
+          "score": 54
+        }
+      ],
+      "matchedTags": [
+        "Mastra Server"
+      ]
+    },
+    {
+      "itemNumber": 9505,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 9457,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 9430,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 9375,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 9334,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Tools"
+          ],
+          "score": 34
+        }
+      ],
+      "matchedTags": [
+        "Tools"
+      ]
+    },
+    {
+      "itemNumber": 9107,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 9061,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Eric Pinzur",
+          "role": "Observability & Telemetry Specialist",
+          "matchedTags": [
+            "Workflows",
+            "Observability (AI Telemetry)"
+          ],
+          "score": 106
+        }
+      ],
+      "matchedTags": [
+        "Workflows",
+        "Observability (AI Telemetry)"
+      ]
+    },
+    {
+      "itemNumber": 8951,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "Agents",
+            "Workflows",
+            "MCP"
+          ],
+          "score": 193
+        }
+      ],
+      "matchedTags": [
+        "Agents",
+        "Workflows",
+        "MCP",
+        "Observability (AI Telemetry)"
+      ]
+    },
+    {
+      "itemNumber": 8695,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 8689,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 8610,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 56
+        }
+      ],
+      "matchedTags": [
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 8055,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 7990,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Eric Pinzur",
+          "role": "Observability & Telemetry Specialist",
+          "matchedTags": [
+            "Observability (AI Telemetry)"
+          ],
+          "score": 77
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Observability (AI Telemetry)"
+          ],
+          "score": 15
+        }
+      ],
+      "matchedTags": [
+        "Observability (AI Telemetry)"
+      ]
+    },
+    {
+      "itemNumber": 7578,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 7559,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Eric Pinzur",
+          "role": "Observability & Telemetry Specialist",
+          "matchedTags": [
+            "Observability (AI Telemetry)"
+          ],
+          "score": 77
+        },
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Observability (AI Telemetry)"
+          ],
+          "score": 15
+        }
+      ],
+      "matchedTags": [
+        "Observability (AI Telemetry)"
+      ]
+    },
+    {
+      "itemNumber": 7479,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 7209,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 6751,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 6477,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 6428,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "dayo",
+          "role": "Workflows Architect",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 280
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "Workflows"
+          ],
+          "score": 85
+        }
+      ],
+      "matchedTags": [
+        "Workflows"
+      ]
+    },
+    {
+      "itemNumber": 5901,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Ward Peeters",
+          "role": "Infrastructure & Platform Generalist",
+          "matchedTags": [
+            "Voice"
+          ],
+          "score": 27
+        },
+        {
+          "name": "YujohnNattrass",
+          "role": "Stores, Voice & Broad Contributor",
+          "matchedTags": [
+            "Voice"
+          ],
+          "score": 17
+        }
+      ],
+      "matchedTags": [
+        "Voice"
+      ]
+    },
+    {
+      "itemNumber": 5646,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Marvin Frachet",
+          "role": "Playground / Studio Lead",
+          "matchedTags": [
+            "UI / Dev Playground"
+          ],
+          "score": 279
+        },
+        {
+          "name": "Taofeeq Oluderu",
+          "role": "Workflows, CLI & Playground Engineer",
+          "matchedTags": [
+            "UI / Dev Playground"
+          ],
+          "score": 95
+        }
+      ],
+      "matchedTags": [
+        "UI / Dev Playground"
+      ]
+    },
+    {
+      "itemNumber": 5454,
+      "itemType": "issue",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 5093,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Tyler Barnes",
+          "role": "Memory & Agent Systems Lead",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 129
+        },
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "Memory"
+          ],
+          "score": 56
+        }
+      ],
+      "matchedTags": [
+        "Memory"
+      ]
+    },
+    {
+      "itemNumber": 4168,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 3926,
+      "itemType": "issue",
+      "assignedDevelopers": [
+        {
+          "name": "NikAiyer",
+          "role": "Memory / RAG / Storage Specialist",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 158
+        },
+        {
+          "name": "Abhi Aiyer",
+          "role": "Core Architect / Tech Lead",
+          "matchedTags": [
+            "RAG",
+            "Storage"
+          ],
+          "score": 96
+        }
+      ],
+      "matchedTags": [
+        "RAG",
+        "Storage"
+      ]
+    },
+    {
+      "itemNumber": 15443,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15442,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15440,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15439,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15437,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15433,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15430,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15429,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15423,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15420,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15417,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15415,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15410,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15403,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15395,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15383,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15377,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15376,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15373,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15366,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15356,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15347,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15346,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15342,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15339,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15318,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15309,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15279,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15277,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15274,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15271,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15269,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15255,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15252,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15250,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15245,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15242,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15232,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15231,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15227,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15217,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15215,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15211,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15199,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15187,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15186,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15173,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15171,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15162,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15133,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15122,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 15107,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15068,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15050,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15048,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15039,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15011,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 15005,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14990,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14989,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14988,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14979,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14974,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14969,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14950,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14945,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14928,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14913,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14901,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14852,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14831,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14824,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14819,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14797,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14750,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14746,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14735,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14721,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14717,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14708,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14700,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14653,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14622,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14608,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14597,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14593,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14579,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14544,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14537,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14534,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14533,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14520,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14508,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14500,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14499,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14486,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14478,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14452,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14441,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14420,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14410,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14360,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14356,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14304,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14301,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14296,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14273,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14248,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14246,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14242,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14240,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14237,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14236,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14225,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14218,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14212,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14200,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14116,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14051,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 14050,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14049,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14044,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 14009,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 13992,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13989,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13986,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 13976,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13974,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13970,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13967,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13917,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13891,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13882,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13858,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13845,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13834,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13751,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13681,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 13638,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13634,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13529,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13447,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13446,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13313,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13232,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13224,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13150,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 13116,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13103,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 13073,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 13042,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 12963,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 12860,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 12751,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 12706,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 12573,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 12557,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 12454,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 11795,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 11336,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 11149,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 10930,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 10685,
+      "itemType": "pr",
+      "assignedDevelopers": [
+        {
+          "name": "Sam Bhagwat",
+          "role": "Docs & Content Strategist",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 238
+        },
+        {
+          "name": "Kenny",
+          "role": "CLI & Docs Lead",
+          "matchedTags": [
+            "Documentation"
+          ],
+          "score": 196
+        }
+      ],
+      "matchedTags": [
+        "Documentation"
+      ]
+    },
+    {
+      "itemNumber": 10146,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 9256,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 9146,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    },
+    {
+      "itemNumber": 8718,
+      "itemType": "pr",
+      "assignedDevelopers": [],
+      "matchedTags": []
+    }
+  ]
+}
