@@ -4,6 +4,7 @@ dist
 .mastra
 .env.development
 .env
+.env.*
 *.db
 *.db-*
 forum-thread-analysis.md

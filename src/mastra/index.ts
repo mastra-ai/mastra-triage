@@ -14,7 +14,7 @@ import { classificationWorkflow } from './workflows/classification';
 import { discordAnalysisWorkflow } from './workflows/analysis';
 import { forumThreadAnalysisWorkflow } from './workflows/forum-thread-analysis';
 import { MastraJwtAuth } from '@mastra/auth';
-import { DefaultExporter, Observability } from '@mastra/observability';
+import { MastraStorageExporter, Observability } from '@mastra/observability';
 import { initializeDiscordModerationBot } from './bots/discord-moderation';
 
 export const mastra = new Mastra({
@@ -53,7 +53,7 @@ export const mastra = new Mastra({
       default: {
         serviceName: 'mastra',
         exporters: [
-          new DefaultExporter(), // Persists traces to storage for Mastra Studio
+          new MastraStorageExporter(), // Persists traces to storage for Mastra Studio
         ],
       },
     },
