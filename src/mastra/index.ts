@@ -1,6 +1,5 @@
 import { Mastra } from '@mastra/core/mastra';
 import { PinoLogger } from '@mastra/loggers';
-import { LibSQLStore } from '@mastra/libsql';
 import { classificationAgent, effortImpactAgent } from './agents/classification';
 import { analysisAgent } from './agents/analysis';
 import { threadClassifierAgent } from './agents/thread-classifier';
@@ -26,11 +25,6 @@ export const mastra = new Mastra({
     categorySummaryAgent,
     moderationAgent,
   },
-  storage: new LibSQLStore({
-    id: 'libsql-memory',
-    // stores telemetry, evals, ... into memory storage, if it needs to persist, change to file:../mastra.db
-    url: ':memory:',
-  }),
   bundler: {
     externals: true,
   },
