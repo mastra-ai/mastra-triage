@@ -5,3 +5,12 @@ onlyBuiltDependencies:
 allowBuilds:
   esbuild: true
   protobufjs: true
+
+overrides:
+  '@mastra/deployer': 1.45.0
+  '@mastra/server': 1.45.0
+  '@posthog/core': 1.37.0
+  '@posthog/types': 1.391.0
+  electron-to-chromium: 1.5.377
+  node-releases: 2.0.48
+  posthog-node: 5.38.3
