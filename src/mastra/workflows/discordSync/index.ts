@@ -346,6 +346,10 @@ const syncIssueMessagesStep = createStep({
  */
 export const discordSyncWorkflow = createWorkflow({
   id: 'discord-sync',
+  schedule: {
+    cron: '*/30 * * * *',
+    inputData: { owner, repo },
+  },
   inputSchema: z.object({
     owner: z.string().default(owner),
     repo: z.string().default(repo),
