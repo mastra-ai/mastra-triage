@@ -53,77 +53,20 @@ const fetchIssueStep = createStep({
 });
 
 /**
- * Final step: Apply all labels to the GitHub issue
+ * Final step: Report the classification result without touching the issue
  */
-const applyLabelsStep = createStep({
-  id: 'apply-labels',
+const completeTriageStep = createStep({
+  id: 'complete-triage',
   inputSchema: classificationOutputSchema,
   outputSchema: outputSchema,
   execute: async ({ inputData, getInitData, mastra }) => {
     const logger = mastra?.getLogger();
-    const octokit = getGithubClient();
-    const { owner, repo, issueNumber } = getInitData<any>();
+    const { issueNumber } = getInitData<any>();
 
-    // Get existing labels on the issue to avoid duplicates
-    const existingIssue = await octokit.rest.issues.get({
-      owner,
-      repo,
-      issue_number: Number(issueNumber),
-    });
-    const existingLabels = existingIssue.data.labels.map(l => (typeof l === 'string' ? l : l.name || ''));
-
-    // Remove existing effort/impact labels to avoid duplicates
-    const labelsToRemove = existingLabels.filter(
-      l => l.toLowerCase().startsWith('effort:') || l.toLowerCase().startsWith('impact:'),
-    );
-    for (const label of labelsToRemove) {
-      try {
-        await octokit.rest.issues.removeLabel({
-          owner,
-          repo,
-          issue_number: Number(issueNumber),
-          name: label,
-        });
-        logger?.debug(`Removed existing label: ${label}`);
-      } catch {
-        // Label might not exist, ignore
-      }
-    }
-
-    // Build labels array from classification results
-    const areaLabels = inputData.labels.map(l => l.label);
-    const labels = ['status: needs triage', ...areaLabels, ...inputData.squadLabels];
-
-    if (inputData.effortLabel) {
-      labels.push(inputData.effortLabel);
-    }
-    if (inputData.impactLabel) {
-      labels.push(inputData.impactLabel);
-    }
-
-    // Label the issue
-    await octokit.rest.issues.addLabels({
-      owner,
-      repo,
-      issue_number: Number(issueNumber),
-      labels,
-    });
-
-    logger?.info(`Labeled issue #${issueNumber} with: ${labels.join(', ')}`);
-
-    // Find the primary squad for the comment
+    const labels = inputData.labels.map(l => l.label);
     const primarySquad = inputData.squadLabels[0] || 'the team';
 
-    await octokit.rest.issues.createComment({
-      owner,
-      repo,
-      issue_number: Number(issueNumber),
-      body:
-        `Thank you for reporting this issue! We have labeled it for ${primarySquad} and we will look into it as soon as possible.\n\n` +
-        `If you're experiencing an error, please provide a [minimal reproducible example](https://github.com/mastra-ai/mastra/blob/main/CONTRIBUTING.md#minimal-reproduction) whenever possible to help us resolve it quickly.`,
-    });
-
-    logger?.info(`Commented on issue #${issueNumber}`);
+    logger?.info(`Classified issue #${issueNumber} for ${primarySquad}: ${labels.join(', ') || 'no area labels'}`);
 
     return {
       issueNumber,
@@ -138,12 +81,8 @@ const applyLabelsStep = createStep({
 /**
  * Triage Workflow
  *
- * Fetches a GitHub issue, classifies it using the shared classification workflow steps,
- * and applies all appropriate labels including:
- * - Area labels (e.g., "area: workflows", "area: agents")
- * - Squad labels (e.g., "trio-tnt", "trio-tb")
- * - Effort labels (e.g., "effort: low", "effort: high")
- * - Impact labels (e.g., "impact: low", "impact: high")
+ * Fetches and classifies a GitHub issue, then reports the classification result.
+ * The workflow is read-only: it never writes to the issue.
  */
 export const triageWorkflow = createWorkflow({
   id: 'triage',
@@ -166,6 +105,6 @@ export const triageWorkflow = createWorkflow({
   .then(labelSquadStep)
   // Step 5: Estimate effort and impact
   .then(estimateEffortImpactStep)
-  // Step 6: Apply all labels to the issue
-  .then(applyLabelsStep)
+  // Step 6: Report the classification result
+  .then(completeTriageStep)
   .commit();

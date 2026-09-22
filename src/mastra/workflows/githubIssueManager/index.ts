@@ -154,35 +154,15 @@ const checkCommentAuthorStep = createStep({
         labelReason = 'sync_tracker' as const;
       }
 
-      // Add "status: needs follow up" label if either check indicates non-member
       if (githubCommentIndicatesNonMember || syncTrackerIndicatesNonMember) {
-        try {
-          await octokit.rest.issues.addLabels({
-            owner: inputData.owner,
-            repo: inputData.repo,
-            issue_number: inputData.number,
-            labels: ['status: needs follow up'],
-          });
+        logger?.info(`Issue #${inputData.number}: Follow-up needed (reason: ${labelReason}); labels left unchanged`);
 
-          logger?.info(
-            `Issue #${inputData.number}: Added "status: needs follow up" label (reason: ${labelReason})`,
-          );
-
-          return {
-            needsFollowUp: true,
-            lastCommentAuthor: lastAuthor,
-            labelAdded: true,
-            labelReason,
-          };
-        } catch (error) {
-          logError(logger, `Error adding label to issue #${inputData.number}`, error);
-          return {
-            needsFollowUp: true,
-            lastCommentAuthor: lastAuthor,
-            labelAdded: false,
-            labelReason,
-          };
-        }
+        return {
+          needsFollowUp: true,
+          lastCommentAuthor: lastAuthor,
+          labelAdded: false,
+          labelReason,
+        };
       }
 
       return {
