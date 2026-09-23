@@ -2,17 +2,12 @@ import { Mastra } from '@mastra/core/mastra';
 import { PinoLogger } from '@mastra/loggers';
 import { LibSQLStore } from '@mastra/libsql';
 import { classificationAgent, effortImpactAgent } from './agents/classification';
-import { analysisAgent } from './agents/analysis';
-import { threadClassifierAgent } from './agents/thread-classifier';
-import { categorySummaryAgent } from './agents/category-summary';
 import { moderationAgent } from './agents/moderation';
 import { discordToGithubWorkflow } from './workflows/discordToGithub';
 import { triageWorkflow } from './workflows/triage';
 import { githubIssueManagerWorkflow } from './workflows/githubIssueManager';
 import { discordSyncWorkflow } from './workflows/discordSync';
 import { classificationWorkflow } from './workflows/classification';
-import { discordAnalysisWorkflow } from './workflows/analysis';
-import { forumThreadAnalysisWorkflow } from './workflows/forum-thread-analysis';
 import { MastraJwtAuth } from '@mastra/auth';
 import { MastraPlatformExporter, MastraStorageExporter, Observability } from '@mastra/observability';
 import { initializeDiscordModerationBot } from './bots/discord-moderation';
@@ -23,9 +18,6 @@ export const mastra = new Mastra({
   agents: {
     classificationAgent,
     effortImpactAgent,
-    analysisAgent,
-    threadClassifierAgent,
-    categorySummaryAgent,
     moderationAgent,
   },
   storage: new MastraCompositeStore({
@@ -50,9 +42,6 @@ export const mastra = new Mastra({
     [triageWorkflow.id]: triageWorkflow,
     [githubIssueManagerWorkflow.id]: githubIssueManagerWorkflow,
     [discordSyncWorkflow.id]: discordSyncWorkflow,
-    // Manual trigger workflows for reporting (used by Romain and Abhi)
-    [discordAnalysisWorkflow.id]: discordAnalysisWorkflow,
-    [forumThreadAnalysisWorkflow.id]: forumThreadAnalysisWorkflow,
   },
   logger: new PinoLogger({
     name: 'Mastra',

@@ -287,6 +287,3 @@ export const categories: AreaOfOwnership[] = [
     assignWhen: 'Issue mentions Mastra Code or mastracode',
   },
 ];
-
-// Login to Discord with your bot token
-export const BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;

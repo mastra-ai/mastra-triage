@@ -9,4 +9,3 @@ dist
 *.db-*
 *.duckdb
 *.duckdb.*
-forum-thread-analysis.md
