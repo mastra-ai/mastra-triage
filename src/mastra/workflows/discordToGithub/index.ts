@@ -8,7 +8,7 @@ import { createGithubIssueWorkflow } from './createGithubIssue';
 const owner = 'mastra-ai';
 const repo = 'mastra';
 const forumChannelId = process.env.HELP_CHANNEL!;
-const fetchLimit = 50;
+const fetchLimit = process.env.HELP_CHANNEL_FETCH_LIMIT ? parseInt(process.env.HELP_CHANNEL_FETCH_LIMIT) : 1;
 
 const getGithubIssueStep = createStep({
   id: 'get-github-issue',
