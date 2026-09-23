@@ -7,6 +7,8 @@ import { createGithubIssueWorkflow } from './createGithubIssue';
 
 const owner = 'mastra-ai';
 const repo = 'mastra';
+const forumChannelId = process.env.HELP_CHANNEL!;
+const fetchLimit = 50;
 
 const getGithubIssueStep = createStep({
   id: 'get-github-issue',
@@ -113,6 +115,10 @@ const fetchPostsStep = createStep(fetchForumPosts);
 
 export const discordToGithubWorkflow = createWorkflow({
   id: 'discord-to-github',
+  schedule: {
+    cron: '*/30 * * * *',
+    inputData: { forumChannelId, fetchLimit },
+  },
   inputSchema: z.object({
     forumChannelId: z.string(),
     fetchLimit: z.coerce.number().optional().default(1),
